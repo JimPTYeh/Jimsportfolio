@@ -1,444 +1,142 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="zh-Hant">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.4">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jim PoTseng Yeh | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+        body { background-color: #121212; color: white; font-family: 'Inter', sans-serif; padding-bottom: 100px; }
+        .spotify-gradient { background: linear-gradient(180deg, #1e3a8a 0%, #1e40af 10%, #404040 40%, #121212 100%); }
+        .glass-nav { background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card-hover:hover { background-color: #282828; transform: translateY(-8px); }
+        .badge { font-size: 0.65rem; padding: 3px 8px; border-radius: 4px; font-weight: 700; }
+        .badge-ssci { background: #1DB954; color: #000; }
+        .badge-cssci { background: #3b82f6; color: white; }
+        .track-row:hover { background: rgba(255,255,255,0.1); }
+        .hero-title { background: linear-gradient(to right, #fff, #a7f3d0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
 </head>
-<body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="zh-Hant"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Jim PoTseng Yeh | Portfolio&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&amp;display=swap');</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>body {<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #121212;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Inter', sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding-bottom: 100px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.spotify-gradient {<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(180deg, #1e3a8a 0%, #1e40af 10%, #404040 40%, #121212 100%);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.glass-nav {<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: rgba(0, 0, 0, 0.85);<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>backdrop-filter: blur(20px);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 1px solid rgba(255,255,255,0.1);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.card-hover {<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.card-hover:hover {<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #282828;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(-8px);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.play-btn {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>opacity: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(10px);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.3s ease;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.card-hover:hover .play-btn {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>opacity: 1;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(0);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.badge {<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 0.65rem;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 3px 8px;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 4px;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 700;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>letter-spacing: 0.05em;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.badge-ssci {<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: #1DB954;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #000;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.badge-cssci {<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: #3b82f6;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.badge-industry {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: #f59e0b;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #000;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.track-row {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.2s ease;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.track-row:hover {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: rgba(255,255,255,0.1);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.track-row:hover .track-num {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: none;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.track-row:hover .track-play {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: block;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.track-play {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: none;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #1DB954;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.hero-title {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(to right, #fff, #a7f3d0);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>-webkit-background-clip: text;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>-webkit-text-fill-color: transparent;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.section-title {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: inline-block;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.section-title::after {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>content: '';</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: absolute;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>bottom: -8px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>left: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 40px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 4px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: #1DB954;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 2px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.floating-nav {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>animation: slideDown 0.5s ease;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>@keyframes slideDown {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>from { transform: translateY(-100%); }</p>
-<p class="p1"><span class="Apple-converted-space">            </span>to { transform: translateY(0); }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.gradient-text {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, #1DB954 0%, #3b82f6 100%);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>-webkit-background-clip: text;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>-webkit-text-fill-color: transparent;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body class="antialiased overflow-x-hidden"&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Navigation --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;nav class="fixed top-0 w-full z-50 glass-nav flex justify-between items-center px-6 md:px-8 py-4 floating-nav"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="flex items-center gap-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="w-8 h-8 bg-gradient-to-br from-green-400 to-blue-600 rounded-full flex items-center justify-center"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="font-black text-xs"&gt;J&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="font-black tracking-tighter text-lg"&gt;JIM.YEH&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="hidden md:flex space-x-8 text-sm font-semibold text-gray-400"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;a href="#research" class="hover:text-white transition-colors duration-200"&gt;Research&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;a href="#industry" class="hover:text-white transition-colors duration-200"&gt;Industry&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;a href="#video" class="hover:text-white transition-colors duration-200"&gt;Production&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;a href="#contact" class="hover:text-white transition-colors duration-200"&gt;Contact&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="md:hidden text-white"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"&gt;&lt;/path&gt;&lt;/svg&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/nav&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Hero Section --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="spotify-gradient px-6 md:px-8 pt-28 pb-12 flex flex-col md:flex-row items-end gap-8 min-h-[60vh]"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="relative group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="w-48 h-48 md:w-60 md:h-60 bg-gradient-to-tr from-green-500 via-blue-600 to-purple-600 shadow-2xl rounded-lg flex-shrink-0 flex items-center justify-center overflow-hidden relative"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="absolute inset-0 bg-black/20"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="text-7xl md:text-8xl font-black text-white/20 relative z-10"&gt;JP&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="absolute bottom-4 right-4 w-12 h-12 bg-green-500 rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer hover:scale-110"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;svg class="w-6 h-6 text-black ml-1" fill="currentColor" viewBox="0 0 24 24"&gt;&lt;path d="M8 5v14l11-7z"/&gt;&lt;/svg&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="flex flex-col gap-3 flex-1"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-green-400"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"&gt;&lt;path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/&gt;&lt;/svg&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>Verified Researcher &amp; Producer</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1 class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter hero-title leading-none mb-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>Jim PoTseng Yeh</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex flex-wrap items-center gap-3 text-sm md:text-base text-gray-300 font-medium"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="text-white font-bold"&gt;葉柏增&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="text-gray-500"&gt;•&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;span&gt;PhD Candidate, Fudan University&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="text-gray-500"&gt;•&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="text-green-400"&gt;10+ Years Industry Experience&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex items-center gap-4 mt-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center hover:scale-105 hover:bg-green-400 transition shadow-xl shadow-green-500/20" aria-label="Play"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;svg class="w-7 h-7 text-black ml-1" fill="currentColor" viewBox="0 0 24 24"&gt;&lt;path d="M8 5v14l11-7z"/&gt;&lt;/svg&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="w-10 h-10 border-2 border-gray-500 rounded-full flex items-center justify-center hover:border-white hover:scale-105 transition" aria-label="Save"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;svg class="w-5 h-5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/&gt;&lt;/svg&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="text-gray-400 hover:text-white font-bold text-sm tracking-wide hover:underline"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>Research Interests: Music Communication | Platform Economics</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Main Content --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;main class="px-6 md:px-8 space-y-12 max-w-7xl mx-auto"&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Research Section --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;section id="research" class="pt-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex justify-between items-end mb-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-2xl font-black section-title"&gt;Popular Publications&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="text-xs font-bold text-gray-400 hover:text-white uppercase tracking-widest hover:underline transition"&gt;Show all&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-white/5 rounded-xl overflow-hidden"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="track-row flex items-center gap-4 p-4 border-b border-white/5 cursor-pointer group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="w-8 text-center"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="track-num text-gray-500 font-bold"&gt;1&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"&gt;&lt;path d="M8 5v14l11-7z"/&gt;&lt;/svg&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex-1 min-w-0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3 class="font-bold text-white truncate group-hover:text-green-400 transition"&gt;Go Viral or Go Die: Resilient Collaboration in Creative Industries&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="flex items-center gap-2 mt-1"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="badge badge-ssci"&gt;SSCI Q2&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="text-sm text-gray-400"&gt;International Communication Gazette&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="text-sm text-gray-500 font-medium"&gt;2025&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="track-row flex items-center gap-4 p-4 border-b border-white/5 cursor-pointer group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="w-8 text-center"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="track-num text-gray-500 font-bold"&gt;2&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"&gt;&lt;path d="M8 5v14l11-7z"/&gt;&lt;/svg&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex-1 min-w-0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3 class="font-bold text-white truncate group-hover:text-green-400 transition"&gt;Gendered Swiping: Intimacy and Emotional Labor on Dating Apps&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="flex items-center gap-2 mt-1"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="badge badge-ssci"&gt;SSCI&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="text-sm text-gray-400"&gt;Under Review&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="text-sm text-gray-500 font-medium"&gt;2025&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="track-row flex items-center gap-4 p-4 cursor-pointer group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="w-8 text-center"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="track-num text-gray-500 font-bold"&gt;3&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"&gt;&lt;path d="M8 5v14l11-7z"/&gt;&lt;/svg&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex-1 min-w-0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3 class="font-bold text-white truncate group-hover:text-green-400 transition"&gt;城市音樂網的多維建構：以台北街頭藝術為例&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="flex items-center gap-2 mt-1"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="badge badge-cssci"&gt;CSSCI&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="text-sm text-gray-400"&gt;北大文化產業評論&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="text-sm text-gray-500 font-medium"&gt;2025&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Industry Section --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;section id="industry"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2 class="text-2xl font-black section-title mb-6"&gt;Discography: Industry Experience&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="grid grid-cols-2 md:grid-cols-4 gap-6"&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="bg-[#181818] p-5 rounded-xl card-hover cursor-pointer group relative overflow-hidden"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="absolute top-2 right-2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-lg z-10"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;svg class="w-4 h-4 text-black ml-0.5" fill="currentColor" viewBox="0 0 24 24"&gt;&lt;path d="M8 5v14l11-7z"/&gt;&lt;/svg&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="aspect-square bg-gradient-to-br from-pink-500 via-red-500 to-orange-400 rounded-lg mb-4 flex items-center justify-center font-black text-4xl shadow-lg group-hover:shadow-2xl transition-shadow"&gt;AM&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4 class="font-bold text-white truncate mb-1"&gt;Apple Music&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-xs text-gray-400 line-clamp-2 leading-relaxed"&gt;Authored 2,000+ editorial articles for Chinese platform, curating music content and cultural narratives.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="bg-[#181818] p-5 rounded-xl card-hover cursor-pointer group relative overflow-hidden"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="absolute top-2 right-2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-lg z-10"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;svg class="w-4 h-4 text-black ml-0.5" fill="currentColor" viewBox="0 0 24 24"&gt;&lt;path d="M8 5v14l11-7z"/&gt;&lt;/svg&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="aspect-square bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 rounded-lg mb-4 flex items-center justify-center font-black text-4xl shadow-lg group-hover:shadow-2xl transition-shadow"&gt;MGMT&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4 class="font-bold text-white truncate mb-1"&gt;Artist Management&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-xs text-gray-400 line-clamp-2 leading-relaxed"&gt;Managed Nana Ouyang, Rose Liu, and emerging artists in Greater China region.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="bg-[#181818] p-5 rounded-xl card-hover cursor-pointer group relative overflow-hidden"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="absolute top-2 right-2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-lg z-10"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;svg class="w-4 h-4 text-black ml-0.5" fill="currentColor" viewBox="0 0 24 24"&gt;&lt;path d="M8 5v14l11-7z"/&gt;&lt;/svg&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="aspect-square bg-gradient-to-br from-yellow-500 via-orange-500 to-red-500 rounded-lg mb-4 flex items-center justify-center font-black text-4xl shadow-lg group-hover:shadow-2xl transition-shadow"&gt;LIVE&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4 class="font-bold text-white truncate mb-1"&gt;Live Production&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-xs text-gray-400 line-clamp-2 leading-relaxed"&gt;Produced 27 large-scale events with 500,000+ total attendance across Asia.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="bg-[#181818] p-5 rounded-xl card-hover cursor-pointer group relative overflow-hidden"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="absolute top-2 right-2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-lg z-10"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;svg class="w-4 h-4 text-black ml-0.5" fill="currentColor" viewBox="0 0 24 24"&gt;&lt;path d="M8 5v14l11-7z"/&gt;&lt;/svg&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="aspect-square bg-gradient-to-br from-teal-500 via-emerald-500 to-green-400 rounded-lg mb-4 flex items-center justify-center font-black text-4xl shadow-lg group-hover:shadow-2xl transition-shadow"&gt;TV&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4 class="font-bold text-white truncate mb-1"&gt;TV Production&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-xs text-gray-400 line-clamp-2 leading-relaxed"&gt;Music coordinator for HK 25th Anniversary celebration broadcast.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Video Production Section --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;section id="video"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2 class="text-2xl font-black section-title mb-6"&gt;Music &amp; Video Production&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="grid grid-cols-1 md:grid-cols-2 gap-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;a href="https://www.bilibili.com/video/BV1YkrKBVEav/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 bg-[#181818] p-4 rounded-lg hover:bg-[#282828] transition group border border-transparent hover:border-white/10"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="w-20 h-20 bg-gradient-to-br from-purple-900 to-indigo-900 rounded flex-shrink-0 flex items-center justify-center relative overflow-hidden"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="text-xs font-bold text-white/50"&gt;MV&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"&gt;&lt;path d="M8 5v14l11-7z"/&gt;&lt;/svg&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex-1 min-w-0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="font-bold text-white truncate group-hover:text-green-400 transition"&gt;Deer Chaser 鹿朝 - Back to Nanzhao&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-xs text-gray-400 mt-1 flex items-center gap-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="w-1.5 h-1.5 bg-green-500 rounded-full"&gt;&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>Music Video Creating &amp; Production</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;svg class="w-5 h-5 text-gray-600 group-hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/&gt;&lt;/svg&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/a&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;a href="https://youtu.be/2XF637Y-e7Y" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 bg-[#181818] p-4 rounded-lg hover:bg-[#282828] transition group border border-transparent hover:border-white/10"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="w-20 h-20 bg-gradient-to-br from-blue-900 to-cyan-900 rounded flex-shrink-0 flex items-center justify-center relative overflow-hidden"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="text-xs font-bold text-white/50"&gt;ACA&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"&gt;&lt;path d="M8 5v14l11-7z"/&gt;&lt;/svg&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex-1 min-w-0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="font-bold text-white truncate group-hover:text-green-400 transition"&gt;Mixster A Cappella - A Dialogue for One&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-xs text-gray-400 mt-1 flex items-center gap-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="w-1.5 h-1.5 bg-green-500 rounded-full"&gt;&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>Arrangement &amp; Post-production</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;svg class="w-5 h-5 text-gray-600 group-hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/&gt;&lt;/svg&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Stats Section --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;section class="grid grid-cols-2 md:grid-cols-4 gap-4 py-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-gradient-to-br from-white/5 to-white/0 p-6 rounded-2xl border border-white/5 text-center"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="text-3xl font-black text-green-400 mb-1"&gt;2,000+&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="text-xs text-gray-400 uppercase tracking-wider"&gt;Editorial Articles&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-gradient-to-br from-white/5 to-white/0 p-6 rounded-2xl border border-white/5 text-center"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="text-3xl font-black text-blue-400 mb-1"&gt;27&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="text-xs text-gray-400 uppercase tracking-wider"&gt;Live Events&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-gradient-to-br from-white/5 to-white/0 p-6 rounded-2xl border border-white/5 text-center"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="text-3xl font-black text-purple-400 mb-1"&gt;500k+&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="text-xs text-gray-400 uppercase tracking-wider"&gt;Audience Reached&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-gradient-to-br from-white/5 to-white/0 p-6 rounded-2xl border border-white/5 text-center"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="text-3xl font-black text-orange-400 mb-1"&gt;10+&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="text-xs text-gray-400 uppercase tracking-wider"&gt;Years Experience&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/main&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Footer Player --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;footer id="contact" class="fixed bottom-0 w-full glass-nav border-t border-white/10 px-6 py-4 z-50"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="max-w-7xl mx-auto flex items-center justify-between"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex items-center gap-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="w-14 h-14 bg-gradient-to-br from-green-400 to-blue-600 rounded flex items-center justify-center font-black text-green-900 text-xl shadow-lg"&gt;J&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-sm font-bold text-white"&gt;Jim PoTseng Yeh&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-xs text-gray-400"&gt;ptyeh22@m.fudan.edu.cn&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="ml-2 text-gray-400 hover:text-green-400 transition"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/&gt;&lt;/svg&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="hidden md:flex flex-col items-center flex-1 max-w-md mx-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex items-center gap-6 mb-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="text-gray-400 hover:text-white transition"&gt;&lt;svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"&gt;&lt;path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/&gt;&lt;/svg&gt;&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="w-8 h-8 bg-white rounded-full flex items-center justify-center hover:scale-105 transition"&gt;&lt;svg class="w-4 h-4 text-black ml-0.5" fill="currentColor" viewBox="0 0 24 24"&gt;&lt;path d="M8 5v14l11-7z"/&gt;&lt;/svg&gt;&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="text-gray-400 hover:text-white transition"&gt;&lt;svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"&gt;&lt;path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/&gt;&lt;/svg&gt;&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="w-full flex items-center gap-2 text-xs text-gray-400 font-mono"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span&gt;0:00&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex-1 h-1 bg-white/20 rounded-full overflow-hidden cursor-pointer group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="w-0 h-full bg-white group-hover:bg-green-400 rounded-full relative"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full opacity-0 group-hover:opacity-100 shadow"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span&gt;Resume&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex items-center gap-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="hidden sm:flex flex-col items-end mr-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="text-[10px] uppercase font-bold text-gray-500 tracking-widest"&gt;Contact&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="text-sm font-mono text-white"&gt;+86 186-2107-0173&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="bg-white text-black px-6 py-2.5 rounded-full font-bold text-sm hover:scale-105 hover:bg-green-400 transition shadow-lg"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>Hire Me</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/footer&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>// Smooth scroll for navigation</p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.querySelectorAll('a[href^="#"]').forEach(anchor =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>anchor.addEventListener('click', function (e) {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>e.preventDefault();</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const target = document.querySelector(this.getAttribute('href'));</p>
-<p class="p1"><span class="Apple-converted-space">                </span>if (target) {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>target.scrollIntoView({ behavior: 'smooth', block: 'start' });</p>
-<p class="p1"><span class="Apple-converted-space">                </span>}</p>
-<p class="p1"><span class="Apple-converted-space">            </span>});</p>
-<p class="p1"><span class="Apple-converted-space">        </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// Add scroll effect to nav</p>
-<p class="p1"><span class="Apple-converted-space">        </span>let lastScroll = 0;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>window.addEventListener('scroll', () =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const nav = document.querySelector('nav');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const currentScroll = window.pageYOffset;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (currentScroll &gt; 100) {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>nav.style.background = 'rgba(0, 0, 0, 0.95)';</p>
-<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>nav.style.background = 'rgba(0, 0, 0, 0.85)';</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>lastScroll = currentScroll;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>});</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+<body class="antialiased overflow-x-hidden">
+
+    <nav class="fixed top-0 w-full z-50 glass-nav flex justify-between items-center px-6 md:px-8 py-4">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-lg shadow-green-500/20">
+                <span class="font-black text-black text-xs">J</span>
+            </div>
+            <span class="font-black tracking-tighter text-lg uppercase">Jim Yeh</span>
+        </div>
+        <div class="hidden md:flex space-x-8 text-sm font-semibold text-gray-400">
+            <a href="#research" class="hover:text-white transition">Research</a>
+            <a href="#industry" class="hover:text-white transition">Industry</a>
+            <a href="#production" class="hover:text-white transition">Production</a>
+        </div>
+    </nav>
+
+    <section class="spotify-gradient px-6 md:px-8 pt-28 pb-12 flex flex-col md:flex-row items-end gap-8 min-h-[50vh]">
+        <div class="w-48 h-48 md:w-60 md:h-60 bg-gradient-to-tr from-green-500 via-blue-600 to-purple-600 shadow-2xl rounded-lg flex-shrink-0 flex items-center justify-center">
+            <span class="text-7xl md:text-8xl font-black text-white/20">JP</span>
+        </div>
+        <div class="flex flex-col gap-3 flex-1">
+            <span class="text-xs font-bold uppercase tracking-widest text-green-400 flex items-center gap-2">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                Verified Researcher & Producer
+            </span>
+            <h1 class="text-5xl md:text-7xl font-black hero-title leading-none">Jim PoTseng Yeh</h1>
+            <div class="text-gray-300 font-medium space-y-1">
+                <p>PhD Candidate, Fudan University</p>
+                <p class="text-sm opacity-80">SHU → NTNU → CCOM → Tokyo UA → Fudan</p>
+            </div>
+        </div>
+    </section>
+
+    <main class="px-6 md:px-8 space-y-16 mt-12 max-w-7xl mx-auto">
+        
+        <section id="research">
+            <h2 class="text-2xl font-black mb-6 border-b border-white/10 pb-2">Top Publications</h2>
+            <div class="space-y-1">
+                <div class="track-row flex items-center gap-4 p-3 rounded-md transition group">
+                    <span class="text-gray-500 font-bold w-4">1</span>
+                    <div class="flex-1">
+                        <h3 class="font-bold group-hover:text-green-400">Go Viral or Go Die: Resilient Collaboration</h3>
+                        <p class="text-sm text-gray-400"><span class="badge badge-ssci mr-2">SSCI Q2</span>International Communication Gazette</p>
+                    </div>
+                    <span class="text-gray-500 text-sm italic">2025</span>
+                </div>
+                <div class="track-row flex items-center gap-4 p-3 rounded-md transition group border-t border-white/5">
+                    <span class="text-gray-500 font-bold w-4">2</span>
+                    <div class="flex-1">
+                        <h3 class="font-bold group-hover:text-green-400">城市音樂網的多維建構：以台北街頭藝術為例</h3>
+                        <p class="text-sm text-gray-400"><span class="badge badge-cssci mr-2">CSSCI</span>北大文化產業評論</p>
+                    </div>
+                    <span class="text-gray-500 text-sm italic">2025</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="industry">
+            <h2 class="text-2xl font-black mb-6 border-b border-white/10 pb-2">Industry Experience</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-[#181818] p-5 rounded-xl card-hover group">
+                    <div class="aspect-square bg-pink-600 rounded-lg mb-4 flex items-center justify-center font-black text-3xl shadow-xl">AM</div>
+                    <h4 class="font-bold">Apple Music</h4>
+                    <p class="text-[10px] text-gray-400 mt-2 uppercase tracking-tighter">2,000+ Editorial Articles</p>
+                </div>
+                <div class="bg-[#181818] p-5 rounded-xl card-hover group">
+                    <div class="aspect-square bg-blue-600 rounded-lg mb-4 flex items-center justify-center font-black text-3xl shadow-xl">MGMT</div>
+                    <h4 class="font-bold">Artist Mgmt</h4>
+                    <p class="text-[10px] text-gray-400 mt-2 uppercase tracking-tighter">Nana Ouyang / Rose Liu</p>
+                </div>
+                <div class="bg-[#181818] p-5 rounded-xl card-hover group">
+                    <div class="aspect-square bg-orange-600 rounded-lg mb-4 flex items-center justify-center font-black text-3xl shadow-xl">LIVE</div>
+                    <h4 class="font-bold">Live Events</h4>
+                    <p class="text-[10px] text-gray-400 mt-2 uppercase tracking-tighter">27 Large-scale Events</p>
+                </div>
+                <div class="bg-[#181818] p-5 rounded-xl card-hover group">
+                    <div class="aspect-square bg-teal-600 rounded-lg mb-4 flex items-center justify-center font-black text-3xl shadow-xl">OPs</div>
+                    <h4 class="font-bold">Platform Ops</h4>
+                    <p class="text-[10px] text-gray-400 mt-2 uppercase tracking-tighter">Bravo Tech Beijing</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="production">
+            <h2 class="text-2xl font-black mb-6 border-b border-white/10 pb-2">Production Highlights</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <a href="https://www.bilibili.com/video/BV1YkrKBVEav/" target="_blank" class="flex items-center gap-4 bg-[#181818] p-4 rounded-lg hover:bg-[#282828] transition group border border-white/5">
+                    <div class="w-16 h-16 bg-gradient-to-br from-gray-700 to-black rounded flex-shrink-0 flex items-center justify-center font-bold text-xs">MV</div>
+                    <div class="flex-1 min-w-0">
+                        <p class="font-bold truncate">Deer Chaser 鹿朝 - Back to Nanzhao</p>
+                        <p class="text-xs text-green-500 font-semibold uppercase">Production & Direction</p>
+                    </div>
+                </a>
+                <a href="https://youtu.be/FP8TTlbDHDA" target="_blank" class="flex items-center gap-4 bg-[#181818] p-4 rounded-lg hover:bg-[#282828] transition group border border-white/5">
+                    <div class="w-16 h-16 bg-gradient-to-br from-gray-700 to-black rounded flex-shrink-0 flex items-center justify-center font-bold text-xs">MV</div>
+                    <div class="flex-1 min-w-0">
+                        <p class="font-bold truncate">Jody Chiang 江蕙 - Temperature of Happiness</p>
+                        <p class="text-xs text-green-500 font-semibold uppercase">MV Editing</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="fixed bottom-0 w-full glass-nav px-6 py-4 z-50">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-white/5 rounded flex items-center justify-center font-black text-green-500 text-lg">J</div>
+                <div class="hidden sm:block">
+                    <p class="text-sm font-bold">ptyeh22@m.fudan.edu.cn</p>
+                    <p class="text-xs text-gray-400 uppercase tracking-widest">+86 186-2107-0173</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button class="bg-white text-black px-6 py-2 rounded-full font-bold text-sm hover:scale-105 transition shadow-lg shadow-white/10">Contact Jim</button>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
