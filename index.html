@@ -38,6 +38,14 @@
             background: linear-gradient(180deg, #1e3a8a 0%, #1e40af 10%, #404040 40%, #121212 100%);
         }
         
+        .page-gradient-about {
+            background: linear-gradient(180deg, #374151 0%, #4b5563 15%, #121212 60%);
+        }
+        
+        .page-gradient-education {
+            background: linear-gradient(180deg, #0f766e 0%, #0d9488 15%, #121212 60%);
+        }
+        
         .page-gradient-research {
             background: linear-gradient(180deg, #064e3b 0%, #065f46 15%, #121212 60%);
         }
@@ -133,10 +141,9 @@
             letter-spacing: 0.05em;
         }
         
-        .badge-ssci { background: #1DB954; color: #000; }
-        .badge-cssci { background: #3b82f6; color: white; }
         .badge-review { background: #ec4899; color: white; }
         .badge-industry { background: #f59e0b; color: #000; }
+        .badge-year { background: rgba(255,255,255,0.2); color: white; }
         
         .hero-title {
             background: linear-gradient(to right, #fff, #a7f3d0);
@@ -205,6 +212,28 @@
             color: white;
             transform: translateX(-4px);
         }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 32px;
+            padding-bottom: 32px;
+            border-left: 2px solid rgba(255,255,255,0.1);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            background: #1DB954;
+            border-radius: 50%;
+        }
+
+        .timeline-item:last-child {
+            border-left: 2px solid transparent;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -219,6 +248,9 @@
         </div>
         
         <div class="hidden md:flex space-x-2 text-sm font-semibold text-gray-400">
+            <button onclick="showPage('home')" id="nav-home" class="px-4 py-2 rounded-full hover:text-white transition">Home</button>
+            <button onclick="showPage('about')" id="nav-about" class="px-4 py-2 rounded-full hover:text-white transition">About</button>
+            <button onclick="showPage('education')" id="nav-education" class="px-4 py-2 rounded-full hover:text-white transition">Education</button>
             <button onclick="showPage('research')" id="nav-research" class="px-4 py-2 rounded-full hover:text-white transition">Research</button>
             <button onclick="showPage('industry')" id="nav-industry" class="px-4 py-2 rounded-full hover:text-white transition">Industry</button>
             <button onclick="showPage('reviews')" id="nav-reviews" class="px-4 py-2 rounded-full hover:text-white transition">Reviews</button>
@@ -233,6 +265,9 @@
 
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="fixed inset-0 bg-black/95 z-40 hidden flex-col items-center justify-center space-y-6 text-xl font-bold">
+        <button onclick="showPage('home'); toggleMobileMenu()" class="text-gray-400 hover:text-white">Home</button>
+        <button onclick="showPage('about'); toggleMobileMenu()" class="text-gray-400 hover:text-white">About</button>
+        <button onclick="showPage('education'); toggleMobileMenu()" class="text-gray-400 hover:text-white">Education</button>
         <button onclick="showPage('research'); toggleMobileMenu()" class="text-gray-400 hover:text-white">Research</button>
         <button onclick="showPage('industry'); toggleMobileMenu()" class="text-gray-400 hover:text-white">Industry</button>
         <button onclick="showPage('reviews'); toggleMobileMenu()" class="text-gray-400 hover:text-white">Reviews</button>
@@ -243,7 +278,7 @@
         </button>
     </div>
 
-    <!-- HOME PAGE (Library View) -->
+    <!-- HOME PAGE -->
     <div id="page-home" class="page active">
         <section class="spotify-gradient px-6 md:px-8 pt-28 pb-12 min-h-[50vh] flex flex-col justify-end">
             <div class="max-w-7xl mx-auto w-full">
@@ -252,7 +287,7 @@
                 <p class="text-gray-300 max-w-xl">PhD Candidate @ Fudan University | Music Communication Researcher | Industry Professional</p>
                 
                 <div class="flex gap-4 mt-8">
-                    <button onclick="showPage('research')" class="bg-green-500 text-black px-8 py-3 rounded-full font-bold hover:scale-105 transition">Explore</button>
+                    <button onclick="showPage('about')" class="bg-green-500 text-black px-8 py-3 rounded-full font-bold hover:scale-105 transition">Explore</button>
                     <button onclick="showPage('contact')" class="bg-white/10 text-white px-8 py-3 rounded-full font-bold hover:bg-white/20 transition">Contact</button>
                 </div>
             </div>
@@ -261,7 +296,31 @@
         <main class="px-6 md:px-8 py-12 max-w-7xl mx-auto">
             <h2 class="text-2xl font-bold mb-6">Your Library</h2>
             
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- About Album -->
+                <div onclick="showPage('about')" class="album-card p-4 group">
+                    <div class="relative aspect-square bg-gradient-to-br from-gray-600 to-gray-800 rounded-md mb-4 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white/30" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                        <div class="play-overlay">
+                            <svg class="w-6 h-6 text-black ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-white mb-1">About</h3>
+                    <p class="text-sm text-gray-400 line-clamp-2">Professional background & expertise</p>
+                </div>
+
+                <!-- Education Album -->
+                <div onclick="showPage('education')" class="album-card p-4 group">
+                    <div class="relative aspect-square bg-gradient-to-br from-teal-600 to-cyan-800 rounded-md mb-4 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white/30" fill="currentColor" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+                        <div class="play-overlay">
+                            <svg class="w-6 h-6 text-black ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-white mb-1">Education</h3>
+                    <p class="text-sm text-gray-400 line-clamp-2">Academic journey & qualifications</p>
+                </div>
+
                 <!-- Research Album -->
                 <div onclick="showPage('research')" class="album-card p-4 group">
                     <div class="relative aspect-square bg-gradient-to-br from-emerald-600 to-teal-800 rounded-md mb-4 flex items-center justify-center">
@@ -283,7 +342,7 @@
                         </div>
                     </div>
                     <h3 class="font-bold text-white mb-1">Industry</h3>
-                    <p class="text-sm text-gray-400 line-clamp-2">Apple Music, Artist Management & Live Production</p>
+                    <p class="text-sm text-gray-400 line-clamp-2">Professional experience across music platforms</p>
                 </div>
 
                 <!-- Reviews Album -->
@@ -307,7 +366,7 @@
                         </div>
                     </div>
                     <h3 class="font-bold text-white mb-1">Production</h3>
-                    <p class="text-sm text-gray-400 line-clamp-2">Music videos & creative projects</p>
+                    <p class="text-sm text-gray-400 line-clamp-2">Creative projects and music video production</p>
                 </div>
 
                 <!-- Contact Album -->
@@ -322,25 +381,139 @@
                     <p class="text-sm text-gray-400 line-clamp-2">Get in touch & collaboration</p>
                 </div>
             </div>
+        </main>
+    </div>
 
-            <!-- Quick Stats -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
-                <div class="bg-white/5 p-4 rounded-xl text-center">
-                    <div class="text-2xl font-black text-green-400">SSCI</div>
-                    <div class="text-xs text-gray-400 uppercase">Publications</div>
+    <!-- ABOUT PAGE -->
+    <div id="page-about" class="page">
+        <section class="page-gradient-about px-6 md:px-8 pt-24 pb-12">
+            <div class="max-w-7xl mx-auto">
+                <button onclick="showPage('home')" class="back-btn">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+                    Library
+                </button>
+                
+                <div class="flex flex-col md:flex-row gap-8 items-end">
+                    <div class="w-52 h-52 bg-gradient-to-br from-gray-600 to-gray-800 shadow-2xl rounded-lg flex items-center justify-center flex-shrink-0">
+                        <svg class="w-24 h-24 text-white/30" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-gray-400">Profile</span>
+                        <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-4">About</h1>
+                        <p class="text-gray-300 mb-2">Music Communication Researcher & Industry Professional</p>
+                    </div>
                 </div>
-                <div class="bg-white/5 p-4 rounded-xl text-center">
-                    <div class="text-2xl font-black text-purple-400">10+</div>
-                    <div class="text-xs text-gray-400 uppercase">Years Exp</div>
+            </div>
+        </section>
+
+        <main class="px-6 md:px-8 py-8 max-w-4xl mx-auto">
+            <div class="bg-[#181818] rounded-2xl p-8 space-y-6">
+                <div class="prose prose-invert max-w-none">
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        擁有超過10年專業經驗，其中7年專注於藝術產業的藝人與品牌管理。專長於為跨國音樂平台打造具影響力的行銷策略、活動企劃與內容創作，曾撰寫超過2,000篇藝人專輯與歌單編輯評論。
+                    </p>
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        在藝人經紀領域，統籌超過100場大型活動，包括演唱會、國際音樂節與研討會。具備深厚的產業人脈與出色的溝通組織能力，能夠執行跨領域營運與創意策略的多元專業人才。
+                    </p>
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        目前為復旦大學博士候選人，研究專長涵蓋音樂傳播、平台經濟與創意產業，致力於結合學術研究與產業實務，探索數位時代下的音樂文化與傳播現象。
+                    </p>
                 </div>
-                <div class="bg-white/5 p-4 rounded-xl text-center">
-                    <div class="text-2xl font-black text-pink-400">8</div>
-                    <div class="text-xs text-gray-400 uppercase">Reviews</div>
+
+                <div class="pt-6 border-t border-white/10">
+                    <h3 class="font-bold mb-4 text-white">Core Expertise</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-4 py-2 bg-white/10 rounded-full text-sm">Music Communication</span>
+                        <span class="px-4 py-2 bg-white/10 rounded-full text-sm">Platform Economics</span>
+                        <span class="px-4 py-2 bg-white/10 rounded-full text-sm">Artist Management</span>
+                        <span class="px-4 py-2 bg-white/10 rounded-full text-sm">Content Curation</span>
+                        <span class="px-4 py-2 bg-white/10 rounded-full text-sm">Event Production</span>
+                        <span class="px-4 py-2 bg-white/10 rounded-full text-sm">Music Criticism</span>
+                    </div>
                 </div>
-                <div class="bg-white/5 p-4 rounded-xl text-center">
-                    <div class="text-2xl font-black text-orange-400">2</div>
-                    <div class="text-xs text-gray-400 uppercase">Videos</div>
+            </div>
+        </main>
+    </div>
+
+    <!-- EDUCATION PAGE -->
+    <div id="page-education" class="page">
+        <section class="page-gradient-education px-6 md:px-8 pt-24 pb-12">
+            <div class="max-w-7xl mx-auto">
+                <button onclick="showPage('home')" class="back-btn">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+                    Library
+                </button>
+                
+                <div class="flex flex-col md:flex-row gap-8 items-end">
+                    <div class="w-52 h-52 bg-gradient-to-br from-teal-600 to-cyan-800 shadow-2xl rounded-lg flex items-center justify-center flex-shrink-0">
+                        <svg class="w-24 h-24 text-white/30" fill="currentColor" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-teal-400">Academic</span>
+                        <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-4">Education</h1>
+                        <p class="text-gray-300 mb-2">PhD Candidate in Communication</p>
+                    </div>
                 </div>
+            </div>
+        </section>
+
+        <main class="px-6 md:px-8 py-8 max-w-4xl mx-auto">
+            <div class="space-y-0">
+                <div class="timeline-item">
+                    <div class="bg-[#181818] p-6 rounded-xl">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-white">復旦大學 Fudan University</h3>
+                            <span class="badge badge-year">2022-Present</span>
+                        </div>
+                        <p class="text-gray-400 mb-2">博士候選人 PhD Candidate</p>
+                        <p class="text-sm text-gray-500">新聞學院 • 傳播學專業</p>
+                        <p class="text-sm text-gray-400 mt-2">研究方向：音樂傳播、平台經濟、創意產業</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="bg-[#181818] p-6 rounded-xl">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-white">國立臺灣大學 National Taiwan University</h3>
+                            <span class="badge badge-year">2019-2022</span>
+                        </div>
+                        <p class="text-gray-400 mb-2">碩士 Master of Arts</p>
+                        <p class="text-sm text-gray-500">音樂學研究所</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="bg-[#181818] p-6 rounded-xl">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-white">國立臺北藝術大學 Taipei National University of the Arts</h3>
+                            <span class="badge badge-year">2012-2016</span>
+                        </div>
+                        <p class="text-gray-400 mb-2">學士 Bachelor of Fine Arts</p>
+                        <p class="text-sm text-gray-500">音樂學系</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 bg-[#181818] rounded-xl p-6">
+                <h3 class="font-bold mb-4 text-white">Research Focus</h3>
+                <ul class="space-y-2 text-gray-400">
+                    <li class="flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 bg-teal-400 rounded-full"></span>
+                        音樂傳播與數位平台研究
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 bg-teal-400 rounded-full"></span>
+                        流行音樂產業與文化經濟
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 bg-teal-400 rounded-full"></span>
+                        創意產業協作與版權治理
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 bg-teal-400 rounded-full"></span>
+                        表演藝術評論與音樂文化研究
+                    </li>
+                </ul>
             </div>
         </main>
     </div>
@@ -362,7 +535,7 @@
                         <span class="text-xs font-bold uppercase tracking-widest text-emerald-400">Playlist</span>
                         <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-4">Research</h1>
                         <p class="text-gray-300 mb-2">Academic publications in music communication and platform economics</p>
-                        <p class="text-sm text-gray-400">3 publications • 2025</p>
+                        <p class="text-sm text-gray-400">2 publications • 2025</p>
                     </div>
                 </div>
             </div>
@@ -370,43 +543,28 @@
 
         <main class="px-6 md:px-8 py-8 max-w-7xl mx-auto">
             <div class="track-list">
-                <div class="track-item flex items-center gap-4 p-4 cursor-pointer group">
+                <a href="https://doi.org/10.1177/17480485251327337" target="_blank" class="track-item flex items-center gap-4 p-4 cursor-pointer group block">
                     <div class="w-8 text-center">
                         <span class="track-num text-gray-500 font-bold">1</span>
                         <svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
-                    <div class="flex-1">
-                        <h3 class="font-bold text-white group-hover:text-emerald-400 transition">Go Viral or Go Die: Resilient Collaboration in Creative Industries</h3>
+                    <div class="flex-1 min-w-0">
+                        <h3 class="font-bold text-white group-hover:text-emerald-400 transition truncate">Go viral or die: Streaming platform adaptation and collaboration among performing rights organizations in the Chinese Mainland, Hong Kong, and Taiwan</h3>
                         <div class="flex items-center gap-2 mt-1">
-                            <span class="badge badge-ssci">SSCI Q2</span>
                             <span class="text-sm text-gray-400">International Communication Gazette • 2025</span>
                         </div>
                     </div>
-                </div>
+                    <svg class="w-5 h-5 text-gray-600 group-hover:text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                </a>
                 
                 <div class="track-item flex items-center gap-4 p-4 cursor-pointer group">
                     <div class="w-8 text-center">
                         <span class="track-num text-gray-500 font-bold">2</span>
                         <svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
-                    <div class="flex-1">
-                        <h3 class="font-bold text-white group-hover:text-emerald-400 transition">Gendered Swiping: Intimacy and Emotional Labor on Dating Apps</h3>
+                    <div class="flex-1 min-w-0">
+                        <h3 class="font-bold text-white group-hover:text-emerald-400 transition truncate">「城市音樂網」的多維建構與創新發展——以台北市街頭藝術表演為例</h3>
                         <div class="flex items-center gap-2 mt-1">
-                            <span class="badge badge-ssci">SSCI</span>
-                            <span class="text-sm text-gray-400">Under Review • 2025</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="track-item flex items-center gap-4 p-4 cursor-pointer group">
-                    <div class="w-8 text-center">
-                        <span class="track-num text-gray-500 font-bold">3</span>
-                        <svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="font-bold text-white group-hover:text-emerald-400 transition">城市音樂網的多維建構：以台北街頭藝術為例</h3>
-                        <div class="flex items-center gap-2 mt-1">
-                            <span class="badge badge-cssci">CSSCI</span>
                             <span class="text-sm text-gray-400">北大文化產業評論 • 2025</span>
                         </div>
                     </div>
@@ -441,9 +599,9 @@
         <main class="px-6 md:px-8 py-8 max-w-7xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="bg-[#181818] p-6 rounded-xl card-hover">
-                    <div class="w-16 h-16 bg-gradient-to-br from-pink-500 to-orange-400 rounded-lg mb-4 flex items-center justify-center text-2xl font-black">AM</div>
-                    <h3 class="text-xl font-bold mb-2">Apple Music</h3>
-                    <p class="text-gray-400 mb-4">Authored 2,000+ editorial articles for Chinese platform, curating music content and cultural narratives.</p>
+                    <div class="w-16 h-16 bg-gradient-to-br from-pink-500 to-orange-400 rounded-lg mb-4 flex items-center justify-center text-2xl font-black">編輯</div>
+                    <h3 class="text-xl font-bold mb-2">音樂平台編輯</h3>
+                    <p class="text-gray-400 mb-4">撰寫超過2,000篇藝人專輯與歌單編輯評論，策劃音樂內容與文化敘事。</p>
                     <div class="flex gap-2">
                         <span class="badge badge-industry">Editorial</span>
                         <span class="badge badge-industry">Curation</span>
@@ -451,9 +609,9 @@
                 </div>
 
                 <div class="bg-[#181818] p-6 rounded-xl card-hover">
-                    <div class="w-16 h-16 bg-gradient-to-br from-indigo-600 to-purple-500 rounded-lg mb-4 flex items-center justify-center text-2xl font-black">MGMT</div>
-                    <h3 class="text-xl font-bold mb-2">Artist Management</h3>
-                    <p class="text-gray-400 mb-4">Managed Nana Ouyang, Rose Liu, and emerging artists in Greater China region.</p>
+                    <div class="w-16 h-16 bg-gradient-to-br from-indigo-600 to-purple-500 rounded-lg mb-4 flex items-center justify-center text-2xl font-black">經紀</div>
+                    <h3 class="text-xl font-bold mb-2">藝人經紀管理</h3>
+                    <p class="text-gray-400 mb-4">負責藝人發展策略規劃、品牌定位與商業合作洽談，深耕大中華區市場。</p>
                     <div class="flex gap-2">
                         <span class="badge badge-industry">Strategy</span>
                         <span class="badge badge-industry">Development</span>
@@ -461,9 +619,9 @@
                 </div>
 
                 <div class="bg-[#181818] p-6 rounded-xl card-hover">
-                    <div class="w-16 h-16 bg-gradient-to-br from-yellow-500 to-red-500 rounded-lg mb-4 flex items-center justify-center text-2xl font-black">LIVE</div>
-                    <h3 class="text-xl font-bold mb-2">Live Production</h3>
-                    <p class="text-gray-400 mb-4">Produced 27 large-scale events with 500,000+ total attendance across Asia.</p>
+                    <div class="w-16 h-16 bg-gradient-to-br from-yellow-500 to-red-500 rounded-lg mb-4 flex items-center justify-center text-2xl font-black">製作</div>
+                    <h3 class="text-xl font-bold mb-2">演出製作統籌</h3>
+                    <p class="text-gray-400 mb-4">統籌超過100場大型活動，包括演唱會、國際音樂節與研討會，總觀眾人次超過50萬。</p>
                     <div class="flex gap-2">
                         <span class="badge badge-industry">Production</span>
                         <span class="badge badge-industry">Events</span>
@@ -471,9 +629,9 @@
                 </div>
 
                 <div class="bg-[#181818] p-6 rounded-xl card-hover">
-                    <div class="w-16 h-16 bg-gradient-to-br from-teal-500 to-green-400 rounded-lg mb-4 flex items-center justify-center text-2xl font-black">TV</div>
-                    <h3 class="text-xl font-bold mb-2">TV Production</h3>
-                    <p class="text-gray-400 mb-4">Music coordinator for HK 25th Anniversary celebration broadcast.</p>
+                    <div class="w-16 h-16 bg-gradient-to-br from-teal-500 to-green-400 rounded-lg mb-4 flex items-center justify-center text-2xl font-black">電視</div>
+                    <h3 class="text-xl font-bold mb-2">電視節目製作</h3>
+                    <p class="text-gray-400 mb-4">擔任音樂節目製作與統籌，負責音樂內容策劃與現場協調。</p>
                     <div class="flex gap-2">
                         <span class="badge badge-industry">Broadcast</span>
                         <span class="badge badge-industry">Coordination</span>
@@ -500,7 +658,7 @@
                         <span class="text-xs font-bold uppercase tracking-widest text-pink-400">Playlist</span>
                         <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-4">Reviews</h1>
                         <p class="text-gray-300 mb-2">Performing arts criticism and music commentary</p>
-                        <p class="text-sm text-gray-400">8 articles • 2016-2025</p>
+                        <p class="text-sm text-gray-400">9 articles • 2016-2025</p>
                     </div>
                 </div>
             </div>
@@ -508,9 +666,24 @@
 
         <main class="px-6 md:px-8 py-8 max-w-7xl mx-auto">
             <div class="track-list">
-                <a href="https://pareviews.ncafroc.org.tw/comments/c0e05ce5-da65-4e11-95a8-158beed875af" target="_blank" class="track-item flex items-center gap-4 p-4 cursor-pointer group block">
+                <a href="https://pareviews.ncafroc.org.tw/comments/b262286f-1a3b-4f70-969d-e18f0c3e0dc1" target="_blank" class="track-item flex items-center gap-4 p-4 cursor-pointer group block">
                     <div class="w-8 text-center flex-shrink-0">
                         <span class="track-num text-gray-500 font-bold">1</span>
+                        <svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <h3 class="font-bold text-white group-hover:text-pink-400 transition truncate">在標準之外詮釋自我——《綺響：高木綾子出道25週年紀念音樂會》</h3>
+                        <div class="flex items-center gap-2 mt-1">
+                            <span class="badge badge-review">表演藝術評論台</span>
+                            <span class="text-sm text-gray-400">2025</span>
+                        </div>
+                    </div>
+                    <svg class="w-5 h-5 text-gray-600 group-hover:text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                </a>
+
+                <a href="https://pareviews.ncafroc.org.tw/comments/c0e05ce5-da65-4e11-95a8-158beed875af" target="_blank" class="track-item flex items-center gap-4 p-4 cursor-pointer group block">
+                    <div class="w-8 text-center flex-shrink-0">
+                        <span class="track-num text-gray-500 font-bold">2</span>
                         <svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                     <div class="flex-1 min-w-0">
@@ -525,7 +698,7 @@
 
                 <a href="https://pareviews.ncafroc.org.tw/comments/a7da88e4-27b9-42b9-ae13-73b742bac068" target="_blank" class="track-item flex items-center gap-4 p-4 cursor-pointer group block">
                     <div class="w-8 text-center flex-shrink-0">
-                        <span class="track-num text-gray-500 font-bold">2</span>
+                        <span class="track-num text-gray-500 font-bold">3</span>
                         <svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                     <div class="flex-1 min-w-0">
@@ -540,7 +713,7 @@
 
                 <a href="https://pareviews.ncafroc.org.tw/comments/c5c60cdf-de5c-43d2-9299-a9ddcc483ffa" target="_blank" class="track-item flex items-center gap-4 p-4 cursor-pointer group block">
                     <div class="w-8 text-center flex-shrink-0">
-                        <span class="track-num text-gray-500 font-bold">3</span>
+                        <span class="track-num text-gray-500 font-bold">4</span>
                         <svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                     <div class="flex-1 min-w-0">
@@ -555,7 +728,7 @@
 
                 <a href="https://pareviews.ncafroc.org.tw/comments/8f231b90-2639-4d22-b7a5-a3bc27e4cd97" target="_blank" class="track-item flex items-center gap-4 p-4 cursor-pointer group block">
                     <div class="w-8 text-center flex-shrink-0">
-                        <span class="track-num text-gray-500 font-bold">4</span>
+                        <span class="track-num text-gray-500 font-bold">5</span>
                         <svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                     <div class="flex-1 min-w-0">
@@ -570,7 +743,7 @@
 
                 <a href="https://mp.weixin.qq.com/s/ofhgWXmS9EmNnmBUQ9E6wQ" target="_blank" class="track-item flex items-center gap-4 p-4 cursor-pointer group block">
                     <div class="w-8 text-center flex-shrink-0">
-                        <span class="track-num text-gray-500 font-bold">5</span>
+                        <span class="track-num text-gray-500 font-bold">6</span>
                         <svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                     <div class="flex-1 min-w-0">
@@ -585,7 +758,7 @@
 
                 <a href="https://pareviews.ncafroc.org.tw/comments/a3b43502-96b6-43e2-ac6f-edb81e4b46d2" target="_blank" class="track-item flex items-center gap-4 p-4 cursor-pointer group block">
                     <div class="w-8 text-center flex-shrink-0">
-                        <span class="track-num text-gray-500 font-bold">6</span>
+                        <span class="track-num text-gray-500 font-bold">7</span>
                         <svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                     <div class="flex-1 min-w-0">
@@ -600,7 +773,7 @@
 
                 <a href="https://pareviews.ncafroc.org.tw/comments/08826ccf-9a51-45c4-863c-b108ef752587" target="_blank" class="track-item flex items-center gap-4 p-4 cursor-pointer group block">
                     <div class="w-8 text-center flex-shrink-0">
-                        <span class="track-num text-gray-500 font-bold">7</span>
+                        <span class="track-num text-gray-500 font-bold">8</span>
                         <svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                     <div class="flex-1 min-w-0">
@@ -613,19 +786,20 @@
                     <svg class="w-5 h-5 text-gray-600 group-hover:text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                 </a>
 
-                <div class="track-item flex items-center gap-4 p-4 opacity-60">
+                <a href="https://pareviews.ncafroc.org.tw/comments/beccc9bc-9056-461c-8ac0-ef9db217116e" target="_blank" class="track-item flex items-center gap-4 p-4 cursor-pointer group block">
                     <div class="w-8 text-center flex-shrink-0">
-                        <span class="text-gray-500 font-bold">8</span>
+                        <span class="track-num text-gray-500 font-bold">9</span>
+                        <svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                     <div class="flex-1 min-w-0">
-                        <h3 class="font-bold text-white truncate">杜柳情慾的再譯釋《尋夢》</h3>
+                        <h3 class="font-bold text-white group-hover:text-pink-400 transition truncate">杜柳情慾的再譯釋《尋夢》</h3>
                         <div class="flex items-center gap-2 mt-1">
                             <span class="badge badge-review">表演藝術評論台</span>
                             <span class="text-sm text-gray-400">2016.08.22</span>
-                            <span class="text-xs text-gray-500">即將上線</span>
                         </div>
                     </div>
-                </div>
+                    <svg class="w-5 h-5 text-gray-600 group-hover:text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                </a>
             </div>
         </main>
     </div>
@@ -646,37 +820,124 @@
                     <div>
                         <span class="text-xs font-bold uppercase tracking-widest text-amber-400">Playlist</span>
                         <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-4">Production</h1>
-                        <p class="text-gray-300 mb-2">Creative projects and music video production</p>
-                        <p class="text-sm text-gray-400">2 videos • Music & Post-production</p>
+                        <p class="text-gray-300 mb-2">Music videos, arrangement & post-production</p>
+                        <p class="text-sm text-gray-400">8 projects • Music Video & A Cappella</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <main class="px-6 md:px-8 py-8 max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <a href="https://www.bilibili.com/video/BV1YkrKBVEav/" target="_blank" class="group relative overflow-hidden rounded-xl aspect-video bg-gradient-to-br from-purple-900 to-indigo-900 flex items-center justify-center">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition"></div>
-                    <div class="relative z-10 text-center">
+                    <div class="relative z-10 text-center px-4">
                         <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition backdrop-blur-sm">
                             <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         </div>
-                        <h3 class="text-xl font-bold mb-2">Deer Chaser 鹿朝 - Back to Nanzhao</h3>
-                        <p class="text-sm text-gray-300">Music Video Creating & Production</p>
+                        <h3 class="text-lg font-bold mb-1">逐鹿人—《逐鹿南詔》</h3>
+                        <p class="text-sm text-gray-300">Deer Chaser - Back to Nanzhao</p>
+                        <p class="text-xs text-gray-400 mt-2">Music Video Creating & Production</p>
                     </div>
                     <div class="absolute bottom-4 right-4">
                         <span class="badge badge-industry">Bilibili</span>
                     </div>
                 </a>
 
-                <a href="https://youtu.be/2XF637Y-e7Y" target="_blank" class="group relative overflow-hidden rounded-xl aspect-video bg-gradient-to-br from-blue-900 to-cyan-900 flex items-center justify-center">
+                <a href="https://weibo.com/6274144981/FBUrurEOX" target="_blank" class="group relative overflow-hidden rounded-xl aspect-video bg-gradient-to-br from-blue-900 to-cyan-900 flex items-center justify-center">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition"></div>
-                    <div class="relative z-10 text-center">
+                    <div class="relative z-10 text-center px-4">
                         <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition backdrop-blur-sm">
                             <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         </div>
-                        <h3 class="text-xl font-bold mb-2">Mixster A Cappella - A Dialogue for One</h3>
-                        <p class="text-sm text-gray-300">Arrangement & Post-production</p>
+                        <h3 class="text-lg font-bold mb-1">自由意志人聲樂團《Fast》</h3>
+                        <p class="text-xs text-gray-400 mt-2">A Cappella Performance</p>
+                    </div>
+                    <div class="absolute bottom-4 right-4">
+                        <span class="badge badge-industry">Weibo</span>
+                    </div>
+                </a>
+
+                <a href="https://youtu.be/2XF637Y-e7Y" target="_blank" class="group relative overflow-hidden rounded-xl aspect-video bg-gradient-to-br from-green-900 to-teal-900 flex items-center justify-center">
+                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition"></div>
+                    <div class="relative z-10 text-center px-4">
+                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition backdrop-blur-sm">
+                            <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <h3 class="text-lg font-bold mb-1">漫聲阿卡貝拉《一個人對話》</h3>
+                        <p class="text-sm text-gray-300">A Cappella Cover</p>
+                        <p class="text-xs text-gray-400 mt-2">Arrangement & Post-production</p>
+                    </div>
+                    <div class="absolute bottom-4 right-4">
+                        <span class="badge badge-industry">YouTube</span>
+                    </div>
+                </a>
+
+                <a href="https://youtu.be/FP8TTlbDHDA" target="_blank" class="group relative overflow-hidden rounded-xl aspect-video bg-gradient-to-br from-pink-900 to-rose-900 flex items-center justify-center">
+                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition"></div>
+                    <div class="relative z-10 text-center px-4">
+                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition backdrop-blur-sm">
+                            <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <h3 class="text-lg font-bold mb-1">江蕙《幸福的溫度》</h3>
+                        <p class="text-sm text-gray-300">Music Video Editing</p>
+                    </div>
+                    <div class="absolute bottom-4 right-4">
+                        <span class="badge badge-industry">YouTube</span>
+                    </div>
+                </a>
+
+                <a href="https://youtu.be/vuDb1B0RyBw" target="_blank" class="group relative overflow-hidden rounded-xl aspect-video bg-gradient-to-br from-yellow-900 to-orange-900 flex items-center justify-center">
+                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition"></div>
+                    <div class="relative z-10 text-center px-4">
+                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition backdrop-blur-sm">
+                            <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <h3 class="text-lg font-bold mb-1">蔡黃汝《壁咚 BEEDONG》</h3>
+                        <p class="text-sm text-gray-300">Dance Video Production</p>
+                    </div>
+                    <div class="absolute bottom-4 right-4">
+                        <span class="badge badge-industry">YouTube</span>
+                    </div>
+                </a>
+
+                <a href="https://youtu.be/t8WD2S8rHsk" target="_blank" class="group relative overflow-hidden rounded-xl aspect-video bg-gradient-to-br from-indigo-900 to-purple-900 flex items-center justify-center">
+                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition"></div>
+                    <div class="relative z-10 text-center px-4">
+                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition backdrop-blur-sm">
+                            <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <h3 class="text-lg font-bold mb-1">管罄《First Love》Cover</h3>
+                        <p class="text-sm text-gray-300">Music Video Production</p>
+                    </div>
+                    <div class="absolute bottom-4 right-4">
+                        <span class="badge badge-industry">YouTube</span>
+                    </div>
+                </a>
+
+                <a href="https://youtu.be/G9W3YnqgEAI" target="_blank" class="group relative overflow-hidden rounded-xl aspect-video bg-gradient-to-br from-red-900 to-pink-900 flex items-center justify-center">
+                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition"></div>
+                    <div class="relative z-10 text-center px-4">
+                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition backdrop-blur-sm">
+                            <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <h3 class="text-lg font-bold mb-1">劉明湘《就決定是你了》Cover</h3>
+                        <p class="text-sm text-gray-300">Music Video Production</p>
+                    </div>
+                    <div class="absolute bottom-4 right-4">
+                        <span class="badge badge-industry">YouTube</span>
+                    </div>
+                </a>
+
+                <a href="https://youtu.be/2XF637Y-e7Y" target="_blank" class="group relative overflow-hidden rounded-xl aspect-video bg-gradient-to-br from-cyan-900 to-blue-900 flex items-center justify-center">
+                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition"></div>
+                    <div class="relative z-10 text-center px-4">
+                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition backdrop-blur-sm">
+                            <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <h3 class="text-lg font-bold mb-1">Mixster A Cappella</h3>
+                        <p class="text-sm text-gray-300">A Dialogue for One</p>
+                        <p class="text-xs text-gray-400 mt-2">Arrangement & Post-production</p>
                     </div>
                     <div class="absolute bottom-4 right-4">
                         <span class="badge badge-industry">YouTube</span>
@@ -688,7 +949,7 @@
 
     <!-- CONTACT PAGE -->
     <div id="page-contact" class="page">
-        <section class="page-gradient-production px-6 md:px-8 pt-24 pb-12" style="background: linear-gradient(180deg, #1e40af 0%, #1e3a8a 15%, #121212 60%);">
+        <section class="px-6 md:px-8 pt-24 pb-12" style="background: linear-gradient(180deg, #1e40af 0%, #1e3a8a 15%, #121212 60%);">
             <div class="max-w-7xl mx-auto">
                 <button onclick="showPage('home')" class="back-btn">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
@@ -710,8 +971,8 @@
         </section>
 
         <main class="px-6 md:px-8 py-8 max-w-3xl mx-auto">
-            <div class="bg-[#181818] rounded-2xl p-8">
-                <div class="space-y-6">
+            <div class="bg-[#181818] rounded-2xl p-8 space-y-6">
+                <div class="space-y-4">
                     <div class="flex items-center gap-4 p-4 bg-white/5 rounded-lg">
                         <div class="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center">
                             <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
@@ -743,8 +1004,8 @@
                     </div>
                 </div>
 
-                <div class="mt-8 pt-8 border-t border-white/10">
-                    <h3 class="font-bold mb-4">Research Interests</h3>
+                <div class="pt-6 border-t border-white/10">
+                    <h3 class="font-bold mb-4 text-white">Research Interests</h3>
                     <div class="flex flex-wrap gap-2">
                         <span class="px-4 py-2 bg-white/10 rounded-full text-sm">Music Communication</span>
                         <span class="px-4 py-2 bg-white/10 rounded-full text-sm">Platform Economics</span>
@@ -752,10 +1013,6 @@
                         <span class="px-4 py-2 bg-white/10 rounded-full text-sm">Popular Music Studies</span>
                     </div>
                 </div>
-
-                <button class="w-full mt-8 bg-white text-black py-4 rounded-full font-bold text-lg hover:scale-[1.02] hover:bg-green-400 transition">
-                    Download CV
-                </button>
             </div>
         </main>
     </div>
@@ -796,15 +1053,12 @@
 
     <script>
         function showPage(pageName) {
-            // Hide all pages
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
             });
             
-            // Show selected page
             document.getElementById('page-' + pageName).classList.add('active');
             
-            // Update nav active state
             document.querySelectorAll('nav button').forEach(btn => {
                 btn.classList.remove('nav-active');
             });
@@ -812,7 +1066,6 @@
             const activeBtn = document.getElementById('nav-' + pageName);
             if (activeBtn) activeBtn.classList.add('nav-active');
             
-            // Scroll to top
             window.scrollTo(0, 0);
         }
 
@@ -822,7 +1075,6 @@
             menu.classList.toggle('flex');
         }
 
-        // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             showPage('home');
         });
