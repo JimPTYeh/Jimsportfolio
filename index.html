@@ -246,7 +246,7 @@
             overflow: hidden;
         }
         
-        .project-card .chinese-overlay {
+        .project-card .english-overlay {
             position: absolute;
             inset: 0;
             background: rgba(0,0,0,0.9);
@@ -259,8 +259,37 @@
             text-align: center;
         }
         
-        .project-card:hover .chinese-overlay {
+        .project-card:hover .english-overlay {
             opacity: 1;
+        }
+
+        /* About page bilingual text */
+        .bilingual-text {
+            position: relative;
+            display: inline;
+        }
+        
+        .bilingual-text .chinese-hover {
+            display: none;
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            background: rgba(0,0,0,0.9);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: #1DB954;
+            white-space: normal;
+            max-width: 300px;
+            z-index: 10;
+            margin-bottom: 4px;
+            border: 1px solid rgba(255,255,255,0.1);
+            line-height: 1.4;
+        }
+        
+        .bilingual-text:hover .chinese-hover {
+            display: block;
+            animation: fadeIn 0.2s ease;
         }
     </style>
 </head>
@@ -281,7 +310,6 @@
             <button onclick="showPage('industry')" id="nav-industry" class="px-4 py-2 rounded-full hover:text-white transition">Industry</button>
             <button onclick="showPage('reviews')" id="nav-reviews" class="px-4 py-2 rounded-full hover:text-white transition">Reviews</button>
             <button onclick="showPage('production')" id="nav-production" class="px-4 py-2 rounded-full hover:text-white transition">Production</button>
-            <button onclick="showPage('contact')" id="nav-contact" class="px-4 py-2 rounded-full hover:text-white transition">Contact</button>
         </div>
         
         <button class="md:hidden text-white" onclick="toggleMobileMenu()">
@@ -296,7 +324,6 @@
         <button onclick="showPage('industry'); toggleMobileMenu()" class="text-gray-400 hover:text-white">Industry</button>
         <button onclick="showPage('reviews'); toggleMobileMenu()" class="text-gray-400 hover:text-white">Reviews</button>
         <button onclick="showPage('production'); toggleMobileMenu()" class="text-gray-400 hover:text-white">Production</button>
-        <button onclick="showPage('contact'); toggleMobileMenu()" class="text-gray-400 hover:text-white">Contact</button>
         <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-gray-400">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
@@ -307,18 +334,18 @@
         <section class="spotify-gradient px-6 md:px-8 pt-28 pb-12 min-h-[50vh] flex flex-col justify-end">
             <div class="max-w-7xl mx-auto w-full">
                 <span class="text-xs font-bold uppercase tracking-widest text-green-400 mb-4 block">Portfolio Library</span>
-                <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-4">Jim PoTseng Yeh</h1>
+                <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-2">Jim PoTseng Yeh</h1>
+                <p class="text-2xl md:text-3xl text-gray-300 mb-4 font-medium">葉柏增</p>
                 <p class="text-gray-300 max-w-xl">PhD Candidate in Journalism and Communication | Music Communication Researcher | 10+ Years Industry Experience</p>
                 
                 <div class="flex gap-4 mt-8">
-                    <button onclick="showPage('about')" class="bg-green-500 text-black px-8 py-3 rounded-full font-bold hover:scale-105 transition">Explore</button>
-                    <button onclick="showPage('contact')" class="bg-white/10 text-white px-8 py-3 rounded-full font-bold hover:bg-white/20 transition">Contact</button>
+                    <button onclick="showPage('about')" class="bg-green-500 text-black px-8 py-3 rounded-full font-bold hover:scale-105 transition">About Me</button>
                 </div>
             </div>
         </section>
 
         <main class="px-6 md:px-8 py-12 max-w-7xl mx-auto">
-            <h2 class="text-2xl font-bold mb-6">Your Library</h2>
+            <h2 class="text-2xl font-bold mb-6">Jim's Library</h2>
             
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
                 <div onclick="showPage('about')" class="album-card p-4 group">
@@ -405,21 +432,56 @@
             <!-- Bio -->
             <div class="bg-[#181818] rounded-2xl p-8">
                 <p class="text-lg text-gray-300 leading-relaxed mb-6">
-                    With over 10 years of professional experience in the creative industries across Taipei, Tokyo, Beijing, and Shanghai, I specialize in music communication, platform economics, and cultural industry studies. My work bridges academic research and industry practice, focusing on digital transformation, copyright governance, and the political economy of streaming platforms.
+                    <span class="bilingual-text">
+                        With over 10 years of professional experience in the creative industries across Taipei, Tokyo, Beijing, and Shanghai, I specialize in music communication, platform economics, and cultural industry studies.
+                        <span class="chinese-hover">擁有超過10年創意產業專業經驗，橫跨台北、東京、北京與上海，專精於音樂傳播、平台經濟與文化產業研究。</span>
+                    </span>
+                </p>
+                <p class="text-lg text-gray-300 leading-relaxed mb-6">
+                    <span class="bilingual-text">
+                        My work bridges academic research and industry practice, focusing on digital transformation, copyright governance, and the political economy of streaming platforms.
+                        <span class="chinese-hover">我的工作連結學術研究與產業實務，聚焦於數位轉型、版權治理與串流平台的政治經濟學。</span>
+                    </span>
                 </p>
                 <p class="text-lg text-gray-300 leading-relaxed">
-                    Currently pursuing a PhD in Journalism and Communication at Fudan University, my dissertation examines the transformation of music publishing and distribution networks in Taiwan's popular music industry. I have authored over 2,000 editorial articles for music platforms and coordinated more than 100 large-scale events including concerts, international music festivals, and seminars.
+                    <span class="bilingual-text">
+                        Currently pursuing a PhD in Journalism and Communication at Fudan University, my dissertation examines the transformation of music publishing and distribution networks in Taiwan's popular music industry.
+                        <span class="chinese-hover">現為復旦大學新聞傳播學博士候選人，論文研究台灣流行音樂產業中音樂出版與發行網絡的轉型。</span>
+                    </span>
                 </p>
                 
                 <div class="pt-6 border-t border-white/10 mt-6">
-                    <h3 class="font-bold mb-4 text-white">Research Interests</h3>
+                    <h3 class="font-bold mb-4 text-white">
+                        <span class="bilingual-text">
+                            Research Interests
+                            <span class="chinese-hover">研究興趣</span>
+                        </span>
+                    </h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-4 py-2 bg-white/10 rounded-full text-sm">Music Communication</span>
-                        <span class="px-4 py-2 bg-white/10 rounded-full text-sm">Platform Economics</span>
-                        <span class="px-4 py-2 bg-white/10 rounded-full text-sm">Creative Industries</span>
-                        <span class="px-4 py-2 bg-white/10 rounded-full text-sm">Digital Transformation</span>
-                        <span class="px-4 py-2 bg-white/10 rounded-full text-sm">Copyright Governance</span>
-                        <span class="px-4 py-2 bg-white/10 rounded-full text-sm">AI and Entertainment</span>
+                        <span class="px-4 py-2 bg-white/10 rounded-full text-sm bilingual-text">
+                            Music Communication
+                            <span class="chinese-hover">音樂傳播</span>
+                        </span>
+                        <span class="px-4 py-2 bg-white/10 rounded-full text-sm bilingual-text">
+                            Platform Economics
+                            <span class="chinese-hover">平台經濟</span>
+                        </span>
+                        <span class="px-4 py-2 bg-white/10 rounded-full text-sm bilingual-text">
+                            Creative Industries
+                            <span class="chinese-hover">創意產業</span>
+                        </span>
+                        <span class="px-4 py-2 bg-white/10 rounded-full text-sm bilingual-text">
+                            Digital Transformation
+                            <span class="chinese-hover">數位轉型</span>
+                        </span>
+                        <span class="px-4 py-2 bg-white/10 rounded-full text-sm bilingual-text">
+                            Copyright Governance
+                            <span class="chinese-hover">版權治理</span>
+                        </span>
+                        <span class="px-4 py-2 bg-white/10 rounded-full text-sm bilingual-text">
+                            AI and Entertainment
+                            <span class="chinese-hover">人工智慧與娛樂</span>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -428,7 +490,10 @@
             <div>
                 <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
                     <svg class="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
-                    Education
+                    <span class="bilingual-text">
+                        Education
+                        <span class="chinese-hover">教育背景</span>
+                    </span>
                 </h2>
                 
                 <div class="space-y-0">
@@ -439,8 +504,13 @@
                                 <span class="badge badge-year">2022-Present</span>
                             </div>
                             <p class="text-gray-400 mb-2">PhD in Journalism and Communication</p>
-                            <p class="text-sm text-gray-500">Shanghai, China</p>
-                            <p class="text-sm text-gray-400 mt-2">Dissertation: The Transformation of Music Publishing and Distribution Networks in Taiwan's Popular Music Industry</p>
+                            <p class="text-sm text-gray-500">Shanghai</p>
+                            <p class="text-sm text-gray-400 mt-2">
+                                <span class="bilingual-text">
+                                    Dissertation: The Transformation of Music Publishing and Distribution Networks in Taiwan's Popular Music Industry
+                                    <span class="chinese-hover">論文：台灣流行音樂產業中音樂出版與發行網絡的轉型</span>
+                                </span>
+                            </p>
                         </div>
                     </div>
 
@@ -451,7 +521,7 @@
                                 <span class="badge badge-year">2018-2019</span>
                             </div>
                             <p class="text-gray-400 mb-2">Exchange Program, Music and Sound Creation</p>
-                            <p class="text-sm text-gray-500">Tokyo, Japan</p>
+                            <p class="text-sm text-gray-500">Tokyo</p>
                         </div>
                     </div>
 
@@ -462,7 +532,7 @@
                                 <span class="badge badge-year">2017-2020</span>
                             </div>
                             <p class="text-gray-400 mb-2">MA in Music Arts Management</p>
-                            <p class="text-sm text-gray-500">Beijing, China</p>
+                            <p class="text-sm text-gray-500">Beijing</p>
                         </div>
                     </div>
 
@@ -473,7 +543,7 @@
                                 <span class="badge badge-year">2015-2019</span>
                             </div>
                             <p class="text-gray-400 mb-2">MM in Popular Music Industry</p>
-                            <p class="text-sm text-gray-500">Taipei, Taiwan</p>
+                            <p class="text-sm text-gray-500">Taipei</p>
                         </div>
                     </div>
 
@@ -484,7 +554,7 @@
                                 <span class="badge badge-year">2008-2012</span>
                             </div>
                             <p class="text-gray-400 mb-2">BA in Speech Communication</p>
-                            <p class="text-sm text-gray-500">Taipei, Taiwan</p>
+                            <p class="text-sm text-gray-500">Taipei</p>
                         </div>
                     </div>
                 </div>
@@ -494,7 +564,10 @@
             <div>
                 <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
                     <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0011 15.9V19H7v2h10v-2h-4v-3.1a5.01 5.01 0 003.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/></svg>
-                    Selected Awards
+                    <span class="bilingual-text">
+                        Selected Awards
+                        <span class="chinese-hover">主要獎項</span>
+                    </span>
                 </h2>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -533,8 +606,8 @@
                             <svg class="w-6 h-6 text-purple-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422A12.083 12.083 0 0121 12.5V19l-9 5-9-5v-6.5a12.083 12.083 0 012.84-3.922L12 14z"/></svg>
                         </div>
                         <div>
-                            <p class="font-bold text-white">Third Prize, China Arts Management "Golden Course" Competition</p>
-                            <p class="text-sm text-gray-400">2024</p>
+                            <p class="font-bold text-white">China Arts Management "Golden Course" Competition</p>
+                            <p class="text-sm text-gray-400">Third Prize, 2024</p>
                         </div>
                     </div>
                 </div>
@@ -576,7 +649,7 @@
                             <svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         </div>
                         <div class="flex-1 min-w-0">
-                            <h3 class="font-bold text-white group-hover:text-emerald-400 transition">Go viral or die: Streaming platform adaptation and collaboration among performing rights organizations in the Chinese Mainland, Hong Kong, and Taiwan</h3>
+                            <h3 class="font-bold text-white group-hover:text-emerald-400 transition truncate">Go viral or die: Streaming platform adaptation and collaboration among performing rights organizations in the Chinese Mainland, Hong Kong, and Taiwan</h3>
                             <p class="text-sm text-gray-400 mt-1">International Communication Gazette, 2025</p>
                         </div>
                         <svg class="w-5 h-5 text-gray-600 group-hover:text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
@@ -683,7 +756,7 @@
             <!-- Experience Cards -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="bg-[#181818] p-6 rounded-xl card-hover">
-                    <div class="w-16 h-16 bg-gradient-to-br from-pink-500 to-orange-400 rounded-lg mb-4 flex items-center justify-center text-2xl font-black">編輯</div>
+                    <div class="w-16 h-16 bg-gradient-to-br from-pink-500 to-orange-400 rounded-lg mb-4 flex items-center justify-center text-2xl font-black text-white">E</div>
                     <h3 class="text-xl font-bold mb-2">Music Platform Editorial</h3>
                     <p class="text-gray-400 mb-4">Authored 2,000+ album and playlist editorial reviews for Chinese-language music platform (2018-Present)</p>
                     <div class="flex gap-2">
@@ -693,7 +766,7 @@
                 </div>
 
                 <div class="bg-[#181818] p-6 rounded-xl card-hover">
-                    <div class="w-16 h-16 bg-gradient-to-br from-indigo-600 to-purple-500 rounded-lg mb-4 flex items-center justify-center text-2xl font-black">經紀</div>
+                    <div class="w-16 h-16 bg-gradient-to-br from-indigo-600 to-purple-500 rounded-lg mb-4 flex items-center justify-center text-2xl font-black text-white">M</div>
                     <h3 class="text-xl font-bold mb-2">Artist Management</h3>
                     <p class="text-gray-400 mb-4">Managed artist careers and brand development for entertainers across Greater China region (2018-Present)</p>
                     <div class="flex gap-2">
@@ -703,7 +776,7 @@
                 </div>
 
                 <div class="bg-[#181818] p-6 rounded-xl card-hover">
-                    <div class="w-16 h-16 bg-gradient-to-br from-yellow-500 to-red-500 rounded-lg mb-4 flex items-center justify-center text-2xl font-black">製作</div>
+                    <div class="w-16 h-16 bg-gradient-to-br from-yellow-500 to-red-500 rounded-lg mb-4 flex items-center justify-center text-2xl font-black text-white">P</div>
                     <h3 class="text-xl font-bold mb-2">Live Event Production</h3>
                     <p class="text-gray-400 mb-4">Coordinated 27 large-scale live events with 500,000+ cumulative attendance across Asia</p>
                     <div class="flex gap-2">
@@ -713,7 +786,7 @@
                 </div>
 
                 <div class="bg-[#181818] p-6 rounded-xl card-hover">
-                    <div class="w-16 h-16 bg-gradient-to-br from-teal-500 to-green-400 rounded-lg mb-4 flex items-center justify-center text-2xl font-black">電視</div>
+                    <div class="w-16 h-16 bg-gradient-to-br from-teal-500 to-green-400 rounded-lg mb-4 flex items-center justify-center text-2xl font-black text-white">T</div>
                     <h3 class="text-xl font-bold mb-2">TV Production</h3>
                     <p class="text-gray-400 mb-4">Music coordinator for special television programs and broadcast events</p>
                     <div class="flex gap-2">
@@ -751,13 +824,16 @@
                         <span class="chinese-title">百里杜鹃音乐节现场主持</span>
                     </div>
 
-                    <div class="bilingual-item bg-[#181818] p-4 rounded-lg flex justify-between items-center">
+                    <a href="https://weibo.com/7596469136/LA5ZOAJ35" target="_blank" class="bilingual-item bg-[#181818] p-4 rounded-lg flex justify-between items-center group hover:bg-white/10 transition">
                         <div>
-                            <p class="font-bold text-white">Hong Kong 25th Anniversary Special Program</p>
+                            <p class="font-bold text-white group-hover:text-violet-400 transition">Hong Kong 25th Anniversary Special Program</p>
                             <p class="text-sm text-gray-400">Music Coordinator, 2022</p>
                         </div>
-                        <span class="chinese-title">香港回归25周年特别节目音乐统筹</span>
-                    </div>
+                        <div class="flex items-center gap-2">
+                            <span class="chinese-title">香港回归25周年特别节目音乐统筹</span>
+                            <svg class="w-5 h-5 text-gray-600 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        </div>
+                    </a>
                 </div>
             </div>
         </main>
@@ -780,7 +856,7 @@
                         <span class="text-xs font-bold uppercase tracking-widest text-pink-400">Playlist</span>
                         <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-4">Reviews</h1>
                         <p class="text-gray-300 mb-2">Performing arts criticism and music commentary</p>
-                        <p class="text-sm text-gray-400">9 articles • NCAF Performing Arts Review Platform</p>
+                        <p class="text-sm text-gray-400">11 articles • NCAF Performing Arts Review Platform & More</p>
                     </div>
                 </div>
             </div>
@@ -788,16 +864,46 @@
 
         <main class="px-6 md:px-8 py-8 max-w-7xl mx-auto">
             <div class="track-list">
-                <a href="https://pareviews.ncafroc.org.tw/comments/b262286f-1a3b-4f70-969d-e18f0c3e0dc1" target="_blank" class="track-item flex items-center gap-4 p-4 cursor-pointer group block">
+                <a href="https://mp.weixin.qq.com/s/1HS5G4YKDK694pssp9YVZA?scene=1" target="_blank" class="track-item flex items-center gap-4 p-4 cursor-pointer group block">
                     <div class="w-8 text-center flex-shrink-0">
                         <span class="track-num text-gray-500 font-bold">1</span>
+                        <svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <h3 class="font-bold text-white group-hover:text-pink-400 transition truncate">2025年了，为何人们还在听20年前的七里香</h3>
+                        <div class="flex items-center gap-2 mt-1">
+                            <span class="badge badge-review">谷雨数据</span>
+                            <span class="text-sm text-gray-400">2025.05.16</span>
+                        </div>
+                    </div>
+                    <svg class="w-5 h-5 text-gray-600 group-hover:text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                </a>
+
+                <a href="https://mp.weixin.qq.com/s/nsN60Sf2keVaNU5LhzdMdw?scene=1" target="_blank" class="track-item flex items-center gap-4 p-4 cursor-pointer group block">
+                    <div class="w-8 text-center flex-shrink-0">
+                        <span class="track-num text-gray-500 font-bold">2</span>
+                        <svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <h3 class="font-bold text-white group-hover:text-pink-400 transition truncate">"新闻与记忆"讲座丨孔祥东：以音乐跨媒介，奏响情感与记忆交响</h3>
+                        <div class="flex items-center gap-2 mt-1">
+                            <span class="badge badge-review">复旦新闻青年</span>
+                            <span class="text-sm text-gray-400">2024.11.27</span>
+                        </div>
+                    </div>
+                    <svg class="w-5 h-5 text-gray-600 group-hover:text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                </a>
+
+                <a href="https://pareviews.ncafroc.org.tw/comments/b262286f-1a3b-4f70-969d-e18f0c3e0dc1" target="_blank" class="track-item flex items-center gap-4 p-4 cursor-pointer group block">
+                    <div class="w-8 text-center flex-shrink-0">
+                        <span class="track-num text-gray-500 font-bold">3</span>
                         <svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                     <div class="flex-1 min-w-0">
                         <h3 class="font-bold text-white group-hover:text-pink-400 transition truncate">在標準之外詮釋自我——《綺響：高木綾子出道25週年紀念音樂會》</h3>
                         <div class="flex items-center gap-2 mt-1">
                             <span class="badge badge-review">表演藝術評論台</span>
-                            <span class="text-sm text-gray-400">2025</span>
+                            <span class="text-sm text-gray-400">2026.01.19</span>
                         </div>
                     </div>
                     <svg class="w-5 h-5 text-gray-600 group-hover:text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
@@ -805,7 +911,7 @@
 
                 <a href="https://pareviews.ncafroc.org.tw/comments/c0e05ce5-da65-4e11-95a8-158beed875af" target="_blank" class="track-item flex items-center gap-4 p-4 cursor-pointer group block">
                     <div class="w-8 text-center flex-shrink-0">
-                        <span class="track-num text-gray-500 font-bold">2</span>
+                        <span class="track-num text-gray-500 font-bold">4</span>
                         <svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                     <div class="flex-1 min-w-0">
@@ -820,7 +926,7 @@
 
                 <a href="https://pareviews.ncafroc.org.tw/comments/a7da88e4-27b9-42b9-ae13-73b742bac068" target="_blank" class="track-item flex items-center gap-4 p-4 cursor-pointer group block">
                     <div class="w-8 text-center flex-shrink-0">
-                        <span class="track-num text-gray-500 font-bold">3</span>
+                        <span class="track-num text-gray-500 font-bold">5</span>
                         <svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                     <div class="flex-1 min-w-0">
@@ -835,7 +941,7 @@
 
                 <a href="https://pareviews.ncafroc.org.tw/comments/c5c60cdf-de5c-43d2-9299-a9ddcc483ffa" target="_blank" class="track-item flex items-center gap-4 p-4 cursor-pointer group block">
                     <div class="w-8 text-center flex-shrink-0">
-                        <span class="track-num text-gray-500 font-bold">4</span>
+                        <span class="track-num text-gray-500 font-bold">6</span>
                         <svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                     <div class="flex-1 min-w-0">
@@ -850,7 +956,7 @@
 
                 <a href="https://pareviews.ncafroc.org.tw/comments/8f231b90-2639-4d22-b7a5-a3bc27e4cd97" target="_blank" class="track-item flex items-center gap-4 p-4 cursor-pointer group block">
                     <div class="w-8 text-center flex-shrink-0">
-                        <span class="track-num text-gray-500 font-bold">5</span>
+                        <span class="track-num text-gray-500 font-bold">7</span>
                         <svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                     <div class="flex-1 min-w-0">
@@ -865,7 +971,7 @@
 
                 <a href="https://mp.weixin.qq.com/s/ofhgWXmS9EmNnmBUQ9E6wQ" target="_blank" class="track-item flex items-center gap-4 p-4 cursor-pointer group block">
                     <div class="w-8 text-center flex-shrink-0">
-                        <span class="track-num text-gray-500 font-bold">6</span>
+                        <span class="track-num text-gray-500 font-bold">8</span>
                         <svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                     <div class="flex-1 min-w-0">
@@ -880,7 +986,7 @@
 
                 <a href="https://pareviews.ncafroc.org.tw/comments/a3b43502-96b6-43e2-ac6f-edb81e4b46d2" target="_blank" class="track-item flex items-center gap-4 p-4 cursor-pointer group block">
                     <div class="w-8 text-center flex-shrink-0">
-                        <span class="track-num text-gray-500 font-bold">7</span>
+                        <span class="track-num text-gray-500 font-bold">9</span>
                         <svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                     <div class="flex-1 min-w-0">
@@ -895,7 +1001,7 @@
 
                 <a href="https://pareviews.ncafroc.org.tw/comments/08826ccf-9a51-45c4-863c-b108ef752587" target="_blank" class="track-item flex items-center gap-4 p-4 cursor-pointer group block">
                     <div class="w-8 text-center flex-shrink-0">
-                        <span class="track-num text-gray-500 font-bold">8</span>
+                        <span class="track-num text-gray-500 font-bold">10</span>
                         <svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                     <div class="flex-1 min-w-0">
@@ -910,7 +1016,7 @@
 
                 <a href="https://pareviews.ncafroc.org.tw/comments/beccc9bc-9056-461c-8ac0-ef9db217116e" target="_blank" class="track-item flex items-center gap-4 p-4 cursor-pointer group block">
                     <div class="w-8 text-center flex-shrink-0">
-                        <span class="track-num text-gray-500 font-bold">9</span>
+                        <span class="track-num text-gray-500 font-bold">11</span>
                         <svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                     <div class="flex-1 min-w-0">
@@ -957,13 +1063,13 @@
                         <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition backdrop-blur-sm">
                             <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         </div>
-                        <h3 class="text-lg font-bold mb-1">Deer Chaser - Back to Nanzhao</h3>
-                        <p class="text-xs text-gray-400 mt-2">Music Video Creating & Production</p>
+                        <h3 class="text-lg font-bold mb-1">逐鹿人—《逐鹿南詔》</h3>
+                        <p class="text-xs text-gray-400 mt-2">音樂影片製作</p>
                     </div>
-                    <div class="chinese-overlay">
+                    <div class="english-overlay">
                         <div>
-                            <p class="text-lg font-bold text-white mb-2">逐鹿人—《逐鹿南詔》</p>
-                            <p class="text-sm text-green-400">虛擬偶像音樂影片製作</p>
+                            <p class="text-lg font-bold text-white mb-2">Deer Chaser - Back to Nanzhao</p>
+                            <p class="text-sm text-green-400">Music Video Creating & Production</p>
                         </div>
                     </div>
                     <div class="absolute bottom-4 right-4 z-20">
@@ -977,13 +1083,13 @@
                         <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition backdrop-blur-sm">
                             <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         </div>
-                        <h3 class="text-lg font-bold mb-1">Freewill A Cappella - Fast</h3>
-                        <p class="text-xs text-gray-400 mt-2">Music Video Filming & Editing</p>
+                        <h3 class="text-lg font-bold mb-1">自由意志人聲樂團《Fast》</h3>
+                        <p class="text-xs text-gray-400 mt-2">阿卡貝拉影片拍攝剪輯</p>
                     </div>
-                    <div class="chinese-overlay">
+                    <div class="english-overlay">
                         <div>
-                            <p class="text-lg font-bold text-white mb-2">自由意志人聲樂團《Fast》</p>
-                            <p class="text-sm text-green-400">阿卡貝拉影片拍攝剪輯</p>
+                            <p class="text-lg font-bold text-white mb-2">Freewill A Cappella - Fast</p>
+                            <p class="text-sm text-green-400">Music Video Filming & Editing</p>
                         </div>
                     </div>
                     <div class="absolute bottom-4 right-4 z-20">
@@ -997,13 +1103,13 @@
                         <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition backdrop-blur-sm">
                             <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         </div>
-                        <h3 class="text-lg font-bold mb-1">Mixster A Cappella - A Dialogue for One</h3>
-                        <p class="text-xs text-gray-400 mt-2">Arrangement & Post-production</p>
+                        <h3 class="text-lg font-bold mb-1">漫聲阿卡貝拉《一個人對話》</h3>
+                        <p class="text-xs text-gray-400 mt-2">編曲與影片後製</p>
                     </div>
-                    <div class="chinese-overlay">
+                    <div class="english-overlay">
                         <div>
-                            <p class="text-lg font-bold text-white mb-2">漫聲阿卡貝拉《一個人對話》</p>
-                            <p class="text-sm text-green-400">編曲與影片後製</p>
+                            <p class="text-lg font-bold text-white mb-2">Mixster A Cappella - A Dialogue for One</p>
+                            <p class="text-sm text-green-400">Arrangement & Post-production</p>
                         </div>
                     </div>
                     <div class="absolute bottom-4 right-4 z-20">
@@ -1017,13 +1123,13 @@
                         <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition backdrop-blur-sm">
                             <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         </div>
-                        <h3 class="text-lg font-bold mb-1">Jody Chiang - The Temperature of Happiness</h3>
-                        <p class="text-xs text-gray-400 mt-2">Music Video Editing</p>
+                        <h3 class="text-lg font-bold mb-1">江蕙《幸福的溫度》</h3>
+                        <p class="text-xs text-gray-400 mt-2">音樂影片剪輯</p>
                     </div>
-                    <div class="chinese-overlay">
+                    <div class="english-overlay">
                         <div>
-                            <p class="text-lg font-bold text-white mb-2">江蕙《幸福的溫度》</p>
-                            <p class="text-sm text-green-400">音樂影片剪輯</p>
+                            <p class="text-lg font-bold text-white mb-2">Jody Chiang - The Temperature of Happiness</p>
+                            <p class="text-sm text-green-400">Music Video Editing</p>
                         </div>
                     </div>
                     <div class="absolute bottom-4 right-4 z-20">
@@ -1037,13 +1143,13 @@
                         <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition backdrop-blur-sm">
                             <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         </div>
-                        <h3 class="text-lg font-bold mb-1">Jody Tsai - Beedong</h3>
-                        <p class="text-xs text-gray-400 mt-2">Dance Video Filming & Editing</p>
+                        <h3 class="text-lg font-bold mb-1">蔡黃汝《壁咚 BEEDONG》</h3>
+                        <p class="text-xs text-gray-400 mt-2">舞蹈影音拍攝剪輯</p>
                     </div>
-                    <div class="chinese-overlay">
+                    <div class="english-overlay">
                         <div>
-                            <p class="text-lg font-bold text-white mb-2">蔡黃汝《壁咚 BEEDONG》</p>
-                            <p class="text-sm text-green-400">舞蹈影音拍攝剪輯</p>
+                            <p class="text-lg font-bold text-white mb-2">Jody Tsai - Beedong</p>
+                            <p class="text-sm text-green-400">Dance Video Filming & Editing</p>
                         </div>
                     </div>
                     <div class="absolute bottom-4 right-4 z-20">
@@ -1057,13 +1163,13 @@
                         <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition backdrop-blur-sm">
                             <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         </div>
-                        <h3 class="text-lg font-bold mb-1">Guan Qing - First Love (Cover)</h3>
-                        <p class="text-xs text-gray-400 mt-2">Music Video Filming & Editing</p>
+                        <h3 class="text-lg font-bold mb-1">管罄《First Love》Cover</h3>
+                        <p class="text-xs text-gray-400 mt-2">音樂影片拍攝剪輯</p>
                     </div>
-                    <div class="chinese-overlay">
+                    <div class="english-overlay">
                         <div>
-                            <p class="text-lg font-bold text-white mb-2">管罄《First Love》Cover</p>
-                            <p class="text-sm text-green-400">音樂影片拍攝剪輯</p>
+                            <p class="text-lg font-bold text-white mb-2">Guan Qing - First Love (Cover)</p>
+                            <p class="text-sm text-green-400">Music Video Filming & Editing</p>
                         </div>
                     </div>
                     <div class="absolute bottom-4 right-4 z-20">
@@ -1077,13 +1183,13 @@
                         <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition backdrop-blur-sm">
                             <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         </div>
-                        <h3 class="text-lg font-bold mb-1">Rose Liu - It's You (Cover)</h3>
-                        <p class="text-xs text-gray-400 mt-2">Music Video Filming & Editing</p>
+                        <h3 class="text-lg font-bold mb-1">劉明湘《就決定是你了》Cover</h3>
+                        <p class="text-xs text-gray-400 mt-2">音樂影片拍攝剪輯</p>
                     </div>
-                    <div class="chinese-overlay">
+                    <div class="english-overlay">
                         <div>
-                            <p class="text-lg font-bold text-white mb-2">劉明湘《就決定是你了》Cover</p>
-                            <p class="text-sm text-green-400">音樂影片拍攝剪輯</p>
+                            <p class="text-lg font-bold text-white mb-2">Rose Liu - It's You (Cover)</p>
+                            <p class="text-sm text-green-400">Music Video Filming & Editing</p>
                         </div>
                     </div>
                     <div class="absolute bottom-4 right-4 z-20">
@@ -1097,13 +1203,13 @@
                         <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition backdrop-blur-sm">
                             <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         </div>
-                        <h3 class="text-lg font-bold mb-1">Syntiona A Cappella - Congcong Nanian</h3>
-                        <p class="text-xs text-gray-400 mt-2">A Cappella Arrangement</p>
+                        <h3 class="text-lg font-bold mb-1">Syntiona《匆匆那年》</h3>
+                        <p class="text-xs text-gray-400 mt-2">阿卡貝拉編曲</p>
                     </div>
-                    <div class="chinese-overlay">
+                    <div class="english-overlay">
                         <div>
-                            <p class="text-lg font-bold text-white mb-2">Syntiona《匆匆那年》</p>
-                            <p class="text-sm text-green-400">阿卡貝拉編曲</p>
+                            <p class="text-lg font-bold text-white mb-2">Syntiona A Cappella - Congcong Nanian</p>
+                            <p class="text-sm text-green-400">A Cappella Arrangement</p>
                         </div>
                     </div>
                     <div class="absolute bottom-4 right-4 z-20">
@@ -1114,84 +1220,14 @@
         </main>
     </div>
 
-    <!-- CONTACT PAGE -->
-    <div id="page-contact" class="page">
-        <section class="px-6 md:px-8 pt-24 pb-12" style="background: linear-gradient(180deg, #1e40af 0%, #1e3a8a 15%, #121212 60%);">
-            <div class="max-w-7xl mx-auto">
-                <button onclick="showPage('home')" class="back-btn">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
-                    Library
-                </button>
-                
-                <div class="flex flex-col md:flex-row gap-8 items-end">
-                    <div class="w-52 h-52 bg-gradient-to-br from-blue-600 to-cyan-800 shadow-2xl rounded-lg flex items-center justify-center flex-shrink-0">
-                        <svg class="w-24 h-24 text-white/30" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                    </div>
-                    <div>
-                        <span class="text-xs font-bold uppercase tracking-widest text-blue-400">Playlist</span>
-                        <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-4">Contact</h1>
-                        <p class="text-gray-300 mb-2">Get in touch for collaborations and opportunities</p>
-                        <p class="text-sm text-gray-400">Fudan University • Shanghai</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <main class="px-6 md:px-8 py-8 max-w-3xl mx-auto">
-            <div class="bg-[#181818] rounded-2xl p-8 space-y-6">
-                <div class="space-y-4">
-                    <div class="flex items-center gap-4 p-4 bg-white/5 rounded-lg">
-                        <div class="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center">
-                            <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                        </div>
-                        <div>
-                            <p class="text-sm text-gray-400 mb-1">Email</p>
-                            <p class="text-lg font-bold">ptyeh22@m.fudan.edu.cn</p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center gap-4 p-4 bg-white/5 rounded-lg">
-                        <div class="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center">
-                            <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-                        </div>
-                        <div>
-                            <p class="text-sm text-gray-400 mb-1">Institution</p>
-                            <p class="text-lg font-bold">School of Journalism, Fudan University</p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center gap-4 p-4 bg-white/5 rounded-lg">
-                        <div class="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center">
-                            <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                        </div>
-                        <div>
-                            <p class="text-sm text-gray-400 mb-1">Status</p>
-                            <p class="text-lg font-bold">PhD Candidate (Expected June 2026)</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pt-6 border-t border-white/10">
-                    <h3 class="font-bold mb-4 text-white">Languages</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-4 py-2 bg-white/10 rounded-full text-sm">Mandarin (Native)</span>
-                        <span class="px-4 py-2 bg-white/10 rounded-full text-sm">English (Proficient)</span>
-                        <span class="px-4 py-2 bg-white/10 rounded-full text-sm">Japanese (Intermediate)</span>
-                        <span class="px-4 py-2 bg-white/10 rounded-full text-sm">Hokkien (Native)</span>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
-
-    <!-- Footer Player -->
+    <!-- Footer Player with Contact -->
     <footer class="fixed bottom-0 w-full glass-nav border-t border-white/10 px-6 py-4 z-50">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
             <div class="flex items-center gap-4 cursor-pointer" onclick="showPage('home')">
                 <div class="w-14 h-14 bg-gradient-to-br from-green-400 to-blue-600 rounded flex items-center justify-center font-black text-green-900 text-xl shadow-lg">J</div>
                 <div>
                     <p class="text-sm font-bold text-white">Jim PoTseng Yeh</p>
-                    <p class="text-xs text-gray-400">Portfolio 2025</p>
+                    <p class="text-xs text-gray-400">葉柏增 • Portfolio 2025</p>
                 </div>
             </div>
             
@@ -1202,18 +1238,22 @@
                     <button class="text-gray-400 hover:text-white transition"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg></button>
                 </div>
                 <div class="w-full flex items-center gap-2 text-xs text-gray-400 font-mono">
-                    <span>0:00</span>
+                    <span>ptyeh22@m.fudan.edu.cn</span>
                     <div class="flex-1 h-1 bg-white/20 rounded-full overflow-hidden cursor-pointer group">
-                        <div class="w-0 h-full bg-white group-hover:bg-green-400 rounded-full"></div>
+                        <div class="w-1/2 h-full bg-white group-hover:bg-green-400 rounded-full"></div>
                     </div>
-                    <span>CV</span>
+                    <span>JimPTYeh@gmail.com</span>
                 </div>
             </div>
             
-            <div class="flex items-center gap-4">
-                <button onclick="showPage('contact')" class="bg-white text-black px-6 py-2 rounded-full font-bold text-sm hover:scale-105 hover:bg-green-400 transition shadow-lg">
-                    Contact
-                </button>
+            <div class="flex items-center gap-4 text-right">
+                <div class="hidden sm:block">
+                    <p class="text-xs text-gray-400">PhD Candidate / Freelance Music Worker</p>
+                    <p class="text-sm font-bold text-white">Shanghai • Taipei • Tokyo</p>
+                </div>
+                <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                </div>
             </div>
         </div>
     </footer>
