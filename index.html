@@ -123,7 +123,7 @@
             right: 12px;
             width: 48px;
             height: 48px;
-            background: #1DB954;
+            background: #3b82f6;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -148,10 +148,10 @@
         .badge-year { background: rgba(255,255,255,0.2); color: white; }
         .badge-music { background: #8b5cf6; color: white; }
         .badge-video { background: #f97316; color: white; }
-        .badge-conf { background: #10b981; color: white; }
+        .badge-conf { background: #3b82f6; color: white; }
         
         .hero-title {
-            background: linear-gradient(to right, #fff, #a7f3d0);
+            background: linear-gradient(to right, #fff, #93c5fd);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -184,7 +184,7 @@
         
         .track-play {
             display: none;
-            color: #1DB954;
+            color: #3b82f6;
         }
         
         .back-btn {
@@ -216,7 +216,7 @@
             top: 0;
             width: 10px;
             height: 10px;
-            background: #1DB954;
+            background: #3b82f6;
             border-radius: 50%;
         }
 
@@ -239,7 +239,7 @@
             padding: 8px 12px;
             border-radius: 6px;
             font-size: 0.85rem;
-            color: #1DB954;
+            color: #3b82f6;
             white-space: nowrap;
             z-index: 10;
             margin-top: 4px;
@@ -259,8 +259,9 @@
         .project-card .english-overlay {
             position: absolute;
             inset: 0;
-            background: rgba(0,0,0,0.9);
+            background: rgba(0,0,0,0.85);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             opacity: 0;
@@ -288,7 +289,7 @@
             padding: 8px 12px;
             border-radius: 6px;
             font-size: 0.9rem;
-            color: #1DB954;
+            color: #3b82f6;
             white-space: normal;
             max-width: 300px;
             z-index: 10;
@@ -430,7 +431,7 @@
             margin-right: 8px;
         }
 
-        /* Grant level badge */
+        /* Grant level badge - Blue theme */
         .grant-badge {
             display: inline-block;
             padding: 2px 8px;
@@ -442,10 +443,10 @@
             margin-right: 8px;
         }
         
-        .grant-national { background: #dc2626; color: white; }
-        .grant-provincial { background: #ea580c; color: white; }
-        .grant-municipal { background: #ca8a04; color: white; }
-        .grant-university { background: #2563eb; color: white; }
+        .grant-national { background: #1e3a8a; color: white; }
+        .grant-provincial { background: #3b82f6; color: white; }
+        .grant-municipal { background: #60a5fa; color: #0f172a; }
+        .grant-university { background: #93c5fd; color: #0f172a; }
 
         /* Project meta */
         .project-meta {
@@ -455,7 +456,7 @@
             font-style: italic;
         }
 
-        /* Accordion for Research Projects */
+        /* Research accordion */
         .research-accordion-item {
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
@@ -500,6 +501,51 @@
             transform: rotate(45deg);
         }
 
+        /* Industry accordion */
+        .industry-accordion-item {
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .industry-accordion-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: rgba(255,255,255,0.02);
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .industry-accordion-header:hover {
+            background: rgba(255,255,255,0.05);
+        }
+        
+        .industry-accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .industry-accordion-content.active {
+            max-height: 2000px;
+        }
+        
+        .industry-accordion-inner {
+            padding: 0 16px 16px;
+        }
+        
+        .industry-chevron {
+            transition: transform 0.3s;
+            width: 20px;
+            height: 20px;
+        }
+        
+        .industry-chevron.active {
+            transform: rotate(45deg);
+        }
+
         /* Social media icons */
         .social-link {
             display: flex;
@@ -528,6 +574,20 @@
             font-weight: bold;
             font-size: 12px;
         }
+
+        /* Text alignment */
+        .text-justify {
+            text-align: justify;
+            text-align-last: left;
+        }
+
+        /* Language section alignment */
+        .languages-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: flex-start;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -535,18 +595,18 @@
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 glass-nav flex justify-between items-center px-6 md:px-8 py-4">
         <div class="flex items-center gap-3 cursor-pointer" onclick="showPage('home')">
-            <div class="w-8 h-8 bg-gradient-to-br from-green-400 to-blue-600 rounded-full flex items-center justify-center">
+            <div class="w-8 h-8 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center">
                 <span class="font-black text-xs">J</span>
             </div>
             <span class="font-black tracking-tighter text-lg">JIM.YEH</span>
         </div>
         
         <div class="hidden md:flex space-x-2 text-sm font-semibold text-gray-400">
-            <button onclick="showPage('about')" id="nav-about" class="px-4 py-2 rounded-full hover:text-white transition">《About》</button>
-            <button onclick="showPage('research')" id="nav-research" class="px-4 py-2 rounded-full hover:text-white transition">《Research & Project》</button>
-            <button onclick="showPage('industry')" id="nav-industry" class="px-4 py-2 rounded-full hover:text-white transition">《Industry Exp.》</button>
-            <button onclick="showPage('reviews')" id="nav-reviews" class="px-4 py-2 rounded-full hover:text-white transition">《Reviews / Articles》</button>
-            <button onclick="showPage('production')" id="nav-production" class="px-4 py-2 rounded-full hover:text-white transition">《Life Productions》</button>
+            <button onclick="showPage('about')" id="nav-about" class="px-4 py-2 rounded-full hover:text-white transition">About</button>
+            <button onclick="showPage('research')" id="nav-research" class="px-4 py-2 rounded-full hover:text-white transition">Research & Project</button>
+            <button onclick="showPage('industry')" id="nav-industry" class="px-4 py-2 rounded-full hover:text-white transition">Industry Exp.</button>
+            <button onclick="showPage('reviews')" id="nav-reviews" class="px-4 py-2 rounded-full hover:text-white transition">Reviews / Articles</button>
+            <button onclick="showPage('production')" id="nav-production" class="px-4 py-2 rounded-full hover:text-white transition">Life Productions</button>
         </div>
         
         <button class="md:hidden text-white" onclick="toggleMobileMenu()">
@@ -556,11 +616,11 @@
 
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="fixed inset-0 bg-black/95 z-40 hidden flex-col items-center justify-center space-y-6 text-xl font-bold">
-        <button onclick="showPage('about'); toggleMobileMenu()" class="text-gray-400 hover:text-white">《About》</button>
-        <button onclick="showPage('research'); toggleMobileMenu()" class="text-gray-400 hover:text-white">《Research & Project》</button>
-        <button onclick="showPage('industry'); toggleMobileMenu()" class="text-gray-400 hover:text-white">《Industry Exp.》</button>
-        <button onclick="showPage('reviews'); toggleMobileMenu()" class="text-gray-400 hover:text-white">《Reviews / Articles》</button>
-        <button onclick="showPage('production'); toggleMobileMenu()" class="text-gray-400 hover:text-white">《Life Productions》</button>
+        <button onclick="showPage('about'); toggleMobileMenu()" class="text-gray-400 hover:text-white">About</button>
+        <button onclick="showPage('research'); toggleMobileMenu()" class="text-gray-400 hover:text-white">Research & Project</button>
+        <button onclick="showPage('industry'); toggleMobileMenu()" class="text-gray-400 hover:text-white">Industry Exp.</button>
+        <button onclick="showPage('reviews'); toggleMobileMenu()" class="text-gray-400 hover:text-white">Reviews / Articles</button>
+        <button onclick="showPage('production'); toggleMobileMenu()" class="text-gray-400 hover:text-white">Life Productions</button>
         <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-gray-400">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
@@ -570,13 +630,13 @@
     <div id="page-home" class="page active">
         <section class="spotify-gradient px-6 md:px-8 pt-28 pb-12 min-h-[50vh] flex flex-col justify-end">
             <div class="max-w-7xl mx-auto w-full">
-                <span class="text-xs font-bold uppercase tracking-widest text-green-400 mb-4 block">Portfolio Library</span>
+                <span class="text-xs font-bold uppercase tracking-widest text-blue-400 mb-4 block">Portfolio Library</span>
                 <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-2">Jim PoTseng Yeh</h1>
                 <p class="text-2xl md:text-3xl text-gray-300 mb-4 font-medium">葉柏增</p>
                 <p class="text-gray-300 max-w-xl">PhD Candidate in Journalism and Communication | Music Communication Researcher | 10+ Years Industry Experience</p>
                 
                 <div class="flex gap-4 mt-8">
-                    <button onclick="showPage('about')" class="bg-green-500 text-black px-8 py-3 rounded-full font-bold hover:scale-105 transition">About Me</button>
+                    <button onclick="showPage('about')" class="bg-blue-500 text-black px-8 py-3 rounded-full font-bold hover:scale-105 transition">《Explore Jim》</button>
                 </div>
             </div>
         </section>
@@ -586,7 +646,7 @@
             
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 <div onclick="showPage('research')" class="album-card p-4 group">
-                    <div class="relative aspect-square bg-gradient-to-br from-emerald-600 to-teal-800 rounded-md mb-4 flex items-center justify-center">
+                    <div class="relative aspect-square bg-gradient-to-br from-blue-600 to-blue-800 rounded-md mb-4 flex items-center justify-center">
                         <svg class="w-16 h-16 text-white/30" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
                         <div class="play-overlay">
                             <svg class="w-6 h-6 text-black ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -597,7 +657,7 @@
                 </div>
 
                 <div onclick="showPage('industry')" class="album-card p-4 group">
-                    <div class="relative aspect-square bg-gradient-to-br from-violet-600 to-purple-800 rounded-md mb-4 flex items-center justify-center">
+                    <div class="relative aspect-square bg-gradient-to-br from-blue-600 to-indigo-800 rounded-md mb-4 flex items-center justify-center">
                         <svg class="w-16 h-16 text-white/30" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
                         <div class="play-overlay">
                             <svg class="w-6 h-6 text-black ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -608,7 +668,7 @@
                 </div>
 
                 <div onclick="showPage('reviews')" class="album-card p-4 group">
-                    <div class="relative aspect-square bg-gradient-to-br from-pink-600 to-rose-800 rounded-md mb-4 flex items-center justify-center">
+                    <div class="relative aspect-square bg-gradient-to-br from-blue-500 to-cyan-700 rounded-md mb-4 flex items-center justify-center">
                         <svg class="w-16 h-16 text-white/30" fill="currentColor" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
                         <div class="play-overlay">
                             <svg class="w-6 h-6 text-black ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -619,7 +679,7 @@
                 </div>
 
                 <div onclick="showPage('production')" class="album-card p-4 group">
-                    <div class="relative aspect-square bg-gradient-to-br from-amber-600 to-orange-800 rounded-md mb-4 flex items-center justify-center">
+                    <div class="relative aspect-square bg-gradient-to-br from-sky-600 to-blue-800 rounded-md mb-4 flex items-center justify-center">
                         <svg class="w-16 h-16 text-white/30" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         <div class="play-overlay">
                             <svg class="w-6 h-6 text-black ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -647,7 +707,7 @@
                     </div>
                     <div>
                         <span class="text-xs font-bold uppercase tracking-widest text-gray-400">Profile</span>
-                        <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-4">About</h1>
+                        <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-4">《Explore Jim》</h1>
                         <p class="text-gray-300 mb-2">Music Communication Researcher & Industry Professional</p>
                     </div>
                 </div>
@@ -657,22 +717,22 @@
         <main class="px-6 md:px-8 py-8 max-w-4xl mx-auto space-y-12">
             <!-- Bio -->
             <div class="bg-[#181818] rounded-2xl p-8">
-                <p class="text-lg text-gray-300 leading-relaxed mb-6">
+                <p class="text-lg text-gray-300 leading-relaxed mb-6 text-justify">
                     <span class="bilingual-text">
-                        I am a music communication researcher and creative industry professional with over 10 years of experience spanning Taipei, Tokyo, Beijing, and Shanghai.
-                        <span class="chinese-hover">我是一名音樂傳播研究者與創意產業專業人士，擁有超過10年橫跨台北、東京、北京與上海的經驗。</span>
+                        I am a music communication researcher and creative industry professional with over 10 years of experience spanning Taipei, Tokyo, Beijing, and Shanghai. My work bridges academic research and industry practice, exploring how digital platforms reshape music production, distribution, and consumption.
+                        <span class="chinese-hover">我是一名音樂傳播研究者與創意產業專業人士，擁有超過10年橫跨台北、東京、北京與上海的經驗。我的工作連結學術研究與產業實務，探索數位平台如何重塑音樂製作、發行與消費。</span>
                     </span>
                 </p>
-                <p class="text-lg text-gray-300 leading-relaxed mb-6">
+                <p class="text-lg text-gray-300 leading-relaxed mb-6 text-justify">
                     <span class="bilingual-text">
-                        My work bridges academic research and industry practice, exploring how digital platforms reshape music production, distribution, and consumption. I have authored 2,000+ editorial pieces for major music platforms and coordinated 100+ large-scale events including international festivals and television productions.
-                        <span class="chinese-hover">我的工作連結學術研究與產業實務，探索數位平台如何重塑音樂製作、發行與消費。曾撰寫2000餘篇音樂平台專欄，統籌100餘場大型活動包括國際音樂節與電視製作。</span>
+                        I have authored 2,000+ editorial pieces for major music platforms and coordinated 100+ large-scale events including international festivals and television productions. My research focuses on platform economics, digital transformation in cultural industries, and the political economy of streaming media.
+                        <span class="chinese-hover">曾撰寫2000餘篇音樂平台專欄，統籌100餘場大型活動包括國際音樂節與電視製作。研究聚焦平台經濟、文化產業數位轉型與串流媒體政治經濟學。</span>
                     </span>
                 </p>
-                <p class="text-lg text-gray-300 leading-relaxed">
+                <p class="text-lg text-gray-300 leading-relaxed text-justify">
                     <span class="bilingual-text">
-                        My research interests include platform economics, digital transformation in cultural industries, copyright governance, and the political economy of streaming media.
-                        <span class="chinese-hover">我的研究興趣包括平台經濟、文化產業數位轉型、版權治理與串流媒體政治經濟學。</span>
+                        Currently based at Fudan University, I investigate the evolving ecosystems of music publishing and distribution networks in the digital age, with particular attention to cross-regional dynamics in Greater China and East Asia.
+                        <span class="chinese-hover">現於復旦大學，研究數位時代音樂出版與發行網絡的演變生態，特別關注大中華與東亞的跨區域動態。</span>
                     </span>
                 </p>
                 
@@ -715,7 +775,7 @@
             <!-- Education -->
             <div>
                 <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
-                    <svg class="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+                    <svg class="w-6 h-6 text-blue-400" fill="currentColor" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
                     <span class="bilingual-text">
                         Education
                         <span class="chinese-hover">教育背景</span>
@@ -816,8 +876,8 @@
                     </div>
 
                     <div class="bg-[#181818] p-4 rounded-lg flex items-center gap-4">
-                        <div class="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center flex-shrink-0">
-                            <span class="text-green-400 font-bold text-sm">BEST</span>
+                        <div class="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="text-blue-400 font-bold text-sm">BEST</span>
                         </div>
                         <div>
                             <p class="font-bold text-white">Best Business Model Award</p>
@@ -826,8 +886,8 @@
                     </div>
 
                     <div class="bg-[#181818] p-4 rounded-lg flex items-center gap-4">
-                        <div class="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center flex-shrink-0">
-                            <svg class="w-6 h-6 text-purple-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422A12.083 12.083 0 0121 12.5V19l-9 5-9-5v-6.5a12.083 12.083 0 012.84-3.922L12 14z"/></svg>
+                        <div class="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-blue-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422A12.083 12.083 0 0121 12.5V19l-9 5-9-5v-6.5a12.083 12.083 0 012.84-3.922L12 14z"/></svg>
                         </div>
                         <div>
                             <p class="font-bold text-white">China Arts Management "Golden Course" Competition</p>
@@ -849,11 +909,11 @@
                 </button>
                 
                 <div class="flex flex-col md:flex-row gap-8 items-end">
-                    <div class="w-52 h-52 bg-gradient-to-br from-emerald-600 to-teal-800 shadow-2xl rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div class="w-52 h-52 bg-gradient-to-br from-blue-600 to-blue-800 shadow-2xl rounded-lg flex items-center justify-center flex-shrink-0">
                         <svg class="w-24 h-24 text-white/30" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
                     </div>
                     <div>
-                        <span class="text-xs font-bold uppercase tracking-widest text-emerald-400">Playlist</span>
+                        <span class="text-xs font-bold uppercase tracking-widest text-blue-400">Playlist</span>
                         <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-4">Research & Project</h1>
                         <p class="text-gray-300 mb-2">Publications in music communication and platform economics</p>
                         <p class="text-sm text-gray-400">Journal Articles • Book Chapters • Research Projects</p>
@@ -865,7 +925,7 @@
         <main class="px-6 md:px-8 py-8 max-w-7xl mx-auto space-y-8">
             <!-- Publications Section -->
             <div class="section-block">
-                <h2 class="section-header text-emerald-400 border-emerald-400">Publications</h2>
+                <h2 class="section-header text-blue-400 border-blue-400">Publications</h2>
                 
                 <h3 class="subsection-header">Journal Articles</h3>
                 <div class="track-list mb-6">
@@ -875,7 +935,7 @@
                             <svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         </div>
                         <div class="flex-1 min-w-0">
-                            <h3 class="font-bold text-white group-hover:text-emerald-400 transition truncate">Go viral or die: Streaming platform adaptation and collaboration among performing rights organizations in the Chinese Mainland, Hong Kong, and Taiwan</h3>
+                            <h3 class="font-bold text-white group-hover:text-blue-400 transition truncate">Go viral or die: Streaming platform adaptation and collaboration among performing rights organizations in the Chinese Mainland, Hong Kong, and Taiwan</h3>
                             <p class="text-sm text-gray-400 mt-1">International Communication Gazette, 2025</p>
                         </div>
                     </a>
@@ -932,56 +992,72 @@
                     </h3>
                     <div class="space-y-3 text-sm">
                         <div class="flex gap-3">
-                            <span class="text-emerald-400 font-bold min-w-[80px]">AEJMC 2024</span>
+                            <span class="text-blue-400 font-bold min-w-[80px]">AEJMC 2024</span>
                             <span class="text-gray-300">Copyright governance and streaming platforms across Greater China.</span>
                         </div>
                         <div class="flex gap-3">
-                            <span class="text-emerald-400 font-bold min-w-[80px]">East Asian Voices 2024</span>
+                            <span class="text-blue-400 font-bold min-w-[80px]">East Asian Voices 2024</span>
                             <span class="text-gray-300">The Politics of Nostalgia in Chinese Pop.</span>
                         </div>
                         <div class="flex gap-3">
-                            <span class="text-emerald-400 font-bold min-w-[80px]">CUC Lecture</span>
+                            <span class="text-blue-400 font-bold min-w-[80px]">CUC Lecture</span>
                             <span class="text-gray-300">Museum Sound Narratives (National Invited Lecture).</span>
                         </div>
                         <div class="flex gap-3">
-                            <span class="text-emerald-400 font-bold min-w-[80px]">PKU Forum</span>
+                            <span class="text-blue-400 font-bold min-w-[80px]">PKU Forum</span>
                             <span class="text-gray-300">China Cultural Industries New Year Forum (2024 & 2025).</span>
                         </div>
                         <div class="flex gap-3">
-                            <span class="text-emerald-400 font-bold min-w-[80px]">THU & XMU</span>
+                            <span class="text-blue-400 font-bold min-w-[80px]">THU & XMU</span>
                             <span class="text-gray-300">Creative Forum 2024; Cross-Strait Forum 2025.</span>
                         </div>
                         <div class="flex gap-3">
-                            <span class="text-emerald-400 font-bold min-w-[80px]">+ 18 more</span>
+                            <span class="text-blue-400 font-bold min-w-[80px]">+ 18 more</span>
                             <span class="text-gray-400">Additional peer-reviewed conference papers at leading forums.</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Research Projects Section -->
+            <!-- Research Projects Section - Organized by Level -->
             <div class="section-block">
-                <h2 class="section-header text-emerald-400 border-emerald-400">Research Projects</h2>
+                <h2 class="section-header text-blue-400 border-blue-400">Research Projects</h2>
                 
                 <h3 class="subsection-header">I. As Principal Investigator (13 Projects)</h3>
                 
                 <div class="space-y-2 mb-8">
-                    <!-- Provincial Level -->
+                    <!-- National Level -->
                     <div class="research-accordion-item">
                         <div class="research-accordion-header" onclick="toggleResearchAccordion(this)">
                             <div class="flex items-center gap-3">
-                                <span class="grant-badge grant-provincial">Provincial</span>
-                                <div>
-                                    <p class="font-bold text-white text-sm">Sichuan Provincial Social Science — Music & Digital Intelligence Key Lab</p>
-                                    <p class="text-xs text-gray-400">"AI Music Publishing Copyright Mechanisms under Platform Economy" (SZ025ZXXM07)</p>
-                                </div>
+                                <span class="grant-badge grant-national">National</span>
+                                <span class="text-sm text-gray-300">1 Project</span>
                             </div>
                             <svg class="research-chevron text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
                         </div>
                         <div class="research-accordion-content">
                             <div class="research-accordion-inner">
-                                <p class="text-sm text-gray-300">Competitively selected as the only doctoral candidate among faculty-level applicants.</p>
-                                <p class="text-xs text-gray-500 mt-2">2025</p>
+                                <p class="text-sm text-gray-400 italic mb-2">No national-level projects as PI</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Provincial/Ministerial Level -->
+                    <div class="research-accordion-item">
+                        <div class="research-accordion-header" onclick="toggleResearchAccordion(this)">
+                            <div class="flex items-center gap-3">
+                                <span class="grant-badge grant-provincial">Provincial</span>
+                                <span class="text-sm text-gray-300">3 Projects</span>
+                            </div>
+                            <svg class="research-chevron text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                        </div>
+                        <div class="research-accordion-content">
+                            <div class="research-accordion-inner space-y-3">
+                                <div class="bg-black/20 p-3 rounded-lg">
+                                    <p class="font-bold text-white text-sm mb-1">Sichuan Provincial Social Science — Music & Digital Intelligence Key Lab</p>
+                                    <p class="text-xs text-gray-400">"AI Music Publishing Copyright Mechanisms under Platform Economy" (SZ025ZXXM07)</p>
+                                    <p class="text-xs text-gray-500 mt-1">2025</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -991,36 +1067,22 @@
                         <div class="research-accordion-header" onclick="toggleResearchAccordion(this)">
                             <div class="flex items-center gap-3">
                                 <span class="grant-badge grant-municipal">Municipal</span>
-                                <div>
-                                    <p class="font-bold text-white text-sm">Shanghai Management Science Association</p>
+                                <span class="text-sm text-gray-300">2 Projects</span>
+                            </div>
+                            <svg class="research-chevron text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                        </div>
+                        <div class="research-accordion-content">
+                            <div class="research-accordion-inner space-y-3">
+                                <div class="bg-black/20 p-3 rounded-lg">
+                                    <p class="font-bold text-white text-sm mb-1">Shanghai Management Science Association</p>
                                     <p class="text-xs text-gray-400">"Knowledge Graph-Based Study of Arts Management" (SHXSK-2024YQ-023)</p>
+                                    <p class="text-xs text-gray-500 mt-1">2024</p>
                                 </div>
-                            </div>
-                            <svg class="research-chevron text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                        </div>
-                        <div class="research-accordion-content">
-                            <div class="research-accordion-inner">
-                                <p class="text-sm text-gray-300">Research on arts management knowledge mapping and visualization.</p>
-                                <p class="text-xs text-gray-500 mt-2">2024</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="research-accordion-item">
-                        <div class="research-accordion-header" onclick="toggleResearchAccordion(this)">
-                            <div class="flex items-center gap-3">
-                                <span class="grant-badge grant-municipal">Municipal</span>
-                                <div>
-                                    <p class="font-bold text-white text-sm">Yiwu Municipal Social Science Project</p>
+                                <div class="bg-black/20 p-3 rounded-lg">
+                                    <p class="font-bold text-white text-sm mb-1">Yiwu Municipal Social Science Project</p>
                                     <p class="text-xs text-gray-400">E-commerce brand communication research</p>
+                                    <p class="text-xs text-gray-500 mt-1">2023</p>
                                 </div>
-                            </div>
-                            <svg class="research-chevron text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                        </div>
-                        <div class="research-accordion-content">
-                            <div class="research-accordion-inner">
-                                <p class="text-sm text-gray-300">Study on digital brand communication strategies in e-commerce environments.</p>
-                                <p class="text-xs text-gray-500 mt-2">2023</p>
                             </div>
                         </div>
                     </div>
@@ -1030,16 +1092,14 @@
                         <div class="research-accordion-header" onclick="toggleResearchAccordion(this)">
                             <div class="flex items-center gap-3">
                                 <span class="grant-badge grant-university">University</span>
-                                <div>
-                                    <p class="font-bold text-white text-sm">10 Fudan University Graduate Research Projects</p>
-                                    <p class="text-xs text-gray-400">Various topics including AI music generation, AIGC, digital cultural walks</p>
-                                </div>
+                                <span class="text-sm text-gray-300">10 Projects</span>
                             </div>
                             <svg class="research-chevron text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
                         </div>
                         <div class="research-accordion-content">
                             <div class="research-accordion-inner">
-                                <ul class="text-sm text-gray-300 space-y-1 list-disc list-inside">
+                                <p class="text-sm text-gray-300 mb-2">10 Fudan University Graduate Research Projects (2024–2025):</p>
+                                <ul class="text-sm text-gray-400 space-y-1 list-disc list-inside">
                                     <li>AI multimodal music generation</li>
                                     <li>AIGC and popular music industry</li>
                                     <li>Digital city cultural walks</li>
@@ -1047,8 +1107,8 @@
                                     <li>Audio social media</li>
                                     <li>Shanghai popular music history</li>
                                     <li>Cultural park renewal</li>
+                                    <li>And 3 additional projects</li>
                                 </ul>
-                                <p class="text-xs text-gray-500 mt-2">2024–2025</p>
                             </div>
                         </div>
                     </div>
@@ -1062,17 +1122,17 @@
                         <div class="research-accordion-header" onclick="toggleResearchAccordion(this)">
                             <div class="flex items-center gap-3">
                                 <span class="grant-badge grant-national">National</span>
-                                <div>
-                                    <p class="font-bold text-white text-sm">National Social Science Fund Key Project</p>
-                                    <p class="text-xs text-gray-400">"Digital-Intelligent Media and Political Opinion Polarization" (25AZD037)</p>
-                                </div>
+                                <span class="text-sm text-gray-300">1 Project</span>
                             </div>
                             <svg class="research-chevron text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
                         </div>
                         <div class="research-accordion-content">
                             <div class="research-accordion-inner">
-                                <p class="text-sm text-gray-300">Research on algorithmic influence on political discourse in digital media environments.</p>
-                                <p class="text-xs text-gray-500 mt-2">2025</p>
+                                <div class="bg-black/20 p-3 rounded-lg">
+                                    <p class="font-bold text-white text-sm mb-1">National Social Science Fund Key Project</p>
+                                    <p class="text-xs text-gray-400">"Digital-Intelligent Media and Political Opinion Polarization" (25AZD037)</p>
+                                    <p class="text-xs text-gray-500 mt-1">2025</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1082,93 +1142,37 @@
                         <div class="research-accordion-header" onclick="toggleResearchAccordion(this)">
                             <div class="flex items-center gap-3">
                                 <span class="grant-badge grant-provincial">Provincial</span>
-                                <div>
-                                    <p class="font-bold text-white text-sm">Shanghai PSSF Planning Project</p>
+                                <span class="text-sm text-gray-300">5 Projects</span>
+                            </div>
+                            <svg class="research-chevron text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                        </div>
+                        <div class="research-accordion-content">
+                            <div class="research-accordion-inner space-y-3">
+                                <div class="bg-black/20 p-3 rounded-lg">
+                                    <p class="font-bold text-white text-sm mb-1">Shanghai PSSF Planning Project</p>
                                     <p class="text-xs text-gray-400">(2025BXW006)</p>
+                                    <p class="text-xs text-gray-500 mt-1">2025</p>
                                 </div>
-                            </div>
-                            <svg class="research-chevron text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                        </div>
-                        <div class="research-accordion-content">
-                            <div class="research-accordion-inner">
-                                <p class="text-sm text-gray-300">Shanghai philosophy and social science research project.</p>
-                                <p class="text-xs text-gray-500 mt-2">2025</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="research-accordion-item">
-                        <div class="research-accordion-header" onclick="toggleResearchAccordion(this)">
-                            <div class="flex items-center gap-3">
-                                <span class="grant-badge grant-provincial">Ministerial</span>
-                                <div>
-                                    <p class="font-bold text-white text-sm">Ministry of Education Humanities & Social Sciences Fund</p>
+                                <div class="bg-black/20 p-3 rounded-lg">
+                                    <p class="font-bold text-white text-sm mb-1">Ministry of Education Humanities & Social Sciences Fund</p>
                                     <p class="text-xs text-gray-400">(25YJA760132)</p>
+                                    <p class="text-xs text-gray-500 mt-1">2025</p>
                                 </div>
-                            </div>
-                            <svg class="research-chevron text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                        </div>
-                        <div class="research-accordion-content">
-                            <div class="research-accordion-inner">
-                                <p class="text-sm text-gray-300">National-level education and humanities research initiative.</p>
-                                <p class="text-xs text-gray-500 mt-2">2025</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="research-accordion-item">
-                        <div class="research-accordion-header" onclick="toggleResearchAccordion(this)">
-                            <div class="flex items-center gap-3">
-                                <span class="grant-badge grant-provincial">Ministerial</span>
-                                <div>
-                                    <p class="font-bold text-white text-sm">Ministry of Culture and Tourism — Public Culture Development Centre</p>
+                                <div class="bg-black/20 p-3 rounded-lg">
+                                    <p class="font-bold text-white text-sm mb-1">Ministry of Culture and Tourism — Public Culture Development Centre</p>
                                     <p class="text-xs text-gray-400">(XCGGWH2024016)</p>
+                                    <p class="text-xs text-gray-500 mt-1">2024</p>
                                 </div>
-                            </div>
-                            <svg class="research-chevron text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                        </div>
-                        <div class="research-accordion-content">
-                            <div class="research-accordion-inner">
-                                <p class="text-sm text-gray-300">Public cultural development and digital transformation research.</p>
-                                <p class="text-xs text-gray-500 mt-2">2024</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="research-accordion-item">
-                        <div class="research-accordion-header" onclick="toggleResearchAccordion(this)">
-                            <div class="flex items-center gap-3">
-                                <span class="grant-badge grant-provincial">Provincial</span>
-                                <div>
-                                    <p class="font-bold text-white text-sm">Shanghai Higher Education Society</p>
+                                <div class="bg-black/20 p-3 rounded-lg">
+                                    <p class="font-bold text-white text-sm mb-1">Shanghai Higher Education Society</p>
                                     <p class="text-xs text-gray-400">(2QYB24121)</p>
+                                    <p class="text-xs text-gray-500 mt-1">2024</p>
                                 </div>
-                            </div>
-                            <svg class="research-chevron text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                        </div>
-                        <div class="research-accordion-content">
-                            <div class="research-accordion-inner">
-                                <p class="text-sm text-gray-300">Higher education development and innovation research.</p>
-                                <p class="text-xs text-gray-500 mt-2">2024</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="research-accordion-item">
-                        <div class="research-accordion-header" onclick="toggleResearchAccordion(this)">
-                            <div class="flex items-center gap-3">
-                                <span class="grant-badge grant-provincial">Provincial</span>
-                                <div>
-                                    <p class="font-bold text-white text-sm">Shaanxi Provincial Social Science Research</p>
+                                <div class="bg-black/20 p-3 rounded-lg">
+                                    <p class="font-bold text-white text-sm mb-1">Shaanxi Provincial Social Science Research</p>
                                     <p class="text-xs text-gray-400">(2024QN066)</p>
+                                    <p class="text-xs text-gray-500 mt-1">2024</p>
                                 </div>
-                            </div>
-                            <svg class="research-chevron text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                        </div>
-                        <div class="research-accordion-content">
-                            <div class="research-accordion-inner">
-                                <p class="text-sm text-gray-300">Regional cultural and social development research.</p>
-                                <p class="text-xs text-gray-500 mt-2">2024</p>
                             </div>
                         </div>
                     </div>
@@ -1178,17 +1182,14 @@
                         <div class="research-accordion-header" onclick="toggleResearchAccordion(this)">
                             <div class="flex items-center gap-3">
                                 <span class="grant-badge grant-university">University</span>
-                                <div>
-                                    <p class="font-bold text-white text-sm">5 projects at Fudan University and Central Conservatory of Music</p>
-                                    <p class="text-xs text-gray-400">Various research initiatives</p>
-                                </div>
+                                <span class="text-sm text-gray-300">5 Projects</span>
                             </div>
                             <svg class="research-chevron text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
                         </div>
                         <div class="research-accordion-content">
                             <div class="research-accordion-inner">
-                                <p class="text-sm text-gray-300">Collaborative research projects at leading Chinese universities focusing on music industry and cultural studies.</p>
-                                <p class="text-xs text-gray-500 mt-2">2023–2025</p>
+                                <p class="text-sm text-gray-300 mb-2">5 projects at Fudan University and Central Conservatory of Music (2023–2025):</p>
+                                <p class="text-sm text-gray-400">Collaborative research projects at leading Chinese universities focusing on music industry and cultural studies.</p>
                             </div>
                         </div>
                     </div>
@@ -1207,11 +1208,11 @@
                 </button>
                 
                 <div class="flex flex-col md:flex-row gap-8 items-end">
-                    <div class="w-52 h-52 bg-gradient-to-br from-violet-600 to-purple-800 shadow-2xl rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div class="w-52 h-52 bg-gradient-to-br from-blue-600 to-indigo-800 shadow-2xl rounded-lg flex items-center justify-center flex-shrink-0">
                         <svg class="w-24 h-24 text-white/30" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
                     </div>
                     <div>
-                        <span class="text-xs font-bold uppercase tracking-widest text-violet-400">Playlist</span>
+                        <span class="text-xs font-bold uppercase tracking-widest text-blue-400">Playlist</span>
                         <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-4">Industry Exp.</h1>
                         <p class="text-gray-300 mb-2">10+ years across music platforms, artist management, and live production</p>
                         <p class="text-sm text-gray-400">Taipei • Tokyo • Beijing • Shanghai</p>
@@ -1222,13 +1223,13 @@
 
         <main class="px-6 md:px-8 py-8 max-w-7xl mx-auto">
             <div class="section-block">
-                <h2 class="section-header text-violet-400 border-violet-400">Professional Experience</h2>
+                <h2 class="section-header text-blue-400 border-blue-400">Professional Experience</h2>
                 
                 <div class="space-y-4">
-                    <!-- Editorial -->
+                    <!-- Editorial - 3 lines, no accordion -->
                     <div class="bg-black/20 p-5 rounded-xl">
                         <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#ff4b2b] to-[#ff416c] flex items-center justify-center flex-shrink-0">
+                            <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#3b82f6] to-[#1d4ed8] flex items-center justify-center flex-shrink-0">
                                 <span class="text-white font-bold text-xs">EDIT</span>
                             </div>
                             <div class="flex-1">
@@ -1239,17 +1240,17 @@
                         </div>
                     </div>
 
-                    <!-- TV Production -->
+                    <!-- TV Production - 3 lines, no accordion -->
                     <div class="bg-black/20 p-5 rounded-xl">
                         <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#00c6ff] to-[#0072ff] flex items-center justify-center flex-shrink-0">
+                            <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#60a5fa] to-[#3b82f6] flex items-center justify-center flex-shrink-0">
                                 <span class="text-white font-bold text-xs">TV</span>
                             </div>
                             <div class="flex-1">
                                 <h3 class="font-bold text-lg text-white mb-1">TV Production</h3>
                                 <p class="text-sm text-gray-400 mb-2">2015 – Present • Music & Artist Coordination</p>
-                                <p class="text-sm text-gray-300 mb-3">Music and artist coordination for special television programs and broadcast events.</p>
-                                <div class="bg-black/30 p-3 rounded-lg">
+                                <p class="text-sm text-gray-300">Music and artist coordination for special television programs and broadcast events.</p>
+                                <div class="mt-3 bg-black/30 p-3 rounded-lg">
                                     <div class="flex items-center gap-2 mb-2">
                                         <span class="year-badge">2022</span>
                                         <span class="text-xs text-blue-400">Hong Kong 25th Anniversary</span>
@@ -1270,10 +1271,10 @@
                         </div>
                     </div>
 
-                    <!-- Artist Management -->
+                    <!-- Artist Management - 3 lines, no accordion -->
                     <div class="bg-black/20 p-5 rounded-xl">
                         <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#8e2de2] to-[#4a00e0] flex items-center justify-center flex-shrink-0">
+                            <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#93c5fd] to-[#60a5fa] flex items-center justify-center flex-shrink-0">
                                 <span class="text-white font-bold text-xs">MGMT</span>
                             </div>
                             <div class="flex-1">
@@ -1284,17 +1285,24 @@
                         </div>
                     </div>
 
-                    <!-- Live Events -->
-                    <div class="bg-black/20 p-5 rounded-xl">
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#f2994a] to-[#f2c94c] flex items-center justify-center flex-shrink-0">
-                                <span class="text-white font-bold text-xs">LIVE</span>
+                    <!-- Live Events - More than 3 lines, use accordion -->
+                    <div class="industry-accordion-item">
+                        <div class="industry-accordion-header" onclick="toggleIndustryAccordion(this)">
+                            <div class="flex items-start gap-4 flex-1">
+                                <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#bfdbfe] to-[#93c5fd] flex items-center justify-center flex-shrink-0">
+                                    <span class="text-blue-900 font-bold text-xs">LIVE</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-lg text-white mb-1">Live Event Production</h3>
+                                    <p class="text-sm text-gray-400 mb-2">2015 – Present • 27 Events • 500,000+ Attendance</p>
+                                    <p class="text-sm text-gray-300">Coordinated large-scale live events with cumulative attendance across Asia.</p>
+                                </div>
                             </div>
-                            <div class="flex-1">
-                                <h3 class="font-bold text-lg text-white mb-1">Live Event Production</h3>
-                                <p class="text-sm text-gray-400 mb-2">2015 – Present • 27 Events • 500,000+ Attendance</p>
-                                <p class="text-sm text-gray-300 mb-3">Coordinated large-scale live events with cumulative attendance across Asia.</p>
-                                <div class="space-y-2">
+                            <svg class="industry-chevron text-gray-400 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                        </div>
+                        <div class="industry-accordion-content">
+                            <div class="industry-accordion-inner">
+                                <div class="space-y-3">
                                     <div class="bilingual-item bg-black/30 p-3 rounded-lg">
                                         <div class="flex items-center gap-2 mb-1">
                                             <span class="year-badge">2022</span>
@@ -1349,11 +1357,11 @@
                 </button>
                 
                 <div class="flex flex-col md:flex-row gap-8 items-end">
-                    <div class="w-52 h-52 bg-gradient-to-br from-pink-600 to-rose-800 shadow-2xl rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div class="w-52 h-52 bg-gradient-to-br from-blue-500 to-cyan-700 shadow-2xl rounded-lg flex items-center justify-center flex-shrink-0">
                         <svg class="w-24 h-24 text-white/30" fill="currentColor" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
                     </div>
                     <div>
-                        <span class="text-xs font-bold uppercase tracking-widest text-pink-400">Playlist</span>
+                        <span class="text-xs font-bold uppercase tracking-widest text-blue-400">Playlist</span>
                         <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-4">Reviews / Articles</h1>
                         <p class="text-gray-300 mb-2">Performing arts criticism and music commentary</p>
                         <p class="text-sm text-gray-400">11 articles • NCAF Performing Arts Review Platform & More</p>
@@ -1363,35 +1371,29 @@
         </section>
 
         <main class="px-6 md:px-8 py-8 max-w-7xl mx-auto">
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 <!-- Arts Criticism Card -->
-                <div class="album-card p-4" onclick="openModal('arts')">
-                    <div class="industry-cover bg-gradient-to-br from-[#ec4899] to-[#be185d] mb-3 h-24">
-                        <span class="text-white text-lg">ARTS</span>
+                <div class="album-card p-4 group" onclick="openModal('arts')">
+                    <div class="relative aspect-square bg-gradient-to-br from-[#3b82f6] to-[#1d4ed8] rounded-md mb-4 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white/30" fill="currentColor" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+                        <div class="play-overlay">
+                            <svg class="w-6 h-6 text-black ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
                     </div>
-                    <h3 class="font-bold text-base mb-1">Arts Criticism</h3>
-                    <p class="text-xs text-gray-400 leading-relaxed mb-2">
-                        Performing arts reviews for NCAF Platform.
-                    </p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-xs text-gray-500">8 articles</span>
-                        <span class="text-xs text-pink-400">View →</span>
-                    </div>
+                    <h3 class="font-bold text-white mb-1 text-center">Arts Criticism</h3>
+                    <p class="text-sm text-gray-400 line-clamp-2 text-center">8 articles</p>
                 </div>
 
                 <!-- News Commentary Card -->
-                <div class="album-card p-4" onclick="openModal('news')">
-                    <div class="industry-cover bg-gradient-to-br from-[#3b82f6] to-[#1d4ed8] mb-3 h-24">
-                        <span class="text-white text-lg">NEWS</span>
+                <div class="album-card p-4 group" onclick="openModal('news')">
+                    <div class="relative aspect-square bg-gradient-to-br from-[#60a5fa] to-[#3b82f6] rounded-md mb-4 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white/30" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                        <div class="play-overlay">
+                            <svg class="w-6 h-6 text-black ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
                     </div>
-                    <h3 class="font-bold text-base mb-1">News & Commentary</h3>
-                    <p class="text-xs text-gray-400 leading-relaxed mb-2">
-                        Music industry analysis & cultural commentary.
-                    </p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-xs text-gray-500">3 articles</span>
-                        <span class="text-xs text-blue-400">View →</span>
-                    </div>
+                    <h3 class="font-bold text-white mb-1 text-center">News & Commentary</h3>
+                    <p class="text-sm text-gray-400 line-clamp-2 text-center">3 articles</p>
                 </div>
             </div>
         </main>
@@ -1414,7 +1416,7 @@
                             <svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         </div>
                         <div class="flex-1 min-w-0">
-                            <h3 class="font-bold text-white group-hover:text-pink-400 transition truncate">在標準之外詮釋自我——《綺響：高木綾子出道25週年紀念音樂會》</h3>
+                            <h3 class="font-bold text-white group-hover:text-blue-400 transition truncate">在標準之外詮釋自我——《綺響：高木綾子出道25週年紀念音樂會》</h3>
                             <p class="text-sm text-gray-400 mt-1">2026.01.19</p>
                         </div>
                     </a>
@@ -1425,7 +1427,7 @@
                             <svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         </div>
                         <div class="flex-1 min-w-0">
-                            <h3 class="font-bold text-white group-hover:text-pink-400 transition truncate">當音樂走出畫——《忘憂宮巡禮》長笛協奏曲音樂會</h3>
+                            <h3 class="font-bold text-white group-hover:text-blue-400 transition truncate">當音樂走出畫——《忘憂宮巡禮》長笛協奏曲音樂會</h3>
                             <p class="text-sm text-gray-400 mt-1">2025.09.22</p>
                         </div>
                     </a>
@@ -1436,7 +1438,7 @@
                             <svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         </div>
                         <div class="flex-1 min-w-0">
-                            <h3 class="font-bold text-white group-hover:text-pink-400 transition truncate">展現極致的樂音平衡《帕胡德與他的朋友——法國風木管重奏團》</h3>
+                            <h3 class="font-bold text-white group-hover:text-blue-400 transition truncate">展現極致的樂音平衡《帕胡德與他的朋友——法國風木管重奏團》</h3>
                             <p class="text-sm text-gray-400 mt-1">2025.04.09</p>
                         </div>
                     </a>
@@ -1447,7 +1449,7 @@
                             <svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         </div>
                         <div class="flex-1 min-w-0">
-                            <h3 class="font-bold text-white group-hover:text-pink-400 transition truncate">在人生歷時的音樂片段裡看見《曙光》陳品樺薩克斯風獨奏會</h3>
+                            <h3 class="font-bold text-white group-hover:text-blue-400 transition truncate">在人生歷時的音樂片段裡看見《曙光》陳品樺薩克斯風獨奏會</h3>
                             <p class="text-sm text-gray-400 mt-1">2025.02.12</p>
                         </div>
                     </a>
@@ -1458,7 +1460,7 @@
                             <svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         </div>
                         <div class="flex-1 min-w-0">
-                            <h3 class="font-bold text-white group-hover:text-pink-400 transition truncate">在單聲部旋律中聽見複音聲響—《名家系列——高木綾子長笛獨奏音樂會》</h3>
+                            <h3 class="font-bold text-white group-hover:text-blue-400 transition truncate">在單聲部旋律中聽見複音聲響—《名家系列——高木綾子長笛獨奏音樂會》</h3>
                             <p class="text-sm text-gray-400 mt-1">2024.06.07</p>
                         </div>
                     </a>
@@ -1469,7 +1471,7 @@
                             <svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         </div>
                         <div class="flex-1 min-w-0">
-                            <h3 class="font-bold text-white group-hover:text-pink-400 transition truncate">重新審視伴奏與合作的音樂定位《琴逢笛手》</h3>
+                            <h3 class="font-bold text-white group-hover:text-blue-400 transition truncate">重新審視伴奏與合作的音樂定位《琴逢笛手》</h3>
                             <p class="text-sm text-gray-400 mt-1">2021.02.24</p>
                         </div>
                     </a>
@@ -1480,7 +1482,7 @@
                             <svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         </div>
                         <div class="flex-1 min-w-0">
-                            <h3 class="font-bold text-white group-hover:text-pink-400 transition truncate">長笛聲訴說的故事《菲利普・永特長笛獨奏會》</h3>
+                            <h3 class="font-bold text-white group-hover:text-blue-400 transition truncate">長笛聲訴說的故事《菲利普・永特長笛獨奏會》</h3>
                             <p class="text-sm text-gray-400 mt-1">2020.02.24</p>
                         </div>
                     </a>
@@ -1491,7 +1493,7 @@
                             <svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         </div>
                         <div class="flex-1 min-w-0">
-                            <h3 class="font-bold text-white group-hover:text-pink-400 transition truncate">杜柳情慾的再譯釋《尋夢》</h3>
+                            <h3 class="font-bold text-white group-hover:text-blue-400 transition truncate">杜柳情慾的再譯釋《尋夢》</h3>
                             <p class="text-sm text-gray-400 mt-1">2016.08.22</p>
                         </div>
                     </a>
@@ -1557,11 +1559,11 @@
                 </button>
                 
                 <div class="flex flex-col md:flex-row gap-8 items-end">
-                    <div class="w-52 h-52 bg-gradient-to-br from-amber-600 to-orange-800 shadow-2xl rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div class="w-52 h-52 bg-gradient-to-br from-sky-600 to-blue-800 shadow-2xl rounded-lg flex items-center justify-center flex-shrink-0">
                         <svg class="w-24 h-24 text-white/30" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                     <div>
-                        <span class="text-xs font-bold uppercase tracking-widest text-amber-400">Playlist</span>
+                        <span class="text-xs font-bold uppercase tracking-widest text-blue-400">Playlist</span>
                         <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-4">Life Productions</h1>
                         <p class="text-gray-300 mb-2">Music arrangement, videos & post-production</p>
                         <p class="text-sm text-gray-400">8 projects • A Cappella • MV Production</p>
@@ -1571,41 +1573,29 @@
         </section>
 
         <main class="px-6 md:px-8 py-8 max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 <!-- Music Production Card -->
-                <div class="album-card p-5" onclick="openModal('music-prod')">
-                    <div class="industry-cover bg-gradient-to-br from-[#8b5cf6] to-[#6d28d9] mb-4">
-                        <span class="text-white">MUSIC</span>
+                <div class="album-card p-4 group" onclick="openModal('music-prod')">
+                    <div class="relative aspect-square bg-gradient-to-br from-[#3b82f6] to-[#1d4ed8] rounded-md mb-4 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white/30" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+                        <div class="play-overlay">
+                            <svg class="w-6 h-6 text-black ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
                     </div>
-                    <h3 class="font-bold text-lg mb-2">Music Production</h3>
-                    <p class="text-xs text-gray-400 leading-relaxed">
-                        A Cappella arrangements, music production, and audio post-production for various projects.
-                    </p>
-                    <div class="mt-3 flex items-center justify-between">
-                        <span class="text-xs text-gray-500">2 projects</span>
-                        <span class="text-xs text-purple-400 flex items-center gap-1">
-                            View All
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                        </span>
-                    </div>
+                    <h3 class="font-bold text-white mb-1 text-center">Music Production</h3>
+                    <p class="text-sm text-gray-400 line-clamp-2 text-center">Arrangement</p>
                 </div>
 
                 <!-- Video Production Card -->
-                <div class="album-card p-5" onclick="openModal('video-prod')">
-                    <div class="industry-cover bg-gradient-to-br from-[#f97316] to-[#c2410c] mb-4">
-                        <span class="text-white">VIDEO</span>
+                <div class="album-card p-4 group" onclick="openModal('video-prod')">
+                    <div class="relative aspect-square bg-gradient-to-br from-[#60a5fa] to-[#3b82f6] rounded-md mb-4 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white/30" fill="currentColor" viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
+                        <div class="play-overlay">
+                            <svg class="w-6 h-6 text-black ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
                     </div>
-                    <h3 class="font-bold text-lg mb-2">Video Production</h3>
-                    <p class="text-xs text-gray-400 leading-relaxed">
-                        Music video filming, editing, and post-production for artists and creative projects.
-                    </p>
-                    <div class="mt-3 flex items-center justify-between">
-                        <span class="text-xs text-gray-500">6 projects</span>
-                        <span class="text-xs text-orange-400 flex items-center gap-1">
-                            View All
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                        </span>
-                    </div>
+                    <h3 class="font-bold text-white mb-1 text-center">Video Production</h3>
+                    <p class="text-sm text-gray-400 line-clamp-2 text-center">Filming & Editing</p>
                 </div>
             </div>
         </main>
@@ -1622,36 +1612,36 @@
             </div>
             <div class="modal-body">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <a href="https://youtu.be/2XF637Y-e7Y" target="_blank" class="project-card group relative overflow-hidden rounded-xl aspect-video bg-gradient-to-br from-green-900 to-teal-900 flex items-center justify-center">
+                    <a href="https://youtu.be/2XF637Y-e7Y" target="_blank" class="project-card group relative overflow-hidden rounded-xl aspect-video bg-gradient-to-br from-blue-900 to-indigo-900 flex items-center justify-center">
                         <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition"></div>
                         <div class="relative z-10 text-center px-4">
                             <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition backdrop-blur-sm">
                                 <svg class="w-6 h-6 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                             </div>
                             <h3 class="text-sm font-bold mb-1">漫聲阿卡貝拉《一個人對話》</h3>
-                            <p class="text-[10px] text-gray-400">編曲與影片後製</p>
+                            <p class="text-[10px] text-gray-400">Arrangement</p>
                         </div>
                         <div class="english-overlay">
                             <div>
-                                <p class="text-sm font-bold text-white mb-1">Mixster A Cappella</p>
-                                <p class="text-xs text-green-400">Arrangement & Post-production</p>
+                                <p class="text-sm font-bold text-white mb-1">A Dialogue for One</p>
+                                <p class="text-xs text-blue-400">編曲與影片後製</p>
                             </div>
                         </div>
                     </a>
 
-                    <a href="https://youtu.be/2XF637Y-e7Y" target="_blank" class="project-card group relative overflow-hidden rounded-xl aspect-video bg-gradient-to-br from-cyan-900 to-blue-900 flex items-center justify-center">
+                    <a href="https://youtu.be/2XF637Y-e7Y" target="_blank" class="project-card group relative overflow-hidden rounded-xl aspect-video bg-gradient-to-br from-indigo-900 to-purple-900 flex items-center justify-center">
                         <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition"></div>
                         <div class="relative z-10 text-center px-4">
                             <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition backdrop-blur-sm">
                                 <svg class="w-6 h-6 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                             </div>
                             <h3 class="text-sm font-bold mb-1">Syntiona《匆匆那年》</h3>
-                            <p class="text-[10px] text-gray-400">阿卡貝拉編曲</p>
+                            <p class="text-[10px] text-gray-400">Arrangement</p>
                         </div>
                         <div class="english-overlay">
                             <div>
-                                <p class="text-sm font-bold text-white mb-1">Syntiona A Cappella</p>
-                                <p class="text-xs text-green-400">A Cappella Arrangement</p>
+                                <p class="text-sm font-bold text-white mb-1">Congcong Nanian</p>
+                                <p class="text-xs text-blue-400">阿卡貝拉編曲</p>
                             </div>
                         </div>
                     </a>
@@ -1670,104 +1660,104 @@
             </div>
             <div class="modal-body">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <a href="https://www.bilibili.com/video/BV1YkrKBVEav/" target="_blank" class="project-card group relative overflow-hidden rounded-xl aspect-video bg-gradient-to-br from-purple-900 to-indigo-900 flex items-center justify-center">
+                    <a href="https://www.bilibili.com/video/BV1YkrKBVEav/" target="_blank" class="project-card group relative overflow-hidden rounded-xl aspect-video bg-gradient-to-br from-blue-900 to-cyan-900 flex items-center justify-center">
                         <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition"></div>
                         <div class="relative z-10 text-center px-4">
                             <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition backdrop-blur-sm">
                                 <svg class="w-6 h-6 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                             </div>
                             <h3 class="text-sm font-bold mb-1">逐鹿人—《逐鹿南詔》</h3>
-                            <p class="text-[10px] text-gray-400">音樂影片製作</p>
+                            <p class="text-[10px] text-gray-400">MV Production</p>
                         </div>
                         <div class="english-overlay">
                             <div>
-                                <p class="text-sm font-bold text-white mb-1">Deer Chaser</p>
-                                <p class="text-xs text-green-400">MV Creating & Production</p>
+                                <p class="text-sm font-bold text-white mb-1">Back to Nanzhao</p>
+                                <p class="text-xs text-blue-400">音樂影片製作</p>
                             </div>
                         </div>
                     </a>
 
-                    <a href="https://weibo.com/6274144981/FBUrurEOX" target="_blank" class="project-card group relative overflow-hidden rounded-xl aspect-video bg-gradient-to-br from-blue-900 to-cyan-900 flex items-center justify-center">
+                    <a href="https://weibo.com/6274144981/FBUrurEOX" target="_blank" class="project-card group relative overflow-hidden rounded-xl aspect-video bg-gradient-to-br from-cyan-900 to-blue-900 flex items-center justify-center">
                         <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition"></div>
                         <div class="relative z-10 text-center px-4">
                             <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition backdrop-blur-sm">
                                 <svg class="w-6 h-6 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                             </div>
                             <h3 class="text-sm font-bold mb-1">自由意志人聲樂團《Fast》</h3>
-                            <p class="text-[10px] text-gray-400">阿卡貝拉影片拍攝剪輯</p>
+                            <p class="text-[10px] text-gray-400">Filming & Editing</p>
                         </div>
                         <div class="english-overlay">
                             <div>
-                                <p class="text-sm font-bold text-white mb-1">Freewill A Cappella</p>
-                                <p class="text-xs text-green-400">MV Filming & Editing</p>
+                                <p class="text-sm font-bold text-white mb-1">Freewill A Cappella - Fast</p>
+                                <p class="text-xs text-blue-400">阿卡貝拉影片拍攝剪輯</p>
                             </div>
                         </div>
                     </a>
 
-                    <a href="https://youtu.be/FP8TTlbDHDA" target="_blank" class="project-card group relative overflow-hidden rounded-xl aspect-video bg-gradient-to-br from-pink-900 to-rose-900 flex items-center justify-center">
+                    <a href="https://youtu.be/FP8TTlbDHDA" target="_blank" class="project-card group relative overflow-hidden rounded-xl aspect-video bg-gradient-to-br from-sky-900 to-blue-900 flex items-center justify-center">
                         <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition"></div>
                         <div class="relative z-10 text-center px-4">
                             <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition backdrop-blur-sm">
                                 <svg class="w-6 h-6 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                             </div>
                             <h3 class="text-sm font-bold mb-1">江蕙《幸福的溫度》</h3>
-                            <p class="text-[10px] text-gray-400">音樂影片剪輯</p>
+                            <p class="text-[10px] text-gray-400">MV Editing</p>
                         </div>
                         <div class="english-overlay">
                             <div>
-                                <p class="text-sm font-bold text-white mb-1">Jody Chiang</p>
-                                <p class="text-xs text-green-400">MV Editing</p>
+                                <p class="text-sm font-bold text-white mb-1">The Temperature of Happiness</p>
+                                <p class="text-xs text-blue-400">音樂影片剪輯</p>
                             </div>
                         </div>
                     </a>
 
-                    <a href="https://youtu.be/vuDb1B0RyBw" target="_blank" class="project-card group relative overflow-hidden rounded-xl aspect-video bg-gradient-to-br from-yellow-900 to-orange-900 flex items-center justify-center">
+                    <a href="https://youtu.be/vuDb1B0RyBw" target="_blank" class="project-card group relative overflow-hidden rounded-xl aspect-video bg-gradient-to-br from-blue-900 to-indigo-900 flex items-center justify-center">
                         <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition"></div>
                         <div class="relative z-10 text-center px-4">
                             <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition backdrop-blur-sm">
                                 <svg class="w-6 h-6 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                             </div>
                             <h3 class="text-sm font-bold mb-1">蔡黃汝《壁咚 BEEDONG》</h3>
-                            <p class="text-[10px] text-gray-400">舞蹈影音拍攝剪輯</p>
+                            <p class="text-[10px] text-gray-400">Filming & Editing</p>
                         </div>
                         <div class="english-overlay">
                             <div>
-                                <p class="text-sm font-bold text-white mb-1">Jody Tsai</p>
-                                <p class="text-xs text-green-400">Dance Video Filming & Editing</p>
+                                <p class="text-sm font-bold text-white mb-1">Beedong</p>
+                                <p class="text-xs text-blue-400">舞蹈影音拍攝剪輯</p>
                             </div>
                         </div>
                     </a>
 
-                    <a href="https://youtu.be/t8WD2S8rHsk" target="_blank" class="project-card group relative overflow-hidden rounded-xl aspect-video bg-gradient-to-br from-indigo-900 to-purple-900 flex items-center justify-center">
+                    <a href="https://youtu.be/t8WD2S8rHsk" target="_blank" class="project-card group relative overflow-hidden rounded-xl aspect-video bg-gradient-to-br from-indigo-900 to-violet-900 flex items-center justify-center">
                         <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition"></div>
                         <div class="relative z-10 text-center px-4">
                             <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition backdrop-blur-sm">
                                 <svg class="w-6 h-6 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                             </div>
                             <h3 class="text-sm font-bold mb-1">管罄《First Love》Cover</h3>
-                            <p class="text-[10px] text-gray-400">音樂影片拍攝剪輯</p>
+                            <p class="text-[10px] text-gray-400">Filming & Editing</p>
                         </div>
                         <div class="english-overlay">
                             <div>
-                                <p class="text-sm font-bold text-white mb-1">Guan Qing</p>
-                                <p class="text-xs text-green-400">MV Filming & Editing</p>
+                                <p class="text-sm font-bold text-white mb-1">First Love (Cover)</p>
+                                <p class="text-xs text-blue-400">音樂影片拍攝剪輯</p>
                             </div>
                         </div>
                     </a>
 
-                    <a href="https://youtu.be/G9W3YnqgEAI" target="_blank" class="project-card group relative overflow-hidden rounded-xl aspect-video bg-gradient-to-br from-red-900 to-pink-900 flex items-center justify-center">
+                    <a href="https://youtu.be/G9W3YnqgEAI" target="_blank" class="project-card group relative overflow-hidden rounded-xl aspect-video bg-gradient-to-br from-violet-900 to-purple-900 flex items-center justify-center">
                         <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition"></div>
                         <div class="relative z-10 text-center px-4">
                             <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition backdrop-blur-sm">
                                 <svg class="w-6 h-6 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                             </div>
                             <h3 class="text-sm font-bold mb-1">劉明湘《就決定是你了》Cover</h3>
-                            <p class="text-[10px] text-gray-400">音樂影片拍攝剪輯</p>
+                            <p class="text-[10px] text-gray-400">Filming & Editing</p>
                         </div>
                         <div class="english-overlay">
                             <div>
-                                <p class="text-sm font-bold text-white mb-1">Rose Liu</p>
-                                <p class="text-xs text-green-400">MV Filming & Editing</p>
+                                <p class="text-sm font-bold text-white mb-1">It's You (Cover)</p>
+                                <p class="text-xs text-blue-400">音樂影片拍攝剪輯</p>
                             </div>
                         </div>
                     </a>
@@ -1803,8 +1793,8 @@
             <div class="bg-[#181818] rounded-2xl p-8 space-y-6">
                 <div class="space-y-4">
                     <div class="flex items-center gap-4 p-4 bg-white/5 rounded-lg">
-                        <div class="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center">
-                            <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        <div class="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center">
+                            <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                         </div>
                         <div>
                             <p class="text-sm text-gray-400 mb-1">Email</p>
@@ -1823,8 +1813,8 @@
                     </div>
 
                     <div class="flex items-center gap-4 p-4 bg-white/5 rounded-lg">
-                        <div class="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center">
-                            <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        <div class="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center">
+                            <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                         </div>
                         <div>
                             <p class="text-sm text-gray-400 mb-1">Status</p>
@@ -1874,7 +1864,7 @@
 
                 <div class="pt-6 border-t border-white/10">
                     <h3 class="font-bold mb-4 text-white">Languages</h3>
-                    <div class="flex flex-wrap gap-2">
+                    <div class="languages-container">
                         <span class="px-4 py-2 bg-white/10 rounded-full text-sm">Mandarin</span>
                         <span class="px-4 py-2 bg-white/10 rounded-full text-sm">English</span>
                         <span class="px-4 py-2 bg-white/10 rounded-full text-sm">Japanese</span>
@@ -1889,7 +1879,7 @@
     <footer class="fixed bottom-0 w-full glass-nav border-t border-white/10 px-6 py-4 z-50">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
             <div class="flex items-center gap-4 cursor-pointer" onclick="showPage('home')">
-                <div class="w-14 h-14 bg-gradient-to-br from-green-400 to-blue-600 rounded flex items-center justify-center font-black text-green-900 text-xl shadow-lg">J</div>
+                <div class="w-14 h-14 bg-gradient-to-br from-blue-400 to-blue-600 rounded flex items-center justify-center font-black text-blue-900 text-xl shadow-lg">J</div>
                 <div>
                     <p class="text-sm font-bold text-white">Jim PoTseng Yeh</p>
                     <p class="text-xs text-gray-400">葉柏增 • Portfolio 2025</p>
@@ -1905,14 +1895,14 @@
                 <div class="w-full flex items-center gap-2 text-xs text-gray-400 font-mono">
                     <span>JimPTYeh@gmail.com</span>
                     <div class="flex-1 h-1 bg-white/20 rounded-full overflow-hidden cursor-pointer group">
-                        <div class="w-1/2 h-full bg-white group-hover:bg-green-400 rounded-full"></div>
+                        <div class="w-1/2 h-full bg-white group-hover:bg-blue-400 rounded-full"></div>
                     </div>
                     <span>PhD Candidate</span>
                 </div>
             </div>
             
             <div class="flex items-center gap-4">
-                <button onclick="showPage('contact')" class="bg-white text-black px-6 py-2 rounded-full font-bold text-sm hover:scale-105 hover:bg-green-400 transition shadow-lg">
+                <button onclick="showPage('contact')" class="bg-white text-black px-6 py-2 rounded-full font-bold text-sm hover:scale-105 hover:bg-blue-400 transition shadow-lg">
                     Contact
                 </button>
             </div>
@@ -1973,6 +1963,22 @@
                 if (acc !== content) {
                     acc.classList.remove('active');
                     acc.previousElementSibling.querySelector('.research-chevron').classList.remove('active');
+                }
+            });
+            
+            content.classList.toggle('active');
+            chevron.classList.toggle('active');
+        }
+
+        function toggleIndustryAccordion(header) {
+            const content = header.nextElementSibling;
+            const chevron = header.querySelector('.industry-chevron');
+            
+            // Close all other accordions
+            document.querySelectorAll('.industry-accordion-content').forEach(acc => {
+                if (acc !== content) {
+                    acc.classList.remove('active');
+                    acc.previousElementSibling.querySelector('.industry-chevron').classList.remove('active');
                 }
             });
             
