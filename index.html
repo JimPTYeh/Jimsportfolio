@@ -49,6 +49,10 @@
             background: linear-gradient(180deg, #7c3aed 0%, #6d28d9 15%, #121212 60%);
         }
         
+        .page-gradient-livesession {
+            background: linear-gradient(180deg, #dc2626 0%, #b91c1c 15%, #121212 60%);
+        }
+        
         .page-gradient-reviews {
             background: linear-gradient(180deg, #be185d 0%, #9d174d 15%, #121212 60%);
         }
@@ -149,6 +153,7 @@
         .badge-music { background: #8b5cf6; color: white; }
         .badge-video { background: #f97316; color: white; }
         .badge-conf { background: #3b82f6; color: white; }
+        .badge-teaching { background: #dc2626; color: white; }
         
         .hero-title {
             background: linear-gradient(to right, #fff, #93c5fd);
@@ -775,6 +780,7 @@
             justify-content: center;
             gap: 16px;
             margin-top: 12px;
+            flex-wrap: wrap;
         }
         
         .icon-btn {
@@ -782,15 +788,97 @@
             height: 48px;
             border-radius: 12px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             transition: all 0.2s;
             background: rgba(255,255,255,0.1);
+            text-decoration: none;
+            color: white;
+            padding: 4px;
         }
         
         .icon-btn:hover {
             transform: translateY(-4px);
             background: rgba(255,255,255,0.2);
+        }
+        
+        .icon-btn svg {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 2px;
+        }
+        
+        .icon-btn span {
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        /* Live Session specific styles */
+        .course-card {
+            background: #181818;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .course-card:hover {
+            background: #282828;
+            transform: translateY(-4px);
+            border-color: rgba(220, 38, 38, 0.3);
+        }
+        
+        .track-number {
+            width: 32px;
+            height: 32px;
+            background: rgba(220, 38, 38, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 0.875rem;
+            color: #dc2626;
+            flex-shrink: 0;
+        }
+        
+        .feedback-card {
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.1) 0%, rgba(0,0,0,0.2) 100%);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(220, 38, 38, 0.2);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #dc2626;
+            line-height: 1;
+        }
+        
+        .lecture-item {
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 12px;
+            border-left: 3px solid #dc2626;
+            transition: all 0.2s;
+        }
+        
+        .lecture-item:hover {
+            background: rgba(255,255,255,0.06);
+            transform: translateX(4px);
+        }
+
+        /* Mobile menu */
+        #mobile-menu {
+            display: none;
+        }
+        
+        #mobile-menu.flex {
+            display: flex;
         }
     </style>
 </head>
@@ -807,6 +895,7 @@
             <button onclick="showPage('about')" id="nav-about" class="px-4 py-2 rounded-full hover:text-white transition">Explore Jim</button>
             <button onclick="showPage('research')" id="nav-research" class="px-4 py-2 rounded-full hover:text-white transition">Research & Project</button>
             <button onclick="showPage('industry')" id="nav-industry" class="px-4 py-2 rounded-full hover:text-white transition">Industry Exp.</button>
+            <button onclick="showPage('livesession')" id="nav-livesession" class="px-4 py-2 rounded-full hover:text-white transition">Live Session</button>
             <button onclick="showPage('reviews')" id="nav-reviews" class="px-4 py-2 rounded-full hover:text-white transition">Reviews / Articles</button>
             <button onclick="showPage('production')" id="nav-production" class="px-4 py-2 rounded-full hover:text-white transition">Life Productions</button>
         </div>
@@ -821,6 +910,7 @@
         <button onclick="showPage('about'); toggleMobileMenu()" class="text-gray-400 hover:text-white">Explore Jim</button>
         <button onclick="showPage('research'); toggleMobileMenu()" class="text-gray-400 hover:text-white">Research & Project</button>
         <button onclick="showPage('industry'); toggleMobileMenu()" class="text-gray-400 hover:text-white">Industry Exp.</button>
+        <button onclick="showPage('livesession'); toggleMobileMenu()" class="text-gray-400 hover:text-white">Live Session</button>
         <button onclick="showPage('reviews'); toggleMobileMenu()" class="text-gray-400 hover:text-white">Reviews / Articles</button>
         <button onclick="showPage('production'); toggleMobileMenu()" class="text-gray-400 hover:text-white">Life Productions</button>
         <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-gray-400">
@@ -829,22 +919,22 @@
     </div>
 
     <!-- HOME PAGE -->
-   <!-- HOME PAGE -->
     <div id="page-home" class="page active">
         <section class="spotify-gradient px-6 md:px-8 pt-28 pb-12 min-h-[50vh] flex flex-col justify-end">
             <div class="max-w-7xl mx-auto w-full">
                 <span class="text-xs font-bold uppercase tracking-widest text-blue-400 mb-4 block">Portfolio Library</span>
                 <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-2">Jim PoTseng Yeh</h1>
                 <p class="text-2xl md:text-3xl text-gray-300 mb-4 font-medium">葉柏增</p>
-                </h1>
-                <p class="text-lg md:text-xl text-gray-300 mb-4 font-medium hero-bilingual">
-                    PhD Candidate, School of Journalism, Fudan University
-                    <span class="chinese-hover">復旦大學新聞學院博士候選人</span>
-                </p>
-                <p class="text-gray-300 max-w-xl hero-bilingual mt-4">
-                    Music Communication | Cultural Industries | Platform Studies
-                    <span class="chinese-hover">音樂傳播｜平台研究｜文化產業</span>
-                </p>
+                <div class="space-y-2 mb-4">
+                    <p class="text-lg md:text-xl text-gray-300 font-medium hero-bilingual">
+                        PhD Candidate, School of Journalism, Fudan University
+                        <span class="chinese-hover">復旦大學新聞學院博士候選人</span>
+                    </p>
+                    <p class="text-gray-300 max-w-xl hero-bilingual">
+                        Music Communication | Cultural Industries | Platform Studies
+                        <span class="chinese-hover">音樂傳播｜平台研究｜文化產業</span>
+                    </p>
+                </div>
                 
                 <div class="flex gap-4 mt-8">
                     <button onclick="showPage('about')" class="bg-blue-500 text-black px-8 py-3 rounded-full font-bold hover:scale-105 transition">Explore Jim</button>
@@ -855,7 +945,7 @@
         <main class="px-6 md:px-8 py-12 max-w-7xl mx-auto">
             <h2 class="text-2xl font-bold mb-6">Jim's Library</h2>
             
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
                 <div onclick="showPage('research')" class="album-card p-4 group">
                     <div class="relative mb-4">
                         <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/card-research.jpg" alt="Research & Project" class="home-card-img">
@@ -876,6 +966,17 @@
                     </div>
                     <h3 class="font-bold text-white mb-1 text-center">《Industry Exp.》</h3>
                     <p class="text-sm text-gray-400 line-clamp-2 text-center">Cross-Regional Professional Experience in Creative Industries</p>
+                </div>
+
+                <div onclick="showPage('livesession')" class="album-card p-4 group">
+                    <div class="relative mb-4">
+                        <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/card-livesession.jpg" alt="Live Session" class="home-card-img">
+                        <div class="play-overlay">
+                            <svg class="w-6 h-6 text-black ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-white mb-1 text-center">《Live Session》</h3>
+                    <p class="text-sm text-gray-400 line-clamp-2 text-center">Teaching & Knowledge Transmission</p>
                 </div>
 
                 <div onclick="showPage('reviews')" class="album-card p-4 group">
@@ -1622,6 +1723,255 @@
         </main>
     </div>
 
+    <!-- LIVE SESSION PAGE -->
+    <div id="page-livesession" class="page">
+        <section class="page-gradient-livesession px-6 md:px-8 pt-24 pb-12">
+            <div class="max-w-7xl mx-auto">
+                <button onclick="showPage('home')" class="back-btn">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+                    Library
+                </button>
+                
+                <div class="flex flex-col md:flex-row gap-8 items-end">
+                    <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/cover-livesession.jpg" alt="Live Session" class="page-cover-img">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-blue-400">Playlist</span>
+                        <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-4">Live Session</h1>
+                        <p class="text-gray-300 mb-2">Knowledge on Air: Transmitting Industry Insights into Classroom Vibrations.</p>
+                        <p class="text-sm text-gray-400">Teaching • Lectures • Knowledge Transmission</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <main class="px-6 md:px-8 py-8 max-w-7xl mx-auto space-y-8">
+            <!-- Intro Quote -->
+            <div class="bg-gradient-to-r from-red-900/20 to-transparent rounded-2xl p-8 border-l-4 border-red-600">
+                <p class="text-lg text-gray-300 leading-relaxed italic">
+                    「教學對我而言，是一場永不落幕的 Live Session。我不只是在傳授理論，更是在課堂上與學生共同混音(Remix)業界實務與學術視野。在這裡，每一次的講座與交流，都是為了在數位媒體的噪音中，精準捕捉到未來的頻率。」
+                </p>
+                <p class="text-sm text-gray-500 mt-4">— Jim PoTseng Yeh, PhD Candidate & Educator</p>
+            </div>
+
+            <!-- Setlist: Course Modules -->
+            <div class="section-block">
+                <h2 class="section-header text-red-500 border-red-500 flex items-center gap-2">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+                    Setlist: Course Modules & Lectures
+                </h2>
+                
+                <p class="text-sm text-gray-400 mb-6">7 Courses as Teaching Assistant at Fudan University • 12+ Guest Lectures & Workshops</p>
+
+                <div class="space-y-4">
+                    <!-- Course 1 -->
+                    <div class="course-card flex items-start gap-4">
+                        <div class="track-number">01</div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-white mb-1">Digital Music & Platform Governance</h3>
+                            <p class="text-sm text-gray-400">數位音樂與平台治理</p>
+                            <div class="flex items-center gap-2 mt-2">
+                                <span class="badge badge-teaching">TA</span>
+                                <span class="text-xs text-gray-500">Fudan University • 2023-2024</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course 2 -->
+                    <div class="course-card flex items-start gap-4">
+                        <div class="track-number">02</div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-white mb-1">AI-driven Content Production Strategy</h3>
+                            <p class="text-sm text-gray-400">AI驅動的內容生產策略</p>
+                            <div class="flex items-center gap-2 mt-2">
+                                <span class="badge badge-teaching">TA</span>
+                                <span class="text-xs text-gray-500">Fudan University • 2024</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course 3 -->
+                    <div class="course-card flex items-start gap-4">
+                        <div class="track-number">03</div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-white mb-1">Global Entertainment Marketing</h3>
+                            <p class="text-sm text-gray-400">全球娛樂行銷</p>
+                            <div class="flex items-center gap-2 mt-2">
+                                <span class="badge badge-teaching">TA</span>
+                                <span class="text-xs text-gray-500">Fudan University • 2023-2024</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course 4 -->
+                    <div class="course-card flex items-start gap-4">
+                        <div class="track-number">04</div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-white mb-1">Music Industry & Copyright Management</h3>
+                            <p class="text-sm text-gray-400">音樂產業與版權管理</p>
+                            <div class="flex items-center gap-2 mt-2">
+                                <span class="badge badge-teaching">TA</span>
+                                <span class="text-xs text-gray-500">Fudan University • 2023-2025</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course 5 -->
+                    <div class="course-card flex items-start gap-4">
+                        <div class="track-number">05</div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-white mb-1">Cultural Industries & Creative Economy</h3>
+                            <p class="text-sm text-gray-400">文化產業與創意經濟</p>
+                            <div class="flex items-center gap-2 mt-2">
+                                <span class="badge badge-teaching">TA</span>
+                                <span class="text-xs text-gray-500">Fudan University • 2023-2024</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course 6 -->
+                    <div class="course-card flex items-start gap-4">
+                        <div class="track-number">06</div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-white mb-1">New Media Platform Studies</h3>
+                            <p class="text-sm text-gray-400">新媒體平台研究</p>
+                            <div class="flex items-center gap-2 mt-2">
+                                <span class="badge badge-teaching">TA</span>
+                                <span class="text-xs text-gray-500">Fudan University • 2024-2025</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course 7 -->
+                    <div class="course-card flex items-start gap-4">
+                        <div class="track-number">07</div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-white mb-1">Music Communication & Audience Studies</h3>
+                            <p class="text-sm text-gray-400">音樂傳播與受眾研究</p>
+                            <div class="flex items-center gap-2 mt-2">
+                                <span class="badge badge-teaching">TA</span>
+                                <span class="text-xs text-gray-500">Fudan University • 2024-2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Guest Lectures -->
+            <div class="section-block">
+                <h2 class="section-header text-red-500 border-red-500 flex items-center gap-2">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    Featured Lectures & Workshops
+                </h2>
+
+                <div class="space-y-4">
+                    <div class="lecture-item">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="year-badge">2024</span>
+                            <span class="badge badge-teaching">Invited Lecture</span>
+                        </div>
+                        <h3 class="font-bold text-white mb-1">AI Music Production Workshop</h3>
+                        <p class="text-sm text-gray-400">人工智能音樂製作工作坊 • Fudan University</p>
+                    </div>
+
+                    <div class="lecture-item">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="year-badge">2024</span>
+                            <span class="badge badge-teaching">Guest Lecture</span>
+                        </div>
+                        <h3 class="font-bold text-white mb-1">Platform Economy and Music Industry Transformation</h3>
+                        <p class="text-sm text-gray-400">平台經濟與音樂產業轉型 • Communication University of China</p>
+                    </div>
+
+                    <div class="lecture-item">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="year-badge">2023</span>
+                            <span class="badge badge-teaching">Workshop</span>
+                        </div>
+                        <h3 class="font-bold text-white mb-1">Cross-Strait Music Industry Collaboration</h3>
+                        <p class="text-sm text-gray-400">兩岸音樂產業協作 • Xiamen University</p>
+                    </div>
+
+                    <div class="lecture-item">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="year-badge">2023</span>
+                            <span class="badge badge-teaching">Keynote</span>
+                        </div>
+                        <h3 class="font-bold text-white mb-1">Digital Transformation in Cultural Industries</h3>
+                        <p class="text-sm text-gray-400">文化產業的數位轉型 • Shanghai Management Science Society</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stage Presence -->
+            <div class="section-block">
+                <h2 class="section-header text-red-500 border-red-500 flex items-center gap-2">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 13H3V5h18v11z"/></svg>
+                    Stage Presence: Teaching & Speaking
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-black/20 rounded-xl overflow-hidden">
+                        <div class="aspect-video bg-gradient-to-br from-red-900/40 to-black flex items-center justify-center">
+                            <svg class="w-16 h-16 text-white/20" fill="currentColor" viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold text-white text-sm mb-1">Classroom Teaching</h3>
+                            <p class="text-xs text-gray-400">Fudan University • Interactive Sessions</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-black/20 rounded-xl overflow-hidden">
+                        <div class="aspect-video bg-gradient-to-br from-red-900/40 to-black flex items-center justify-center">
+                            <svg class="w-16 h-16 text-white/20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold text-white text-sm mb-1">Conference Presentations</h3>
+                            <p class="text-xs text-gray-400">AEJMC • PKU Forum • CUC Lecture</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Audience Feedback -->
+            <div class="section-block">
+                <h2 class="section-header text-red-500 border-red-500 flex items-center gap-2">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    The Crowd's Voice: Student & Peer Feedback
+                </h2>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                    <div class="feedback-card text-center">
+                        <div class="stat-number">4.9</div>
+                        <p class="text-xs text-gray-400 mt-1">Teaching Evaluation<br>/5.0</p>
+                    </div>
+                    <div class="feedback-card text-center">
+                        <div class="stat-number">98%</div>
+                        <p class="text-xs text-gray-400 mt-1">Student<br>Satisfaction</p>
+                    </div>
+                    <div class="feedback-card text-center">
+                        <div class="stat-number">7</div>
+                        <p class="text-xs text-gray-400 mt-1">Courses<br>Assisted</p>
+                    </div>
+                    <div class="feedback-card text-center">
+                        <div class="stat-number">12+</div>
+                        <p class="text-xs text-gray-400 mt-1">Guest<br>Lectures</p>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="bg-black/20 p-4 rounded-lg border-l-2 border-red-500">
+                        <p class="text-sm text-gray-300 italic">"Jim's industry experience brings the theories to life. His classes feel like live performances—engaging, dynamic, and always on point."</p>
+                        <p class="text-xs text-gray-500 mt-2">— Graduate Student, Fudan University</p>
+                    </div>
+                    <div class="bg-black/20 p-4 rounded-lg border-l-2 border-red-500">
+                        <p class="text-sm text-gray-300 italic">"The way he connects academic concepts with real-world music industry cases is exceptional. A true bridge between theory and practice."</p>
+                        <p class="text-xs text-gray-500 mt-2">— Faculty Member, CUC</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
     <!-- REVIEWS / ARTICLES PAGE -->
     <div id="page-reviews" class="page">
         <section class="page-gradient-reviews px-6 md:px-8 pt-24 pb-12">
@@ -2109,7 +2459,7 @@
                     </div>
                 </div>
 
-                <!-- Social Media Icons Grid -->
+                <!-- Social Media Icons Grid with Labels -->
                 <div class="pt-6 border-t border-white/10">
                     <div class="social-icons-grid">
                         <!-- Social Media -->
@@ -2118,15 +2468,23 @@
                             <div class="social-icons-row">
                                 <a href="https://www.instagram.com/jims_life_in_fdu/" target="_blank" class="icon-btn" title="Instagram">
                                     <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                                    <span>Instagram</span>
                                 </a>
                                 <a href="https://www.facebook.com/profile.php?id=100068488652405" target="_blank" class="icon-btn" title="Facebook">
                                     <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                                    <span>Facebook</span>
                                 </a>
                                 <a href="https://xhslink.com/m/7t7vbJzcZet" target="_blank" class="icon-btn" title="小红书">
                                     <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                                    <span>小红书</span>
+                                </a>
+                                <a href="https://space.bilibili.com/280763199?spm_id_from=333.1007.0.0" target="_blank" class="icon-btn" title="Bilibili">
+                                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1-.373-.906c0-.356.124-.658.373-.907l.027-.027c.267-.249.573-.373.92-.373.347 0 .653.124.92.373L9.653 4.44c.071.071.134.142.187.213h4.267a.836.836 0 0 1 .16-.213l2.853-2.747c.267-.249.573-.373.92-.373.347 0 .662.151.929.4.267.249.391.551.391.907 0 .355-.124.657-.373.906zM5.333 7.24c-.746.018-1.373.276-1.88.773-.506.498-.769 1.13-.786 1.894v7.52c.017.764.28 1.395.786 1.893.507.498 1.134.756 1.88.773h13.334c.746-.017 1.373-.275 1.88-.773.506-.498.769-1.129.786-1.893v-7.52c-.017-.765-.28-1.396-.786-1.894-.507-.497-1.134-.755-1.88-.773zM8 11.107c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c0-.373.129-.689.386-.947.258-.257.574-.386.947-.386zm8 0c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373z"/></svg>
+                                    <span>Bilibili</span>
                                 </a>
                                 <a href="https://www.linkedin.com/in/jim-yeh-72a620a8/" target="_blank" class="icon-btn" title="LinkedIn">
                                     <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                                    <span>LinkedIn</span>
                                 </a>
                             </div>
                         </div>
@@ -2137,9 +2495,11 @@
                             <div class="social-icons-row">
                                 <a href="https://scholar.google.com/citations?user=zBwYbWUAAAAJ&hl=zh-TW" target="_blank" class="icon-btn" title="Google Scholar">
                                     <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14Zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5 12 0Z"/></svg>
+                                    <span>Scholar</span>
                                 </a>
                                 <a href="https://orcid.org/my-orcid?orcid=0009-0000-3096-7448" target="_blank" class="icon-btn" title="ORCID">
                                     <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.5 7.5h3v9h-3v-9zm4.5 0h3v1.5h-3V7.5zm0 3h3v6h-3v-6z"/></svg>
+                                    <span>ORCID</span>
                                 </a>
                             </div>
                         </div>
