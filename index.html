@@ -1,266 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jim PoTseng Yeh | Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
-        
-        * {
-            scrollbar-width: thin;
-            scrollbar-color: #555 #121212;
-        }
-        
-        *::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        *::-webkit-scrollbar-track {
-            background: #121212;
-        }
-        
-        *::-webkit-scrollbar-thumb {
-            background: #555;
-            border-radius: 4px;
-        }
-        
-        body { 
-            background-color: #121212; 
-            color: white; 
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-        }
-        
-        .spotify-gradient { 
-            background: linear-gradient(180deg, #1e3a8a 0%, #1e40af 10%, #404040 40%, #121212 100%);
-        }
-        
-        .page-gradient-about {
-            background: linear-gradient(180deg, #374151 0%, #4b5563 15%, #121212 60%);
-        }
-        
-        .page-gradient-research {
-            background: linear-gradient(180deg, #064e3b 0%, #065f46 15%, #121212 60%);
-        }
-        
-        .page-gradient-industry {
-            background: linear-gradient(180deg, #7c3aed 0%, #6d28d9 15%, #121212 60%);
-        }
-        
-        .page-gradient-livesession {
-            background: linear-gradient(180deg, #dc2626 0%, #b91c1c 15%, #121212 60%);
-        }
-        
-        .page-gradient-reviews {
-            background: linear-gradient(180deg, #be185d 0%, #9d174d 15%, #121212 60%);
-        }
-        
-        .page-gradient-production {
-            background: linear-gradient(180deg, #b45309 0%, #92400e 15%, #121212 60%);
-        }
-        
-        .page-gradient-contact {
-            background: linear-gradient(180deg, #1e40af 0%, #1e3a8a 15%, #121212 60%);
-        }
-        
-        .glass-nav { 
-            background: rgba(0, 0, 0, 0.7); 
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .nav-active {
-            background: rgba(255,255,255,0.1);
-            color: white;
-        }
-        
-        .page {
-            display: none;
-            animation: fadeIn 0.5s ease;
-            min-height: 100vh;
-            padding-bottom: 120px;
-        }
-        
-        .page.active {
-            display: block;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .card-hover { 
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .card-hover:hover { 
-            background-color: #282828; 
-            transform: translateY(-8px);
-        }
-        
-        .album-card {
-            background: #181818;
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        
-        .album-card:hover {
-            background: #282828;
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
-        
-        .album-card:hover .play-overlay {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .play-overlay {
-            position: absolute;
-            bottom: 12px;
-            right: 12px;
-            width: 48px;
-            height: 48px;
-            background: #3b82f6;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transform: translateY(8px);
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-        }
-        
-        .badge { 
-            font-size: 0.65rem; 
-            padding: 3px 8px; 
-            border-radius: 4px; 
-            font-weight: 700;
-            letter-spacing: 0.05em;
-        }
-        
-        .badge-review { background: #ec4899; color: white; }
-        .badge-news { background: #3b82f6; color: white; }
-        .badge-industry { background: #f59e0b; color: #000; }
-        .badge-year { background: rgba(255,255,255,0.2); color: white; }
-        .badge-music { background: #8b5cf6; color: white; }
-        .badge-video { background: #f97316; color: white; }
-        .badge-conf { background: #3b82f6; color: white; }
-        .badge-teaching { background: #dc2626; color: white; }
-        
-        .hero-title {
-            background: linear-gradient(to right, #fff, #93c5fd);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .track-list {
-            background: rgba(255,255,255,0.03);
-            border-radius: 12px;
-        }
-        
-        .track-item {
-            transition: all 0.2s ease;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        
-        .track-item:last-child {
-            border-bottom: none;
-        }
-        
-        .track-item:hover {
-            background: rgba(255,255,255,0.1);
-        }
-        
-        .track-item:hover .track-num {
-            display: none;
-        }
-        
-        .track-item:hover .track-play {
-            display: block;
-        }
-        
-        .track-play {
-            display: none;
-            color: #3b82f6;
-        }
-        
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: rgba(255,255,255,0.7);
-            font-weight: 600;
-            margin-bottom: 24px;
-            transition: all 0.2s;
-        }
-        
-        .back-btn:hover {
-            color: white;
-            transform: translateX(-4px);
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-left: 32px;
-            padding-bottom: 32px;
-            border-left: 2px solid rgba(255,255,255,0.1);
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -6px;
-            top: 0;
-            width: 10px;
-            height: 10px;
-            background: #3b82f6;
-            border-radius: 50%;
-        }
-
-        .timeline-item:last-child {
-            border-left: 2px solid transparent;
-        }
-
-        /* Bilingual hover effect */
-        .bilingual-item {
-            position: relative;
-            cursor: pointer;
-        }
-        
-        .bilingual-item .chinese-title {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: rgba(0,0,0,0.9);
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            color: #3b82f6;
-            white-space: nowrap;
-            z-index: 10;
-            margin-top: 4px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .bilingual-item:hover .chinese-title {
-            display: block;
-            animation: fadeIn 0.2s ease;
-        }
-
-        .project-card {
-            position: relative;
-            overflow: hidden;
-        }
-        
         .project-card .english-overlay {
             position: absolute;
             inset: 0;
@@ -461,9 +198,10 @@
             font-style: italic;
         }
 
-        /* Research accordion */
+        /* Research accordion - Fixed z-index for Chinese hover */
         .research-accordion-item {
             border-bottom: 1px solid rgba(255,255,255,0.05);
+            position: relative;
         }
         
         .research-accordion-header {
@@ -476,6 +214,8 @@
             background: rgba(255,255,255,0.02);
             border-radius: 8px;
             margin-bottom: 8px;
+            position: relative;
+            z-index: 10;
         }
         
         .research-accordion-header:hover {
@@ -486,6 +226,8 @@
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease;
+            position: relative;
+            z-index: 5;
         }
         
         .research-accordion-content.active {
@@ -494,6 +236,7 @@
         
         .research-accordion-inner {
             padding: 0 16px 16px;
+            position: relative;
         }
         
         .research-chevron {
@@ -639,7 +382,7 @@
             justify-content: flex-start;
         }
 
-        /* Centered grid container - 統一兩欄置中 */
+        /* Centered grid container */
         .centered-grid-2 {
             display: flex;
             justify-content: center;
@@ -650,7 +393,7 @@
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 1.5rem;
-            max-width: 600px; /* 限制最大寬度確保視覺平衡 */
+            max-width: 600px;
             width: 100%;
         }
         
@@ -758,6 +501,7 @@
             border-radius: 8px;
             margin-bottom: 8px;
             transition: all 0.2s;
+            position: relative;
         }
         
         .project-list-item:hover {
@@ -815,61 +559,109 @@
             letter-spacing: 0.02em;
         }
 
-        /* Live Session specific styles */
+        /* Live Session specific styles - Unified with other pages */
         .course-card {
             background: #181818;
             border-radius: 12px;
-            padding: 20px;
-            border: 1px solid rgba(255,255,255,0.05);
+            overflow: hidden;
             transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.05);
         }
         
         .course-card:hover {
             background: #282828;
-            transform: translateY(-4px);
-            border-color: rgba(220, 38, 38, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
         
-        .track-number {
+        .course-card:hover .play-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .course-track-num {
             width: 32px;
             height: 32px;
-            background: rgba(220, 38, 38, 0.2);
+            background: rgba(59, 130, 246, 0.2);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 900;
             font-size: 0.875rem;
-            color: #dc2626;
+            color: #3b82f6;
             flex-shrink: 0;
         }
         
-        .feedback-card {
-            background: linear-gradient(135deg, rgba(220, 38, 38, 0.1) 0%, rgba(0,0,0,0.2) 100%);
-            border-radius: 12px;
-            padding: 20px;
-            border: 1px solid rgba(220, 38, 38, 0.2);
+        /* Live Session accordion */
+        .livesession-accordion-item {
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: #dc2626;
-            line-height: 1;
-        }
-        
-        .lecture-item {
-            background: rgba(255,255,255,0.03);
-            border-radius: 8px;
+        .livesession-accordion-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             padding: 16px;
-            margin-bottom: 12px;
-            border-left: 3px solid #dc2626;
+            cursor: pointer;
             transition: all 0.2s;
+            background: rgba(255,255,255,0.02);
+            border-radius: 8px;
+            margin-bottom: 8px;
         }
         
-        .lecture-item:hover {
-            background: rgba(255,255,255,0.06);
-            transform: translateX(4px);
+        .livesession-accordion-header:hover {
+            background: rgba(255,255,255,0.05);
+        }
+        
+        .livesession-accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .livesession-accordion-content.active {
+            max-height: 2000px;
+        }
+        
+        .livesession-accordion-inner {
+            padding: 0 16px 16px;
+        }
+        
+        .livesession-chevron {
+            transition: transform 0.3s;
+            width: 20px;
+            height: 20px;
+        }
+        
+        .livesession-chevron.active {
+            transform: rotate(45deg);
+        }
+
+        /* Photo gallery modal */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        
+        .photo-gallery-item {
+            aspect-ratio: 16/9;
+            background: #282828;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .photo-gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .photo-gallery-item:nth-child(1) {
+            grid-column: span 2;
         }
 
         /* Mobile menu */
@@ -1318,7 +1110,7 @@
                 </div>
             </div>
 
-            <!-- Research Projects Section - Organized by Level -->
+            <!-- Research Projects Section - Organized by Level with Fixed Z-Index -->
             <div class="section-block">
                 <h2 class="section-header text-blue-400 border-blue-400">Research Projects</h2>
                 
@@ -1556,7 +1348,7 @@
                                 <div class="project-list-item bilingual-item">
                                     <p class="font-bold text-white text-sm">2024 Fudan University Graduate Summer Social Practice</p>
                                     <p class="text-xs text-gray-400 mt-1 italic">The Evolution of China's Journalism Industry and Social Changes – A Study Based on the History of Modern Chinese Newspapers</p>
-                                    <p class="text-xs text-gray-500 mt-1">2024</p>
+                                                                        <p class="text-xs text-gray-500 mt-1">2024</p>
                                     <span class="chinese-title">2024年复旦大学研究生暑期社会实践 《中国新闻业的演变与社会变迁——基于中国近现代报业发展史的研究》</span>
                                 </div>
                             </div>
@@ -1737,111 +1529,170 @@
                     <div>
                         <span class="text-xs font-bold uppercase tracking-widest text-blue-400">Playlist</span>
                         <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-4">Live Session</h1>
-                        <p class="text-gray-300 mb-2">Knowledge on Air: Transmitting Industry Insights into Classroom Vibrations.</p>
-                        <p class="text-sm text-gray-400">Teaching • Lectures • Knowledge Transmission</p>
+                        <p class="text-gray-300 mb-2">Teaching Assistant & Guest Lectures</p>
+                        <p class="text-sm text-gray-400">Fudan University • Knowledge Transmission</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <main class="px-6 md:px-8 py-8 max-w-7xl mx-auto space-y-8">
-            
+            <!-- Teaching Assistant Courses - Accordion -->
             <div class="section-block">
-                <h2 class="section-header text-red-500 border-red-500 flex items-center gap-2">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
-                    Setlist: Course Modules & Lectures
-                </h2>
-                
-                <p class="text-sm text-gray-400 mb-6">7 Courses as Teaching Assistant at Fudan University • 12+ Guest Lectures & Workshops</p>
+                <h2 class="section-header text-blue-400 border-blue-400">Teaching Assistant Courses</h2>
+                <p class="text-sm text-gray-400 mb-6">7 Courses at Fudan University</p>
 
-                <div class="space-y-4">
+                <div class="space-y-2">
                     <!-- Course 1 -->
-                    <div class="course-card flex items-start gap-4">
-                        <div class="track-number">01</div>
-                        <div class="flex-1">
-                            <h3 class="font-bold text-white mb-1">Digital Music & Platform Governance</h3>
-                            <p class="text-sm text-gray-400">數位音樂與平台治理</p>
-                            <div class="flex items-center gap-2 mt-2">
-                                <span class="badge badge-teaching">TA</span>
-                                <span class="text-xs text-gray-500">Fudan University • 2023-2024</span>
+                    <div class="livesession-accordion-item">
+                        <div class="livesession-accordion-header" onclick="toggleLiveSessionAccordion(this)">
+                            <div class="flex items-center gap-3 flex-1">
+                                <div class="course-track-num">01</div>
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-white">Digital Music & Platform Governance</h3>
+                                    <p class="text-xs text-gray-400">Fudan University • 2023-2024</p>
+                                </div>
+                            </div>
+                            <svg class="livesession-chevron text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                        </div>
+                        <div class="livesession-accordion-content">
+                            <div class="livesession-accordion-inner">
+                                <div class="project-list-item bilingual-item">
+                                    <p class="text-sm text-gray-300">Exploring the intersection of digital platforms and music industry governance structures.</p>
+                                    <span class="chinese-title">數位音樂與平台治理：探討數位平台與音樂產業治理結構的交匯</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Course 2 -->
-                    <div class="course-card flex items-start gap-4">
-                        <div class="track-number">02</div>
-                        <div class="flex-1">
-                            <h3 class="font-bold text-white mb-1">AI-driven Content Production Strategy</h3>
-                            <p class="text-sm text-gray-400">AI驅動的內容生產策略</p>
-                            <div class="flex items-center gap-2 mt-2">
-                                <span class="badge badge-teaching">TA</span>
-                                <span class="text-xs text-gray-500">Fudan University • 2024</span>
+                    <div class="livesession-accordion-item">
+                        <div class="livesession-accordion-header" onclick="toggleLiveSessionAccordion(this)">
+                            <div class="flex items-center gap-3 flex-1">
+                                <div class="course-track-num">02</div>
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-white">AI-driven Content Production Strategy</h3>
+                                    <p class="text-xs text-gray-400">Fudan University • 2024</p>
+                                </div>
+                            </div>
+                            <svg class="livesession-chevron text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                        </div>
+                        <div class="livesession-accordion-content">
+                            <div class="livesession-accordion-inner">
+                                <div class="project-list-item bilingual-item">
+                                    <p class="text-sm text-gray-300">Strategic approaches to AI-powered content creation in media industries.</p>
+                                    <span class="chinese-title">AI驅動的內容生產策略：媒體產業中AI驅動內容創作的策略方法</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Course 3 -->
-                    <div class="course-card flex items-start gap-4">
-                        <div class="track-number">03</div>
-                        <div class="flex-1">
-                            <h3 class="font-bold text-white mb-1">Global Entertainment Marketing</h3>
-                            <p class="text-sm text-gray-400">全球娛樂行銷</p>
-                            <div class="flex items-center gap-2 mt-2">
-                                <span class="badge badge-teaching">TA</span>
-                                <span class="text-xs text-gray-500">Fudan University • 2023-2024</span>
+                    <div class="livesession-accordion-item">
+                        <div class="livesession-accordion-header" onclick="toggleLiveSessionAccordion(this)">
+                            <div class="flex items-center gap-3 flex-1">
+                                <div class="course-track-num">03</div>
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-white">Global Entertainment Marketing</h3>
+                                    <p class="text-xs text-gray-400">Fudan University • 2023-2024</p>
+                                </div>
+                            </div>
+                            <svg class="livesession-chevron text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                        </div>
+                        <div class="livesession-accordion-content">
+                            <div class="livesession-accordion-inner">
+                                <div class="project-list-item bilingual-item">
+                                    <p class="text-sm text-gray-300">Global strategies for entertainment brand development and audience engagement.</p>
+                                    <span class="chinese-title">全球娛樂行銷：娛樂品牌發展與受眾參與的全球策略</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Course 4 -->
-                    <div class="course-card flex items-start gap-4">
-                        <div class="track-number">04</div>
-                        <div class="flex-1">
-                            <h3 class="font-bold text-white mb-1">Music Industry & Copyright Management</h3>
-                            <p class="text-sm text-gray-400">音樂產業與版權管理</p>
-                            <div class="flex items-center gap-2 mt-2">
-                                <span class="badge badge-teaching">TA</span>
-                                <span class="text-xs text-gray-500">Fudan University • 2023-2025</span>
+                    <div class="livesession-accordion-item">
+                        <div class="livesession-accordion-header" onclick="toggleLiveSessionAccordion(this)">
+                            <div class="flex items-center gap-3 flex-1">
+                                <div class="course-track-num">04</div>
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-white">Music Industry & Copyright Management</h3>
+                                    <p class="text-xs text-gray-400">Fudan University • 2023-2025</p>
+                                </div>
+                            </div>
+                            <svg class="livesession-chevron text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                        </div>
+                        <div class="livesession-accordion-content">
+                            <div class="livesession-accordion-inner">
+                                <div class="project-list-item bilingual-item">
+                                    <p class="text-sm text-gray-300">Comprehensive study of music business models and intellectual property frameworks.</p>
+                                    <span class="chinese-title">音樂產業與版權管理：音樂商業模式與知識產權框架的全面研究</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Course 5 -->
-                    <div class="course-card flex items-start gap-4">
-                        <div class="track-number">05</div>
-                        <div class="flex-1">
-                            <h3 class="font-bold text-white mb-1">Cultural Industries & Creative Economy</h3>
-                            <p class="text-sm text-gray-400">文化產業與創意經濟</p>
-                            <div class="flex items-center gap-2 mt-2">
-                                <span class="badge badge-teaching">TA</span>
-                                <span class="text-xs text-gray-500">Fudan University • 2023-2024</span>
+                    <div class="livesession-accordion-item">
+                        <div class="livesession-accordion-header" onclick="toggleLiveSessionAccordion(this)">
+                            <div class="flex items-center gap-3 flex-1">
+                                <div class="course-track-num">05</div>
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-white">Cultural Industries & Creative Economy</h3>
+                                    <p class="text-xs text-gray-400">Fudan University • 2023-2024</p>
+                                </div>
+                            </div>
+                            <svg class="livesession-chevron text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                        </div>
+                        <div class="livesession-accordion-content">
+                            <div class="livesession-accordion-inner">
+                                <div class="project-list-item bilingual-item">
+                                    <p class="text-sm text-gray-300">Analysis of creative economy ecosystems and cultural policy frameworks.</p>
+                                    <span class="chinese-title">文化產業與創意經濟：創意經濟生態系統與文化政策框架分析</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Course 6 -->
-                    <div class="course-card flex items-start gap-4">
-                        <div class="track-number">06</div>
-                        <div class="flex-1">
-                            <h3 class="font-bold text-white mb-1">New Media Platform Studies</h3>
-                            <p class="text-sm text-gray-400">新媒體平台研究</p>
-                            <div class="flex items-center gap-2 mt-2">
-                                <span class="badge badge-teaching">TA</span>
-                                <span class="text-xs text-gray-500">Fudan University • 2024-2025</span>
+                    <div class="livesession-accordion-item">
+                        <div class="livesession-accordion-header" onclick="toggleLiveSessionAccordion(this)">
+                            <div class="flex items-center gap-3 flex-1">
+                                <div class="course-track-num">06</div>
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-white">New Media Platform Studies</h3>
+                                    <p class="text-xs text-gray-400">Fudan University • 2024-2025</p>
+                                </div>
+                            </div>
+                            <svg class="livesession-chevron text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                        </div>
+                        <div class="livesession-accordion-content">
+                            <div class="livesession-accordion-inner">
+                                <div class="project-list-item bilingual-item">
+                                    <p class="text-sm text-gray-300">Critical examination of platform economics and digital media ecosystems.</p>
+                                    <span class="chinese-title">新媒體平台研究：平台經濟與數位媒體生態系統的批判性檢視</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Course 7 -->
-                    <div class="course-card flex items-start gap-4">
-                        <div class="track-number">07</div>
-                        <div class="flex-1">
-                            <h3 class="font-bold text-white mb-1">Music Communication & Audience Studies</h3>
-                            <p class="text-sm text-gray-400">音樂傳播與受眾研究</p>
-                            <div class="flex items-center gap-2 mt-2">
-                                <span class="badge badge-teaching">TA</span>
-                                <span class="text-xs text-gray-500">Fudan University • 2024-2025</span>
+                    <div class="livesession-accordion-item">
+                        <div class="livesession-accordion-header" onclick="toggleLiveSessionAccordion(this)">
+                            <div class="flex items-center gap-3 flex-1">
+                                <div class="course-track-num">07</div>
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-white">Music Communication & Audience Studies</h3>
+                                    <p class="text-xs text-gray-400">Fudan University • 2024-2025</p>
+                                </div>
+                            </div>
+                            <svg class="livesession-chevron text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                        </div>
+                        <div class="livesession-accordion-content">
+                            <div class="livesession-accordion-inner">
+                                <div class="project-list-item bilingual-item">
+                                    <p class="text-sm text-gray-300">Understanding music consumption patterns and audience behavior in digital age.</p>
+                                    <span class="chinese-title">音樂傳播與受眾研究：理解數位時代的音樂消費模式與受眾行為</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1850,118 +1701,110 @@
 
             <!-- Guest Lectures -->
             <div class="section-block">
-                <h2 class="section-header text-red-500 border-red-500 flex items-center gap-2">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                    Featured Lectures & Workshops
-                </h2>
+                <h2 class="section-header text-blue-400 border-blue-400">Guest Lectures</h2>
+                <p class="text-sm text-gray-400 mb-6">12+ Invited Lectures at Leading Institutions</p>
 
-                <div class="space-y-4">
-                    <div class="lecture-item">
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="year-badge">2024</span>
-                            <span class="badge badge-teaching">Invited Lecture</span>
+                <div class="track-list">
+                    <div class="track-item flex items-center gap-4 p-4 bilingual-item">
+                        <div class="w-8 text-center flex-shrink-0">
+                            <span class="text-gray-500 font-bold">1</span>
                         </div>
-                        <h3 class="font-bold text-white mb-1">AI Music Production Workshop</h3>
-                        <p class="text-sm text-gray-400">人工智能音樂製作工作坊 • Fudan University</p>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-bold text-white">AI Music Production Workshop</h3>
+                            <p class="text-sm text-gray-400 mt-1">Fudan University • 2024</p>
+                        </div>
+                        <span class="chinese-title">人工智能音樂製作工作坊：復旦大學</span>
                     </div>
 
-                    <div class="lecture-item">
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="year-badge">2024</span>
-                            <span class="badge badge-teaching">Guest Lecture</span>
+                    <div class="track-item flex items-center gap-4 p-4 bilingual-item">
+                        <div class="w-8 text-center flex-shrink-0">
+                            <span class="text-gray-500 font-bold">2</span>
                         </div>
-                        <h3 class="font-bold text-white mb-1">Platform Economy and Music Industry Transformation</h3>
-                        <p class="text-sm text-gray-400">平台經濟與音樂產業轉型 • Communication University of China</p>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-bold text-white">Platform Economy and Music Industry Transformation</h3>
+                            <p class="text-sm text-gray-400 mt-1">Communication University of China • 2024</p>
+                        </div>
+                        <span class="chinese-title">平台經濟與音樂產業轉型：中國傳媒大學</span>
                     </div>
 
-                    <div class="lecture-item">
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="year-badge">2023</span>
-                            <span class="badge badge-teaching">Workshop</span>
+                    <div class="track-item flex items-center gap-4 p-4 bilingual-item">
+                        <div class="w-8 text-center flex-shrink-0">
+                            <span class="text-gray-500 font-bold">3</span>
                         </div>
-                        <h3 class="font-bold text-white mb-1">Cross-Strait Music Industry Collaboration</h3>
-                        <p class="text-sm text-gray-400">兩岸音樂產業協作 • Xiamen University</p>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-bold text-white">Cross-Strait Music Industry Collaboration</h3>
+                            <p class="text-sm text-gray-400 mt-1">Xiamen University • 2023</p>
+                        </div>
+                        <span class="chinese-title">兩岸音樂產業協作：廈門大學</span>
                     </div>
 
-                    <div class="lecture-item">
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="year-badge">2023</span>
-                            <span class="badge badge-teaching">Keynote</span>
+                    <div class="track-item flex items-center gap-4 p-4 bilingual-item">
+                        <div class="w-8 text-center flex-shrink-0">
+                            <span class="text-gray-500 font-bold">4</span>
                         </div>
-                        <h3 class="font-bold text-white mb-1">Digital Transformation in Cultural Industries</h3>
-                        <p class="text-sm text-gray-400">文化產業的數位轉型 • Shanghai Management Science Society</p>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-bold text-white">Digital Transformation in Cultural Industries</h3>
+                            <p class="text-sm text-gray-400 mt-1">Shanghai Management Science Society • 2023</p>
+                        </div>
+                        <span class="chinese-title">文化產業的數位轉型：上海市管理科學學會</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Stage Presence -->
+            <!-- Stage Presence: Teaching & Speaking - Photo Gallery -->
             <div class="section-block">
-                <h2 class="section-header text-red-500 border-red-500 flex items-center gap-2">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 13H3V5h18v11z"/></svg>
-                    Stage Presence: Teaching & Speaking
-                </h2>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="bg-black/20 rounded-xl overflow-hidden">
-                        <div class="aspect-video bg-gradient-to-br from-red-900/40 to-black flex items-center justify-center">
-                            <svg class="w-16 h-16 text-white/20" fill="currentColor" viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-bold text-white text-sm mb-1">Classroom Teaching</h3>
-                            <p class="text-xs text-gray-400">Fudan University • Interactive Sessions</p>
-                        </div>
-                    </div>
+                <h2 class="section-header text-blue-400 border-blue-400">Teaching & Speaking</h2>
+                <p class="text-sm text-gray-400 mb-6">Click to view photos from classrooms and conferences</p>
 
-                    <div class="bg-black/20 rounded-xl overflow-hidden">
-                        <div class="aspect-video bg-gradient-to-br from-red-900/40 to-black flex items-center justify-center">
-                            <svg class="w-16 h-16 text-white/20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                <div class="centered-grid-2">
+                    <div class="centered-grid-2-inner">
+                        <div class="course-card p-4 group" onclick="openModal('teaching-photos')">
+                            <div class="relative mb-4">
+                                <div class="aspect-square bg-gradient-to-br from-[#3b82f6] to-[#1d4ed8] rounded-md flex items-center justify-center">
+                                    <svg class="w-16 h-16 text-white/30" fill="currentColor" viewBox="0 0 24 24"><path d="M21 3H3C2 3 1 4 1 5v14c0 1.1.9 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 13H3V5h18v11zM5 15h14v2H5z"/></svg>
+                                </div>
+                                <div class="play-overlay">
+                                    <svg class="w-6 h-6 text-black ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                            </div>
+                            <h3 class="font-bold text-white mb-1 text-center">View Gallery</h3>
+                            <p class="text-sm text-gray-400 line-clamp-2 text-center">Classroom & Conference Photos</p>
                         </div>
-                        <div class="p-4">
-                            <h3 class="font-bold text-white text-sm mb-1">Conference Presentations</h3>
-                            <p class="text-xs text-gray-400">AEJMC • PKU Forum • CUC Lecture</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Audience Feedback -->
-            <div class="section-block">
-                <h2 class="section-header text-red-500 border-red-500 flex items-center gap-2">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                    The Crowd's Voice: Student & Peer Feedback
-                </h2>
-
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                    <div class="feedback-card text-center">
-                        <div class="stat-number">4.9</div>
-                        <p class="text-xs text-gray-400 mt-1">Teaching Evaluation<br>/5.0</p>
-                    </div>
-                    <div class="feedback-card text-center">
-                        <div class="stat-number">98%</div>
-                        <p class="text-xs text-gray-400 mt-1">Student<br>Satisfaction</p>
-                    </div>
-                    <div class="feedback-card text-center">
-                        <div class="stat-number">7</div>
-                        <p class="text-xs text-gray-400 mt-1">Courses<br>Assisted</p>
-                    </div>
-                    <div class="feedback-card text-center">
-                        <div class="stat-number">12+</div>
-                        <p class="text-xs text-gray-400 mt-1">Guest<br>Lectures</p>
-                    </div>
-                </div>
-
-                <div class="space-y-4">
-                    <div class="bg-black/20 p-4 rounded-lg border-l-2 border-red-500">
-                        <p class="text-sm text-gray-300 italic">"Jim's industry experience brings the theories to life. His classes feel like live performances—engaging, dynamic, and always on point."</p>
-                        <p class="text-xs text-gray-500 mt-2">— Graduate Student, Fudan University</p>
-                    </div>
-                    <div class="bg-black/20 p-4 rounded-lg border-l-2 border-red-500">
-                        <p class="text-sm text-gray-300 italic">"The way he connects academic concepts with real-world music industry cases is exceptional. A true bridge between theory and practice."</p>
-                        <p class="text-xs text-gray-500 mt-2">— Faculty Member, CUC</p>
                     </div>
                 </div>
             </div>
         </main>
+    </div>
+
+    <!-- Teaching Photos Modal -->
+    <div id="modal-teaching-photos" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="text-2xl font-bold text-white">Teaching & Speaking Gallery</h2>
+                <div class="close-btn" onclick="closeModal('teaching-photos')">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="photo-gallery">
+                    <div class="photo-gallery-item">
+                        <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/teaching-1.jpg" alt="Teaching at Fudan" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(to bottom right, #1e3a8a, #3b82f6)'; this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full text-white/50\'>Photo 1</div>';">
+                    </div>
+                    <div class="photo-gallery-item">
+                        <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/teaching-2.jpg" alt="Conference Presentation" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(to bottom right, #1d4ed8, #60a5fa)'; this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full text-white/50\'>Photo 2</div>';">
+                    </div>
+                    <div class="photo-gallery-item">
+                        <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/teaching-3.jpg" alt="Workshop Session" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(to bottom right, #2563eb, #93c5fd)'; this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full text-white/50\'>Photo 3</div>';">
+                    </div>
+                    <div class="photo-gallery-item">
+                        <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/teaching-4.jpg" alt="Guest Lecture" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(to bottom right, #3b82f6, #bfdbfe)'; this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full text-white/50\'>Photo 4</div>';">
+                    </div>
+                    <div class="photo-gallery-item">
+                        <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/teaching-5.jpg" alt="Classroom Interaction" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(to bottom right, #60a5fa, #dbeafe)'; this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full text-white/50\'>Photo 5</div>';">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- REVIEWS / ARTICLES PAGE -->
@@ -1986,7 +1829,7 @@
         </section>
 
         <main class="px-6 md:px-8 py-8 max-w-7xl mx-auto">
-            <!-- 統一使用兩欄置中布局，與 Life Productions 一致 -->
+            <!-- 統一使用兩欄置中布局 -->
             <div class="centered-grid-2">
                 <div class="centered-grid-2-inner">
                     <!-- Arts Criticism Card -->
@@ -2489,7 +2332,7 @@
                                     <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14Zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5 12 0Z"/></svg>
                                     <span>Scholar</span>
                                 </a>
-                                <a href="https://orcid.org/my-orcid?orcid=0009-0000-3096-7448" target="_blank" class="icon-btn" title="ORCID">
+                                <a href="https://orcid.org/0009-0000-3096-7448" target="_blank" class="icon-btn" title="ORCID">
                                     <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.5 7.5h3v9h-3v-9zm4.5 0h3v1.5h-3V7.5zm0 3h3v6h-3v-6z"/></svg>
                                     <span>ORCID</span>
                                 </a>
@@ -2631,6 +2474,22 @@
                 if (acc !== content) {
                     acc.classList.remove('active');
                     acc.previousElementSibling.querySelector('.tv-chevron').classList.remove('active');
+                }
+            });
+            
+            content.classList.toggle('active');
+            chevron.classList.toggle('active');
+        }
+
+        function toggleLiveSessionAccordion(header) {
+            const content = header.nextElementSibling;
+            const chevron = header.querySelector('.livesession-chevron');
+            
+            // Close all other Live Session accordions
+            document.querySelectorAll('.livesession-accordion-content').forEach(acc => {
+                if (acc !== content) {
+                    acc.classList.remove('active');
+                    acc.previousElementSibling.querySelector('.livesession-chevron').classList.remove('active');
                 }
             });
             
