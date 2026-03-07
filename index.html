@@ -63,11 +63,8 @@
         
         .bilingual-item .chinese-title {
             display: none;
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0,0,0,0.95);
+            position: fixed;
+            background: rgba(0,0,0,0.97);
             padding: 10px 14px;
             border-radius: 8px;
             font-size: 0.85rem;
@@ -75,27 +72,17 @@
             white-space: normal;
             max-width: 380px;
             min-width: 280px;
-            z-index: 100;
-            margin-bottom: 8px;
+            z-index: 99999;
             border: 1px solid rgba(255,255,255,0.15);
             line-height: 1.5;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.7);
             pointer-events: none;
         }
         
-        .bilingual-item .chinese-title::after {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            border: 6px solid transparent;
-            border-top-color: rgba(0,0,0,0.95);
-        }
+        
         
         .bilingual-item:hover .chinese-title {
             display: block;
-            animation: fadeIn 0.25s ease-out;
         }
         /* 助教課程時間線樣式 */
         .course-timeline {
@@ -387,6 +374,7 @@
         .research-accordion-content.active {
             max-height: 2000px;
             opacity: 1;
+            overflow: visible;
         }
         
         .research-accordion-inner {
@@ -1112,12 +1100,12 @@
                 <span class="text-xs font-bold uppercase tracking-widest text-blue-400 mb-4 block">Portfolio Library</span>
                 <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-2">Jim PoTseng Yeh</h1>
                 <p class="text-2xl md:text-3xl text-gray-300 mb-4 font-medium">葉柏增</p>
-                <div class="space-y-2 mb-4">
-                    <p class="text-lg md:text-xl text-gray-300 font-medium hero-bilingual">
+                <div class="mb-4">
+                    <p class="block text-lg md:text-xl text-gray-300 font-medium hero-bilingual mb-2">
                         PhD Candidate, School of Journalism, Fudan University
                         <span class="chinese-hover">復旦大學新聞學院博士候選人</span>
                     </p>
-                    <p class="text-gray-300 max-w-xl hero-bilingual">
+                    <p class="block text-gray-300 max-w-xl hero-bilingual">
                         Music Communication | Cultural Industries | Platform Studies
                         <span class="chinese-hover">音樂傳播｜文化產業｜平台研究</span>
                     </p>
@@ -1885,34 +1873,9 @@
             <p class="text-sm text-gray-400 mb-6">8 Courses · Fudan University · 2022–2026</p>
             <div class="course-timeline">
                 <div class="course-timeline-item bilingual-item">
-                    <div class="course-semester">Fall 2022 (2022.09 - 2023.01)</div>
-                    <div class="course-name">New Media Management</div>
-                    <span class="chinese-title">新媒體管理</span>
-                </div>
-                <div class="course-timeline-item bilingual-item">
-                    <div class="course-semester">Spring 2023 (2023.03 - 2023.06)</div>
-                    <div class="course-name">Advanced Studies in New Media Social Forms</div>
-                    <span class="chinese-title">新媒體社會形態前沿研究</span>
-                </div>
-                <div class="course-timeline-item bilingual-item">
-                    <div class="course-semester">Spring 2023 (2023.03 - 2023.06)</div>
-                    <div class="course-name">New Chinese Cinema <span class="text-xs text-blue-400 ml-2">[English Course]</span></div>
-                    <span class="chinese-title">華語新電影（英文授課）</span>
-                </div>
-                <div class="course-timeline-item bilingual-item">
-                    <div class="course-semester">Fall 2023 (2023.09 - 2024.01)</div>
-                    <div class="course-name">Smart Communication & Human-Computer Interaction</div>
-                    <span class="chinese-title">智慧傳播與人機交互智能</span>
-                </div>
-                <div class="course-timeline-item bilingual-item">
-                    <div class="course-semester">Spring 2024 (2024.03 - 2024.06)</div>
-                    <div class="course-name">Audio-Visual Program Planning</div>
-                    <span class="chinese-title">視聽節目策劃</span>
-                </div>
-                <div class="course-timeline-item bilingual-item">
-                    <div class="course-semester">Fall 2024 (2024.09 - 2025.01)</div>
-                    <div class="course-name">Digital City Communication</div>
-                    <span class="chinese-title">數字城市傳播</span>
+                    <div class="course-semester">Spring 2026 (2026.03 - 2026.06)</div>
+                    <div class="course-name">New Media User Behavior Analysis</div>
+                    <span class="chinese-title">新媒體用戶行為分析</span>
                 </div>
                 <div class="course-timeline-item bilingual-item">
                     <div class="course-semester">Fall 2025 (2025.09 - 2026.01)</div>
@@ -1920,16 +1883,46 @@
                     <span class="chinese-title">網絡視聽文化</span>
                 </div>
                 <div class="course-timeline-item bilingual-item">
-                    <div class="course-semester">Spring 2026 (2026.03 - 2026.06)</div>
-                    <div class="course-name">New Media User Behavior Analysis</div>
-                    <span class="chinese-title">新媒體用戶行為分析</span>
+                    <div class="course-semester">Fall 2024 (2024.09 - 2025.01)</div>
+                    <div class="course-name">Digital City Communication</div>
+                    <span class="chinese-title">數字城市傳播</span>
+                </div>
+                <div class="course-timeline-item bilingual-item">
+                    <div class="course-semester">Spring 2024 (2024.03 - 2024.06)</div>
+                    <div class="course-name">Audio-Visual Program Planning</div>
+                    <span class="chinese-title">視聽節目策劃</span>
+                </div>
+                <div class="course-timeline-item bilingual-item">
+                    <div class="course-semester">Fall 2023 (2023.09 - 2024.01)</div>
+                    <div class="course-name">Smart Communication &amp; Human-Computer Interaction</div>
+                    <span class="chinese-title">智慧傳播與人機交互智能</span>
+                </div>
+                <div class="course-timeline-item bilingual-item">
+                    <div class="course-semester">Spring 2023 (2023.03 - 2023.06)</div>
+                    <div class="course-name">New Chinese Cinema <span class="text-xs text-blue-400 ml-2">[English Course]</span></div>
+                    <span class="chinese-title">華語新電影（英文授課）</span>
+                </div>
+                <div class="course-timeline-item bilingual-item">
+                    <div class="course-semester">Spring 2023 (2023.03 - 2023.06)</div>
+                    <div class="course-name">Advanced Studies in New Media Social Forms</div>
+                    <span class="chinese-title">新媒體社會形態前沿研究</span>
+                </div>
+                <div class="course-timeline-item bilingual-item">
+                    <div class="course-semester">Fall 2022 (2022.09 - 2023.01)</div>
+                    <div class="course-name">New Media Management</div>
+                    <span class="chinese-title">新媒體管理</span>
                 </div>
             </div>
         </div>
         
         <div class="section-block">
             <h2 class="section-header text-blue-400 border-blue-400">Guest Lectures</h2>
-            <p class="text-sm text-gray-400 mb-6 text-center">Academic lectures at Fudan University, Central Conservatory of Music, Shanghai Conservatory of Music, Fu Jen Catholic University, China University of Technology, Shih Hsin University, Fo Guang University, and Shanghai Community Street Offices as Fudan University Lecturer Team Member</p>
+            <div class="text-center mb-6 bilingual-text" style="display:inline-block;width:100%;">
+                <p class="text-sm text-gray-400 leading-relaxed max-w-2xl mx-auto cursor-help">
+                    Guest speaker at Fudan University, Central Conservatory of Music, Shanghai Conservatory of Music, Fu Jen Catholic University, China University of Technology, Shih Hsin University, and Fo Guang University; also served as a lecturer under the Fudan University Lecturer Team, delivering public lectures and workshops at Shanghai community organizations.
+                    <span class="chinese-hover" style="font-size:0.8rem;">曾於復旦大學、中央音樂學院、上海音樂學院、輔仁大學、中國科技大學、世新大學、佛光大學擔任客座講師，舉辦學術講座；並作為復旦大學講師團成員，受邀至上海各街道辦事處進行公開講座與教學活動。</span>
+                </p>
+            </div>
             <div class="lecture-tags">
                 <div class="lecture-tag bilingual-text">
                     Construction of Popular Music Industry Value Chain
@@ -2447,8 +2440,8 @@
                     </div>
                     <div>
                         <p class="text-sm text-gray-400 mb-1">Email</p>
-                        <p class="text-lg font-bold">JimPTYeh@gmail.com</p>
-                        <p class="text-lg font-bold">PTYeh22@m.fudan.edu.cn</p>
+                        <p class="text-lg font-bold"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="29634044797d704c41694e44484045074a4644">[email&#160;protected]</a></p>
+                        <p class="text-lg font-bold"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7f2f2b261a174d4d3f1251190a1b1e11511a1b0a511c11">[email&#160;protected]</a></p>
                     </div>
                 </div>
                 <div class="flex items-center gap-4 p-4 bg-white/5 rounded-lg">
@@ -2545,7 +2538,7 @@
                 <button class="text-gray-400 hover:text-white transition"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg></button>
             </div>
             <div class="w-full flex items-center gap-2 text-xs text-gray-400 font-mono">
-                <span>JimPTYeh@gmail.com</span>
+                <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e9a38084b9bdb08c81a98e84888085c78a8684">[email&#160;protected]</a></span>
                 <div class="flex-1 h-1 bg-white/20 rounded-full overflow-hidden cursor-pointer group">
                     <div class="w-1/2 h-full bg-white group-hover:bg-blue-400 rounded-full"></div>
                 </div>
@@ -2560,7 +2553,7 @@
         </div>
     </div>
 </footer>
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // ============================================
     // 優化修復後的 JavaScript
     // ============================================
@@ -2833,6 +2826,28 @@
     // 錯誤處理
     window.addEventListener('error', function(e) {
         console.error('Portfolio error:', e.error);
+    });
+
+    // 固定定位的 chinese-title 跟隨滑鼠位置
+    document.addEventListener('mousemove', function(e) {
+        const items = document.querySelectorAll('.bilingual-item');
+        items.forEach(function(item) {
+            if (item.matches(':hover')) {
+                const tooltip = item.querySelector('.chinese-title');
+                if (tooltip) {
+                    const tw = tooltip.offsetWidth || 320;
+                    const th = tooltip.offsetHeight || 80;
+                    const vw = window.innerWidth;
+                    let left = e.clientX - tw / 2;
+                    let top = e.clientY - th - 16;
+                    if (left < 8) left = 8;
+                    if (left + tw > vw - 8) left = vw - tw - 8;
+                    if (top < 8) top = e.clientY + 20;
+                    tooltip.style.left = left + 'px';
+                    tooltip.style.top = top + 'px';
+                }
+            }
+        });
     });
 
     // 導出函數到全局
