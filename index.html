@@ -2832,4 +2832,18 @@
     });
     // 錯誤處理
     window.addEventListener('error', function(e) {
-        console.error('Portfoli
+        console.error('Portfolio error:', e.error);
+    });
+
+    // 導出函數到全局
+    window.showPage = showPage;
+    window.toggleMobileMenu = toggleMobileMenu;
+    window.openModal = openModal;
+    window.closeModal = closeModal;
+    window.toggleResearchAccordion = toggleResearchAccordion;
+    window.toggleIndustryAccordion = toggleIndustryAccordion;
+    window.toggleTVAccordion = toggleTVAccordion;
+    window.toggleLiveSessionAccordion = toggleLiveSessionAccordion;
+</script>
+</body>
+</html>
