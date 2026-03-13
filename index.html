@@ -538,29 +538,35 @@
             margin-bottom: 12px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.4);
             transition: box-shadow 0.3s ease;
+            position: relative;
         }
         .album-shelf-item:hover .shelf-cover {
             box-shadow: 0 12px 32px rgba(0,0,0,0.6);
         }
-        .album-shelf-item .shelf-play {
+        /* Centered overlay on cover */
+        .shelf-overlay {
             position: absolute;
-            right: 24px;
-            top: 140px;
-            width: 44px; height: 44px;
-            background: var(--accent, #3b82f6);
-            border-radius: 50%;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
-            transform: translateY(8px);
-            transition: all 0.3s ease;
+            transition: opacity 0.3s ease;
+            border-radius: 6px;
+            pointer-events: none;
+        }
+        .album-shelf-item:hover .shelf-overlay { opacity: 1; }
+        .shelf-overlay svg {
+            width: 48px; height: 48px;
+            background: var(--accent, #3b82f6);
+            border-radius: 50%;
+            padding: 12px;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
             box-shadow: 0 8px 16px rgba(0,0,0,0.5);
         }
-        .album-shelf-item:hover .shelf-play {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .album-shelf-item:hover .shelf-overlay svg { transform: scale(1); }
         .shelf-color-bar {
             width: 100%;
             height: 3px;
@@ -584,12 +590,10 @@
         /* Responsive: wider cards on desktop */
         @media (min-width: 768px) {
             .album-shelf-item { flex: 0 0 220px; }
-            .album-shelf-item .shelf-play { top: 155px; }
         }
         @media (min-width: 1024px) {
             .album-shelf { gap: 24px; }
             .album-shelf-item { flex: 0 0 240px; }
-            .album-shelf-item .shelf-play { top: 170px; }
         }
 
         /* ============================================
@@ -1130,9 +1134,9 @@
 
                     <!-- Research -->
                     <div class="album-shelf-item" onclick="showPage('research')">
-                        <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/card-research.jpg" alt="Research & Project" class="shelf-cover">
-                        <div class="shelf-play" style="background:#6366f1;">
-                            <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <div class="shelf-cover">
+                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/card-research.jpg" alt="Research & Project" style="width:100%;height:100%;object-fit:cover;border-radius:6px;">
+                            <div class="shelf-overlay"><svg class="w-6 h-6 text-black ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                         </div>
                         <div class="shelf-color-bar" style="background:#6366f1;"></div>
                         <h3 class="font-bold text-white text-sm mb-1">《Research & Project》</h3>
@@ -1141,9 +1145,9 @@
 
                     <!-- Industry -->
                     <div class="album-shelf-item" onclick="showPage('industry')">
-                        <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/card-industry.jpg" alt="Industry Exp." class="shelf-cover">
-                        <div class="shelf-play" style="background:#f59e0b;">
-                            <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <div class="shelf-cover">
+                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/card-industry.jpg" alt="Industry Exp." style="width:100%;height:100%;object-fit:cover;border-radius:6px;">
+                            <div class="shelf-overlay"><svg class="w-6 h-6 text-black ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                         </div>
                         <div class="shelf-color-bar" style="background:#f59e0b;"></div>
                         <h3 class="font-bold text-white text-sm mb-1">《Industry Exp.》</h3>
@@ -1152,9 +1156,9 @@
 
                     <!-- Live Session -->
                     <div class="album-shelf-item" onclick="showPage('livesession')">
-                        <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/card-livesession.jpg" alt="Live Session" class="shelf-cover">
-                        <div class="shelf-play" style="background:#a855f7;">
-                            <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <div class="shelf-cover">
+                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/card-livesession.jpg" alt="Live Session" style="width:100%;height:100%;object-fit:cover;border-radius:6px;">
+                            <div class="shelf-overlay"><svg class="w-6 h-6 text-black ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                         </div>
                         <div class="shelf-color-bar" style="background:#a855f7;"></div>
                         <h3 class="font-bold text-white text-sm mb-1">《Live Session》</h3>
@@ -1163,9 +1167,9 @@
 
                     <!-- Reviews -->
                     <div class="album-shelf-item" onclick="showPage('reviews')">
-                        <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/card-reviews.jpg" alt="Reviews / Articles" class="shelf-cover">
-                        <div class="shelf-play" style="background:#14b8a6;">
-                            <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <div class="shelf-cover">
+                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/card-reviews.jpg" alt="Reviews / Articles" style="width:100%;height:100%;object-fit:cover;border-radius:6px;">
+                            <div class="shelf-overlay"><svg class="w-6 h-6 text-black ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                         </div>
                         <div class="shelf-color-bar" style="background:#14b8a6;"></div>
                         <h3 class="font-bold text-white text-sm mb-1">《Reviews / Articles》</h3>
@@ -1174,9 +1178,9 @@
 
                     <!-- Production -->
                     <div class="album-shelf-item" onclick="showPage('production')">
-                        <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/card-production.jpg" alt="Life Productions" class="shelf-cover">
-                        <div class="shelf-play" style="background:#f43f5e;">
-                            <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <div class="shelf-cover">
+                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/card-production.jpg" alt="Life Productions" style="width:100%;height:100%;object-fit:cover;border-radius:6px;">
+                            <div class="shelf-overlay"><svg class="w-6 h-6 text-black ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                         </div>
                         <div class="shelf-color-bar" style="background:#f43f5e;"></div>
                         <h3 class="font-bold text-white text-sm mb-1">《Life Productions》</h3>
@@ -1260,7 +1264,7 @@
                             </div>
                             <p class="text-gray-400 mb-1">School of Journalism, Fudan University, Shanghai</p>
                             <p class="text-sm text-gray-500 mb-3">Specialization: Music Communication, Popular Music Industry Research, Music Art Management, New Media Platform Research</p>
-                            <span class="chinese-title">博士候選人 新聞學院 新聞傳播學 新媒體經濟與管理專業 復旦大學，上海</span>
+                            <span class="chinese-title">博士候選人｜復旦大學 新聞學院</span>
                         </div>
                     </div>
                     <div class="timeline-item">
@@ -1271,7 +1275,7 @@
                             </div>
                             <p class="text-gray-400 mb-1">Faculty of Music, Tokyo University of the Arts, Tokyo</p>
                             <p class="text-sm text-gray-500 mb-3">Specialization: Music Recording Technology</p>
-                            <span class="chinese-title">碩士交換生｜東京藝術大學 音樂學部 錄音技術專業</span>
+                            <span class="chinese-title">碩士交換生｜東京藝術大學 音樂學部 音樂音響創造科 錄音技術專業</span>
                         </div>
                     </div>
                     <div class="timeline-item">
@@ -1282,7 +1286,7 @@
                             </div>
                             <p class="text-gray-400 mb-1">Department of Music Art Management, Central Conservatory of Music, Beijing</p>
                             <p class="text-sm text-gray-500 mb-3">Specialization: Music Art Management</p>
-                            <span class="chinese-title">藝術碩士｜中央音樂學院 音樂藝術管理系</span>
+                            <span class="chinese-title">藝術碩士｜中央音樂學院 音樂學系 音樂藝術管理專業</span>
                         </div>
                     </div>
                     <div class="timeline-item">
@@ -1293,7 +1297,7 @@
                             </div>
                             <p class="text-gray-400 mb-1">Graduate Institute of Popular Music, National Taiwan Normal University, Taipei</p>
                             <p class="text-sm text-gray-500 mb-3">Specialization: Popular Music Industry Marketing and Planning</p>
-                            <span class="chinese-title">音樂碩士｜台灣師範大學 流行音樂產業碩士專班</span>
+                            <span class="chinese-title">音樂碩士｜臺灣師範大學 流行音樂產業碩士專班</span>
                         </div>
                     </div>
                     <div class="timeline-item">
@@ -1386,14 +1390,14 @@
                             Yeh, J. P., & Zhao, L. (2025). Go viral or die: Streaming platform adaptation and collaboration among performing rights organizations in the Chinese Mainland, Hong Kong, and Taiwan. <em>International Communication Gazette, 87</em>(4), 326-344.
                         </span>
                     </a>
-                    <div class="track-item flex items-center gap-4 p-4 has-citation">
-                        <div class="w-8 text-center"><span class="text-gray-500 font-bold">2</span></div>
+                    <a href="https://kns.cnki.net/kcms2/article/abstract?v=tC3tAMdiXNfmsERkfxUIBaK8RZgc4XQiwUAj8-nVMZG-VhOsWlr46FgzQYtNtg-KMh04Px0kf-5bf-0TE-VgQznpeLA7XCs7xMYVrBdZ2mCdPh5X20x_W0zSLZR1N0UdaE7sMHgT_oKHMvjk-hDQSCM6K2Udu0MW-nk5t6W0KA0=&uniplatform=NZKPT" target="_blank" class="track-item flex items-center gap-4 p-4 cursor-pointer group block has-citation">
+                        <div class="w-8 text-center"><span class="track-num text-gray-500 font-bold">2</span><svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                         <div class="flex-1 min-w-0">
                             <h3 class="font-bold text-white">"城市音乐网"的多维建构与创新发展——以台北市街头艺术表演为例</h3>
                             <p class="text-sm text-gray-400 mt-1">北大文化产业评论, 2025</p>
                         </div>
                         <span class="citation-tooltip"><strong>GB/T Citation:</strong><br>叶柏增, 邓源. "城市音乐网"的多维建构与创新发展——以台北市街头艺术表演为例[J]. 北大文化产业评论, 2025, (00): 84-95.</span>
-                    </div>
+                    </a>
                     <div class="track-item flex items-center gap-4 p-4 has-citation">
                         <div class="w-8 text-center"><span class="text-gray-500 font-bold">3</span></div>
                         <div class="flex-1 min-w-0">
@@ -1623,52 +1627,110 @@
         <main class="px-6 md:px-8 py-8 max-w-7xl mx-auto space-y-8">
             <div class="section-block">
                 <h2 class="section-header">Teaching Assistant Courses</h2>
-                <p class="text-sm text-gray-400 mb-6">8 Courses · Fudan University · 2022–2026</p>
-                <div class="course-timeline">
+                <p class="text-sm text-gray-400 mb-4">8 Courses · Fudan University · 2022–2026 · Swipe →</p>
+                <!-- Horizontal scroll course cards -->
+                <div class="shelf-container">
+                    <div class="album-shelf" style="gap:16px;">
+                        <div class="bilingual-item" style="flex:0 0 260px; background:rgba(255,255,255,0.04); border-radius:12px; padding:20px; border:1px solid rgba(255,255,255,0.06); scroll-snap-align:start;">
+                            <div style="font-size:0.7rem; color:var(--accent-text); font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px;">Spring 2026</div>
+                            <div style="font-size:1rem; font-weight:700; color:white; line-height:1.4;">New Media User Behavior Analysis</div>
+                            <span class="chinese-title">新媒體用戶行為分析</span>
+                        </div>
+                        <div class="bilingual-item" style="flex:0 0 260px; background:rgba(255,255,255,0.04); border-radius:12px; padding:20px; border:1px solid rgba(255,255,255,0.06); scroll-snap-align:start;">
+                            <div style="font-size:0.7rem; color:var(--accent-text); font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px;">Fall 2025</div>
+                            <div style="font-size:1rem; font-weight:700; color:white; line-height:1.4;">Online Audio-Visual Culture</div>
+                            <span class="chinese-title">網絡視聽文化</span>
+                        </div>
+                        <div class="bilingual-item" style="flex:0 0 260px; background:rgba(255,255,255,0.04); border-radius:12px; padding:20px; border:1px solid rgba(255,255,255,0.06); scroll-snap-align:start;">
+                            <div style="font-size:0.7rem; color:var(--accent-text); font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px;">Fall 2024</div>
+                            <div style="font-size:1rem; font-weight:700; color:white; line-height:1.4;">Digital City Communication</div>
+                            <span class="chinese-title">數字城市傳播</span>
+                        </div>
+                        <div class="bilingual-item" style="flex:0 0 260px; background:rgba(255,255,255,0.04); border-radius:12px; padding:20px; border:1px solid rgba(255,255,255,0.06); scroll-snap-align:start;">
+                            <div style="font-size:0.7rem; color:var(--accent-text); font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px;">Spring 2024</div>
+                            <div style="font-size:1rem; font-weight:700; color:white; line-height:1.4;">Audio-Visual Program Planning</div>
+                            <span class="chinese-title">視聽節目策劃</span>
+                        </div>
+                        <div class="bilingual-item" style="flex:0 0 260px; background:rgba(255,255,255,0.04); border-radius:12px; padding:20px; border:1px solid rgba(255,255,255,0.06); scroll-snap-align:start;">
+                            <div style="font-size:0.7rem; color:var(--accent-text); font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px;">Fall 2023</div>
+                            <div style="font-size:1rem; font-weight:700; color:white; line-height:1.4;">Smart Communication &amp; Human-Computer Interaction</div>
+                            <span class="chinese-title">智慧傳播與人機交互智能</span>
+                        </div>
+                        <div class="bilingual-item" style="flex:0 0 260px; background:rgba(255,255,255,0.04); border-radius:12px; padding:20px; border:1px solid rgba(255,255,255,0.06); scroll-snap-align:start;">
+                            <div style="font-size:0.7rem; color:var(--accent-text); font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px;">Spring 2023</div>
+                            <div style="font-size:1rem; font-weight:700; color:white; line-height:1.4;">New Chinese Cinema <span style="font-size:0.75rem; color:var(--accent-text); margin-left:4px;">[English]</span></div>
+                            <span class="chinese-title">華語新電影（英文授課）</span>
+                        </div>
+                        <div class="bilingual-item" style="flex:0 0 260px; background:rgba(255,255,255,0.04); border-radius:12px; padding:20px; border:1px solid rgba(255,255,255,0.06); scroll-snap-align:start;">
+                            <div style="font-size:0.7rem; color:var(--accent-text); font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px;">Spring 2023</div>
+                            <div style="font-size:1rem; font-weight:700; color:white; line-height:1.4;">Advanced Studies in New Media Social Forms</div>
+                            <span class="chinese-title">新媒體社會形態前沿研究</span>
+                        </div>
+                        <div class="bilingual-item" style="flex:0 0 260px; background:rgba(255,255,255,0.04); border-radius:12px; padding:20px; border:1px solid rgba(255,255,255,0.06); scroll-snap-align:start;">
+                            <div style="font-size:0.7rem; color:var(--accent-text); font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px;">Fall 2022</div>
+                            <div style="font-size:1rem; font-weight:700; color:white; line-height:1.4;">New Media Management</div>
+                            <span class="chinese-title">新媒體管理</span>
+                        </div>
+                    </div>
                 </div>
             </div>
+
             <div class="section-block">
                 <h2 class="section-header">Guest Lectures</h2>
-                <div class="text-center mb-6 bilingual-text" style="display:inline-block;width:100%;">
-                    <p class="text-sm text-gray-400 leading-relaxed max-w-2xl mx-auto cursor-help">
-                        Guest speaker at Fudan University, Central Conservatory of Music, Shanghai Conservatory of Music, Fu Jen Catholic University, China University of Technology, Shih Hsin University, and Fo Guang University; also served as a lecturer under the Fudan University Lecturer Team.
-                    </p>
-                </div>
-                <div class="lecture-tags">
-                    <div class="lecture-tag bilingual-text">Construction of Popular Music Industry Value Chain<span class="chinese-hover">流行音樂的產業價值鏈建構</span></div>
-                    <div class="lecture-tag bilingual-text">Film Scoring from Multiple Perspectives<span class="chinese-hover">從音樂產業的多元視角看配樂</span></div>
-                    <div class="lecture-tag bilingual-text">AI Large Model Music Co-creation<span class="chinese-hover">AI大模型的音樂協同創作</span></div>
-                    <div class="lecture-tag bilingual-text">Digital Media Technology &amp; Music Creation<span class="chinese-hover">數位媒體技術演進與音樂創作</span></div>
-                    <div class="lecture-tag bilingual-text">The Future of Music Industry Platformization<span class="chinese-hover">音樂產業平台化的未來在哪？</span></div>
-                    <div class="lecture-tag bilingual-text">Forward-looking Analysis of Popular Music Industry<span class="chinese-hover">流行音樂的產業前瞻性分析</span></div>
-                    <div class="lecture-tag bilingual-text">Music Communication in Mainland China<span class="chinese-hover">中國大陸的音樂傳播與文化產業</span></div>
-                    <div class="lecture-tag bilingual-text">Chinese Popular Music Through Media<span class="chinese-hover">由媒介乘載的華語流行音樂</span></div>
-                    <div class="lecture-tag bilingual-text">Short Video Editing &amp; Music Scoring<span class="chinese-hover">短視頻剪輯與配樂</span></div>
+                <p class="text-sm text-gray-400 mb-2 text-center">Invited speaker at 7 universities across Taiwan and Mainland China</p>
+                <p class="text-xs text-gray-500 mb-6 text-center">Fudan University · Central Conservatory of Music · Shanghai Conservatory of Music · Fu Jen Catholic University · China University of Technology · Shih Hsin University · Fo Guang University</p>
+                <p class="text-xs text-gray-500 mb-6 text-center" style="color:var(--accent-text)">Swipe to explore lecture topics →</p>
+                <div class="shelf-container">
+                    <div class="album-shelf" style="gap:12px;">
+                        <div class="lecture-tag bilingual-text" style="flex:0 0 auto; white-space:nowrap;">Construction of Popular Music Industry Value Chain<span class="chinese-hover">流行音樂的產業價值鏈建構</span></div>
+                        <div class="lecture-tag bilingual-text" style="flex:0 0 auto; white-space:nowrap;">Film Scoring from Multiple Perspectives<span class="chinese-hover">從音樂產業的多元視角看配樂</span></div>
+                        <div class="lecture-tag bilingual-text" style="flex:0 0 auto; white-space:nowrap;">AI Large Model Music Co-creation<span class="chinese-hover">AI大模型的音樂協同創作</span></div>
+                        <div class="lecture-tag bilingual-text" style="flex:0 0 auto; white-space:nowrap;">Digital Media Technology &amp; Music Creation<span class="chinese-hover">數位媒體技術演進與音樂創作</span></div>
+                        <div class="lecture-tag bilingual-text" style="flex:0 0 auto; white-space:nowrap;">The Future of Music Industry Platformization<span class="chinese-hover">音樂產業平台化的未來在哪？</span></div>
+                        <div class="lecture-tag bilingual-text" style="flex:0 0 auto; white-space:nowrap;">Forward-looking Analysis of Popular Music Industry<span class="chinese-hover">流行音樂的產業前瞻性分析</span></div>
+                        <div class="lecture-tag bilingual-text" style="flex:0 0 auto; white-space:nowrap;">Music Communication in Mainland China<span class="chinese-hover">中國大陸的音樂傳播與文化產業</span></div>
+                        <div class="lecture-tag bilingual-text" style="flex:0 0 auto; white-space:nowrap;">Chinese Popular Music Through Media<span class="chinese-hover">由媒介乘載的華語流行音樂</span></div>
+                        <div class="lecture-tag bilingual-text" style="flex:0 0 auto; white-space:nowrap;">Short Video Editing &amp; Music Scoring<span class="chinese-hover">短視頻剪輯與配樂</span></div>
+                    </div>
                 </div>
             </div>
+
             <div class="section-block">
                 <h2 class="section-header">Teaching &amp; Speaking</h2>
-                <p class="text-sm text-gray-400 mb-6 text-center">Photos from classrooms and conferences</p>
-                <div class="text-center">
-                    <button onclick="openModal('teaching-photos')" class="inline-flex items-center gap-3 border text-sm font-semibold px-8 py-4 rounded-full transition" style="background:var(--accent-dim); border-color:var(--accent-glow); color:var(--accent-bright);">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M21 3H3C2 3 1 4 1 5v14c0 1.1.9 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 13H3V5h18v11zM5 15h14v2H5z"/></svg>
-                        View Gallery
-                    </button>
+                <p class="text-sm text-gray-400 mb-4">Photos from classrooms and conferences · Swipe →</p>
+                <div class="shelf-container">
+                    <div class="album-shelf" style="gap:16px;">
+                        <div style="flex:0 0 320px; aspect-ratio:16/9; border-radius:12px; overflow:hidden; scroll-snap-align:start;">
+                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/teaching-1.jpg" alt="Teaching 1" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='linear-gradient(135deg,#581c87,#1e1b4b)'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3)\'>Photo 1</div>';">
+                        </div>
+                        <div style="flex:0 0 320px; aspect-ratio:16/9; border-radius:12px; overflow:hidden; scroll-snap-align:start;">
+                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/teaching-2.jpg" alt="Teaching 2" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='linear-gradient(135deg,#4c1d95,#581c87)'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3)\'>Photo 2</div>';">
+                        </div>
+                        <div style="flex:0 0 320px; aspect-ratio:16/9; border-radius:12px; overflow:hidden; scroll-snap-align:start;">
+                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/teaching-3.jpg" alt="Teaching 3" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='linear-gradient(135deg,#3730a3,#4c1d95)'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3)\'>Photo 3</div>';">
+                        </div>
+                        <div style="flex:0 0 320px; aspect-ratio:16/9; border-radius:12px; overflow:hidden; scroll-snap-align:start;">
+                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/teaching-4.jpg" alt="Teaching 4" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='linear-gradient(135deg,#581c87,#3730a3)'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3)\'>Photo 4</div>';">
+                        </div>
+                        <div style="flex:0 0 320px; aspect-ratio:16/9; border-radius:12px; overflow:hidden; scroll-snap-align:start;">
+                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/teaching-5.jpg" alt="Teaching 5" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='linear-gradient(135deg,#4c1d95,#1e1b4b)'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3)\'>Photo 5</div>';">
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
     </div>
 
-    <!-- Teaching Photos Modal -->
+    <!-- Teaching Photos Modal (kept for backwards compat, but gallery is now inline scroll) -->
     <div id="modal-teaching-photos" class="modal">
         <div class="modal-content">
             <div class="modal-header"><h2 class="text-2xl font-bold text-white">Teaching & Speaking Gallery</h2><div class="close-btn" onclick="closeModal('teaching-photos')"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></div></div>
             <div class="modal-body"><div class="photo-gallery">
-                <div class="photo-gallery-item"><img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/teaching-1.jpg" alt="Teaching at Fudan" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full text-white/50\'>Photo 1</div>';"></div>
-                <div class="photo-gallery-item"><img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/teaching-2.jpg" alt="Conference" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full text-white/50\'>Photo 2</div>';"></div>
-                <div class="photo-gallery-item"><img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/teaching-3.jpg" alt="Workshop" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full text-white/50\'>Photo 3</div>';"></div>
-                <div class="photo-gallery-item"><img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/teaching-4.jpg" alt="Guest Lecture" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full text-white/50\'>Photo 4</div>';"></div>
-                <div class="photo-gallery-item"><img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/teaching-5.jpg" alt="Classroom" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full text-white/50\'>Photo 5</div>';"></div>
+                <div class="photo-gallery-item"><img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/teaching-1.jpg" alt="Teaching" onerror="this.style.display='none';"></div>
+                <div class="photo-gallery-item"><img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/teaching-2.jpg" alt="Conference" onerror="this.style.display='none';"></div>
+                <div class="photo-gallery-item"><img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/teaching-3.jpg" alt="Workshop" onerror="this.style.display='none';"></div>
+                <div class="photo-gallery-item"><img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/teaching-4.jpg" alt="Lecture" onerror="this.style.display='none';"></div>
+                <div class="photo-gallery-item"><img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/teaching-5.jpg" alt="Classroom" onerror="this.style.display='none';"></div>
             </div></div>
         </div>
     </div>
@@ -1750,86 +1812,95 @@
                 </div>
             </div>
         </section>
-        <main class="px-6 md:px-8 py-8 max-w-7xl mx-auto space-y-10">
-
-            <!-- Music Production Shelf -->
-            <div>
-                <h2 class="text-xl font-bold mb-1 flex items-center gap-2" style="color:var(--accent-text)">Music Production</h2>
-                <p class="text-xs text-gray-500 mb-4">A Cappella Arrangement · Swipe →</p>
-                <div class="shelf-container">
-                    <div class="album-shelf">
-                        <a href="https://youtu.be/2XF637Y-e7Y" target="_blank" class="album-shelf-item" style="text-decoration:none;color:inherit;">
-                            <div class="shelf-cover" style="background:linear-gradient(135deg,#881337,#4c1d95); display:flex; align-items:center; justify-content:center;"><svg class="w-12 h-12 text-white/20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg></div>
-                            <div class="shelf-play" style="background:#f43f5e;"><svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-                            <div class="shelf-color-bar" style="background:#f43f5e;"></div>
-                            <h3 class="font-bold text-white text-sm mb-1 line-clamp-2" style="line-height:1.4;">Mixter 漫聲《一個人對話》</h3>
-                            <p class="text-xs text-gray-500">Arrangement</p>
-                        </a>
-                        <a href="https://youtu.be/2XF637Y-e7Y" target="_blank" class="album-shelf-item" style="text-decoration:none;color:inherit;">
-                            <div class="shelf-cover" style="background:linear-gradient(135deg,#4c1d95,#581c87); display:flex; align-items:center; justify-content:center;"><svg class="w-12 h-12 text-white/20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg></div>
-                            <div class="shelf-play" style="background:#fb7185;"><svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-                            <div class="shelf-color-bar" style="background:#fb7185;"></div>
-                            <h3 class="font-bold text-white text-sm mb-1 line-clamp-2" style="line-height:1.4;">Syntonia《匆匆那年》</h3>
-                            <p class="text-xs text-gray-500">Arrangement</p>
-                        </a>
-                    </div>
+        <main class="px-6 md:px-8 py-8 max-w-7xl mx-auto">
+            <div class="centered-grid-2"><div class="centered-grid-2-inner">
+                <div class="album-card p-4 group" onclick="openModal('music-prod')">
+                    <div class="relative mb-4"><div class="aspect-square bg-gradient-to-br from-rose-700 to-rose-900 rounded-md flex items-center justify-center"><svg class="w-16 h-16 text-white/30" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg></div><div class="play-overlay"><svg class="w-6 h-6 text-black ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+                    <h3 class="font-bold text-white mb-1 text-center">Music Production</h3>
+                    <p class="text-sm text-gray-400 line-clamp-2 text-center">A Cappella Arrangement</p>
                 </div>
-            </div>
-
-            <!-- Video Production Shelf -->
-            <div>
-                <h2 class="text-xl font-bold mb-1 flex items-center gap-2" style="color:var(--accent-text)">Video Production</h2>
-                <p class="text-xs text-gray-500 mb-4">MV Filming & Editing · Swipe →</p>
-                <div class="shelf-container">
-                    <div class="album-shelf">
-                        <a href="https://www.bilibili.com/video/BV1YkrKBVEav/" target="_blank" class="album-shelf-item" style="text-decoration:none;color:inherit;">
-                            <div class="shelf-cover" style="background:linear-gradient(135deg,#9f1239,#164e63); display:flex; align-items:center; justify-content:center;"><svg class="w-12 h-12 text-white/20" fill="currentColor" viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg></div>
-                            <div class="shelf-play" style="background:#f43f5e;"><svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-                            <div class="shelf-color-bar" style="background:#f43f5e;"></div>
-                            <h3 class="font-bold text-white text-sm mb-1 line-clamp-2" style="line-height:1.4;">逐鹿人——《逐鹿南詔》</h3>
-                            <p class="text-xs text-gray-500">MV Production</p>
-                        </a>
-                        <a href="https://weibo.com/6274144981/FBUrurEOX" target="_blank" class="album-shelf-item" style="text-decoration:none;color:inherit;">
-                            <div class="shelf-cover" style="background:linear-gradient(135deg,#164e63,#881337); display:flex; align-items:center; justify-content:center;"><svg class="w-12 h-12 text-white/20" fill="currentColor" viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg></div>
-                            <div class="shelf-play" style="background:#fb7185;"><svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-                            <div class="shelf-color-bar" style="background:#fb7185;"></div>
-                            <h3 class="font-bold text-white text-sm mb-1 line-clamp-2" style="line-height:1.4;">自由意志人聲樂團《Fast》</h3>
-                            <p class="text-xs text-gray-500">Filming & Editing</p>
-                        </a>
-                        <a href="https://youtu.be/FP8TTlbDHDA" target="_blank" class="album-shelf-item" style="text-decoration:none;color:inherit;">
-                            <div class="shelf-cover" style="background:linear-gradient(135deg,#0c4a6e,#9f1239); display:flex; align-items:center; justify-content:center;"><svg class="w-12 h-12 text-white/20" fill="currentColor" viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg></div>
-                            <div class="shelf-play" style="background:#f43f5e;"><svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-                            <div class="shelf-color-bar" style="background:#f43f5e;"></div>
-                            <h3 class="font-bold text-white text-sm mb-1 line-clamp-2" style="line-height:1.4;">江蕙《幸福的溫度》</h3>
-                            <p class="text-xs text-gray-500">MV Editing</p>
-                        </a>
-                        <a href="https://youtu.be/vuDb1B0RyBw" target="_blank" class="album-shelf-item" style="text-decoration:none;color:inherit;">
-                            <div class="shelf-cover" style="background:linear-gradient(135deg,#881337,#4c1d95); display:flex; align-items:center; justify-content:center;"><svg class="w-12 h-12 text-white/20" fill="currentColor" viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg></div>
-                            <div class="shelf-play" style="background:#fb7185;"><svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-                            <div class="shelf-color-bar" style="background:#fb7185;"></div>
-                            <h3 class="font-bold text-white text-sm mb-1 line-clamp-2" style="line-height:1.4;">蔡黃汝《壁咚 BEEDONG》</h3>
-                            <p class="text-xs text-gray-500">Filming & Editing</p>
-                        </a>
-                        <a href="https://youtu.be/t8WD2S8rHsk" target="_blank" class="album-shelf-item" style="text-decoration:none;color:inherit;">
-                            <div class="shelf-cover" style="background:linear-gradient(135deg,#4c1d95,#7c2d12); display:flex; align-items:center; justify-content:center;"><svg class="w-12 h-12 text-white/20" fill="currentColor" viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg></div>
-                            <div class="shelf-play" style="background:#f43f5e;"><svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-                            <div class="shelf-color-bar" style="background:#f43f5e;"></div>
-                            <h3 class="font-bold text-white text-sm mb-1 line-clamp-2" style="line-height:1.4;">管罄《First Love》Cover</h3>
-                            <p class="text-xs text-gray-500">Filming & Editing</p>
-                        </a>
-                        <a href="https://youtu.be/G9W3YnqgEAI" target="_blank" class="album-shelf-item" style="text-decoration:none;color:inherit;">
-                            <div class="shelf-cover" style="background:linear-gradient(135deg,#7c2d12,#881337); display:flex; align-items:center; justify-content:center;"><svg class="w-12 h-12 text-white/20" fill="currentColor" viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg></div>
-                            <div class="shelf-play" style="background:#fb7185;"><svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-                            <div class="shelf-color-bar" style="background:#fb7185;"></div>
-                            <h3 class="font-bold text-white text-sm mb-1 line-clamp-2" style="line-height:1.4;">劉明湘《就決定是你了》Cover</h3>
-                            <p class="text-xs text-gray-500">Filming & Editing</p>
-                        </a>
-                    </div>
+                <div class="album-card p-4 group" onclick="openModal('video-prod')">
+                    <div class="relative mb-4"><div class="aspect-square bg-gradient-to-br from-rose-600 to-rose-800 rounded-md flex items-center justify-center"><svg class="w-16 h-16 text-white/30" fill="currentColor" viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg></div><div class="play-overlay"><svg class="w-6 h-6 text-black ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+                    <h3 class="font-bold text-white mb-1 text-center">Video Production</h3>
+                    <p class="text-sm text-gray-400 line-clamp-2 text-center">6 projects • Filming & Editing</p>
                 </div>
-            </div>
-
+            </div></div>
         </main>
     </div>
+
+    <!-- Music Production Modal -->
+    <div id="modal-music-prod" class="modal"><div class="modal-content">
+        <div class="modal-header"><h2 class="text-2xl font-bold text-white">Music Production</h2><div class="close-btn" onclick="closeModal('music-prod')"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></div></div>
+        <div class="modal-body"><div class="track-list">
+            <a href="https://youtu.be/2XF637Y-e7Y" target="_blank" class="track-item flex items-center gap-4 p-4 cursor-pointer group block"><div class="w-8 text-center flex-shrink-0"><span class="track-num text-gray-500 font-bold">1</span><svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="flex-1 min-w-0"><h3 class="font-bold text-white group-hover:text-rose-400 transition truncate">Mixter 漫聲 人聲樂團 Feat. 許子威《一個人對話》</h3><p class="text-sm text-gray-400 mt-1">A Cappella Arrangement • 編曲與影片後製</p></div></a>
+            <a href="https://youtu.be/2XF637Y-e7Y" target="_blank" class="track-item flex items-center gap-4 p-4 cursor-pointer group block"><div class="w-8 text-center flex-shrink-0"><span class="track-num text-gray-500 font-bold">2</span><svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="flex-1 min-w-0"><h3 class="font-bold text-white group-hover:text-rose-400 transition truncate">Syntonia 人聲樂團《匆匆那年》</h3><p class="text-sm text-gray-400 mt-1">A Cappella Arrangement • 阿卡貝拉編曲</p></div></a>
+        </div></div>
+    </div></div>
+
+    <!-- Video Production Modal — horizontal scroll inside -->
+    <div id="modal-video-prod" class="modal"><div class="modal-content">
+        <div class="modal-header"><h2 class="text-2xl font-bold text-white">Video Production</h2><div class="close-btn" onclick="closeModal('video-prod')"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></div></div>
+        <div class="modal-body">
+            <p class="text-sm text-gray-400 mb-4">Swipe to browse →</p>
+            <div style="display:flex; gap:16px; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; padding-bottom:16px; scrollbar-width:none;">
+                <a href="https://www.bilibili.com/video/BV1YkrKBVEav/" target="_blank" class="project-card group" style="flex:0 0 280px; scroll-snap-align:start; text-decoration:none; color:inherit;">
+                    <div style="aspect-ratio:16/9; background:linear-gradient(135deg,#9f1239,#164e63); border-radius:12px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
+                        <div style="position:absolute;inset:0;background:rgba(0,0,0,0.3);opacity:0;transition:opacity 0.3s;" class="group-hover:opacity-100"></div>
+                        <div style="text-align:center; position:relative; z-index:1; padding:16px;">
+                            <div style="width:48px;height:48px;background:rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;backdrop-filter:blur(4px);"><svg class="w-6 h-6 text-white" style="margin-left:2px" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                            <h3 style="font-size:0.85rem;font-weight:700;color:white;">逐鹿人——《逐鹿南詔》</h3>
+                            <p style="font-size:0.7rem;color:#fb7185;margin-top:4px;">MV Production • 音樂影片製作</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://weibo.com/6274144981/FBUrurEOX" target="_blank" class="project-card group" style="flex:0 0 280px; scroll-snap-align:start; text-decoration:none; color:inherit;">
+                    <div style="aspect-ratio:16/9; background:linear-gradient(135deg,#164e63,#881337); border-radius:12px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
+                        <div style="text-align:center; position:relative; z-index:1; padding:16px;">
+                            <div style="width:48px;height:48px;background:rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;backdrop-filter:blur(4px);"><svg class="w-6 h-6 text-white" style="margin-left:2px" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                            <h3 style="font-size:0.85rem;font-weight:700;color:white;">自由意志人聲樂團《Fast》</h3>
+                            <p style="font-size:0.7rem;color:#fb7185;margin-top:4px;">Filming & Editing • 阿卡貝拉影片</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://youtu.be/FP8TTlbDHDA" target="_blank" class="project-card group" style="flex:0 0 280px; scroll-snap-align:start; text-decoration:none; color:inherit;">
+                    <div style="aspect-ratio:16/9; background:linear-gradient(135deg,#0c4a6e,#9f1239); border-radius:12px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
+                        <div style="text-align:center; position:relative; z-index:1; padding:16px;">
+                            <div style="width:48px;height:48px;background:rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;backdrop-filter:blur(4px);"><svg class="w-6 h-6 text-white" style="margin-left:2px" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                            <h3 style="font-size:0.85rem;font-weight:700;color:white;">江蕙《幸福的溫度》</h3>
+                            <p style="font-size:0.7rem;color:#fb7185;margin-top:4px;">MV Editing • 音樂影片剪輯</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://youtu.be/vuDb1B0RyBw" target="_blank" class="project-card group" style="flex:0 0 280px; scroll-snap-align:start; text-decoration:none; color:inherit;">
+                    <div style="aspect-ratio:16/9; background:linear-gradient(135deg,#881337,#4c1d95); border-radius:12px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
+                        <div style="text-align:center; position:relative; z-index:1; padding:16px;">
+                            <div style="width:48px;height:48px;background:rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;backdrop-filter:blur(4px);"><svg class="w-6 h-6 text-white" style="margin-left:2px" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                            <h3 style="font-size:0.85rem;font-weight:700;color:white;">蔡黃汝《壁咚 BEEDONG》</h3>
+                            <p style="font-size:0.7rem;color:#fb7185;margin-top:4px;">Filming & Editing • 舞蹈影音</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://youtu.be/t8WD2S8rHsk" target="_blank" class="project-card group" style="flex:0 0 280px; scroll-snap-align:start; text-decoration:none; color:inherit;">
+                    <div style="aspect-ratio:16/9; background:linear-gradient(135deg,#4c1d95,#7c2d12); border-radius:12px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
+                        <div style="text-align:center; position:relative; z-index:1; padding:16px;">
+                            <div style="width:48px;height:48px;background:rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;backdrop-filter:blur(4px);"><svg class="w-6 h-6 text-white" style="margin-left:2px" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                            <h3 style="font-size:0.85rem;font-weight:700;color:white;">管罄《First Love》Cover</h3>
+                            <p style="font-size:0.7rem;color:#fb7185;margin-top:4px;">Filming & Editing • 音樂影片</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://youtu.be/G9W3YnqgEAI" target="_blank" class="project-card group" style="flex:0 0 280px; scroll-snap-align:start; text-decoration:none; color:inherit;">
+                    <div style="aspect-ratio:16/9; background:linear-gradient(135deg,#7c2d12,#881337); border-radius:12px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
+                        <div style="text-align:center; position:relative; z-index:1; padding:16px;">
+                            <div style="width:48px;height:48px;background:rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;backdrop-filter:blur(4px);"><svg class="w-6 h-6 text-white" style="margin-left:2px" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                            <h3 style="font-size:0.85rem;font-weight:700;color:white;">劉明湘《就決定是你了》Cover</h3>
+                            <p style="font-size:0.7rem;color:#fb7185;margin-top:4px;">Filming & Editing • 音樂影片</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div></div>
 
     <!-- ============================================
          CONTACT PAGE
@@ -2129,6 +2200,8 @@
     // ▲▲▲ PLAYLIST END ▲▲▲
 
     const audio = new Audio();
+    audio.crossOrigin = 'anonymous';
+    audio.preload = 'auto';
     audio.volume = 0.7;
     let currentTrackIndex = -1; // -1 = nothing loaded yet
     let isPlaying = false;
@@ -2156,7 +2229,13 @@
         if (playlist.length === 0) return;
         currentTrackIndex = ((index % playlist.length) + playlist.length) % playlist.length;
         const track = playlist[currentTrackIndex];
+        // Reset before loading new source
+        audio.pause();
+        audio.src = '';
+        audio.load();
+        // Set new source
         audio.src = track.src;
+        audio.load();
         $cover.src = track.cover;
         $name.textContent = track.title;
         $artist.textContent = track.artist;
@@ -2188,7 +2267,23 @@
             audio.pause();
             isPlaying = false;
         } else {
-            audio.play().catch(() => {});
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    isPlaying = true;
+                    updatePlayPauseUI();
+                }).catch((e) => {
+                    // Browser blocked autoplay or source not ready — retry after canplay
+                    audio.addEventListener('canplay', function retry() {
+                        audio.removeEventListener('canplay', retry);
+                        audio.play().then(() => {
+                            isPlaying = true;
+                            updatePlayPauseUI();
+                        }).catch(() => {});
+                    });
+                });
+                return; // UI update happens in .then()
+            }
             isPlaying = true;
         }
         updatePlayPauseUI();
@@ -2196,20 +2291,31 @@
 
     function playerNext() {
         if (playlist.length === 0) return;
+        const wasPlaying = isPlaying;
         loadTrack((currentTrackIndex === -1 ? 0 : currentTrackIndex) + 1);
-        if (isPlaying) audio.play().catch(() => {});
+        if (wasPlaying) {
+            audio.addEventListener('canplay', function onReady() {
+                audio.removeEventListener('canplay', onReady);
+                audio.play().then(() => { isPlaying = true; updatePlayPauseUI(); }).catch(() => {});
+            });
+        }
         updatePlayPauseUI();
     }
 
     function playerPrev() {
         if (playlist.length === 0) return;
-        // If past 3 seconds, restart current track
         if (audio.currentTime > 3) {
             audio.currentTime = 0;
             return;
         }
+        const wasPlaying = isPlaying;
         loadTrack((currentTrackIndex === -1 ? 0 : currentTrackIndex) - 1);
-        if (isPlaying) audio.play().catch(() => {});
+        if (wasPlaying) {
+            audio.addEventListener('canplay', function onReady() {
+                audio.removeEventListener('canplay', onReady);
+                audio.play().then(() => { isPlaying = true; updatePlayPauseUI(); }).catch(() => {});
+            });
+        }
         updatePlayPauseUI();
     }
 
@@ -2252,8 +2358,11 @@
         playerNext();
     });
     audio.addEventListener('error', () => {
-        // If audio fails to load, show friendly message
-        $artist.textContent = 'Audio file not found — upload MP3 to repo';
+        // Only show error if we actually tried to load a track
+        if (currentTrackIndex >= 0 && audio.src && audio.src !== window.location.href) {
+            $artist.textContent = 'Cannot load audio — check file path';
+            console.error('Audio load error:', audio.src, audio.error);
+        }
     });
 
     // Init volume bar
