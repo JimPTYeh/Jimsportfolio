@@ -660,7 +660,7 @@
             left: 50%;
             transform: translateX(-50%);
             width: 180px;
-            background: rgba(255,255,255,0.05);
+            background: rgba(20,10,30,0.95);
             border: 1px solid var(--accent-glow);
             border-radius: 12px;
             padding: 14px;
@@ -668,6 +668,7 @@
             backdrop-filter: blur(8px);
             transition: all 0.3s ease;
             cursor: help;
+            z-index: 5;
         }
         .tree-card:hover {
             background: rgba(255,255,255,0.1);
@@ -857,12 +858,16 @@
         }
         @media (max-width: 768px) {
             .player-bar {
-                grid-template-columns: 1fr auto;
+                grid-template-columns: 1fr auto auto;
                 gap: 8px;
                 padding: 8px 16px;
             }
             .player-center { display: none !important; }
-            .player-right { display: none !important; }
+            /* Show right side on mobile but simplified */
+            .player-right { 
+                display: flex !important; 
+                gap: 6px !important;
+            }
             .player-mobile-controls { display: flex !important; }
         }
         /* Left: track info */
@@ -1115,6 +1120,40 @@
             padding: 4px; transition: color 0.15s;
         }
         .vol-mute-btn:hover { color: white; }
+
+        /* Photo lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 99999;
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+            padding: 20px;
+        }
+        .lightbox.show { display: flex; }
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px; right: 20px;
+            width: 40px; height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            color: white;
+            border: none;
+            transition: all 0.2s;
+        }
+        .lightbox-close:hover { background: rgba(239,68,68,0.8); transform: rotate(90deg); }
 
         /* ============================================
            ICON BUTTONS
@@ -1424,13 +1463,22 @@
                     <h3 class="font-bold mb-4 text-white">
                         <span class="bilingual-text">Research Interests<span class="chinese-hover">研究興趣</span></span>
                     </h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-4 py-2 bg-white/10 rounded-full text-sm bilingual-text">Music Communication<span class="chinese-hover">音樂傳播</span></span>
-                        <span class="px-4 py-2 bg-white/10 rounded-full text-sm bilingual-text">Platform Economics<span class="chinese-hover">平台經濟</span></span>
-                        <span class="px-4 py-2 bg-white/10 rounded-full text-sm bilingual-text">Creative Industries<span class="chinese-hover">創意產業</span></span>
-                        <span class="px-4 py-2 bg-white/10 rounded-full text-sm bilingual-text">Digital Transformation<span class="chinese-hover">數位轉型</span></span>
-                        <span class="px-4 py-2 bg-white/10 rounded-full text-sm bilingual-text">Copyright Governance<span class="chinese-hover">版權治理</span></span>
-                        <span class="px-4 py-2 bg-white/10 rounded-full text-sm bilingual-text">AI and Entertainment<span class="chinese-hover">人工智慧與娛樂</span></span>
+                    <!-- Primary 3 -->
+                    <div class="flex flex-wrap gap-3 justify-center mb-4">
+                        <span class="bilingual-text" style="padding:10px 20px; background:linear-gradient(135deg, var(--accent-dim), rgba(255,255,255,0.08)); border:1px solid var(--accent-glow); border-radius:24px; font-size:0.95rem; font-weight:700; color:white;">Music Communication<span class="chinese-hover">音樂傳播</span></span>
+                        <span class="bilingual-text" style="padding:10px 20px; background:linear-gradient(135deg, var(--accent-dim), rgba(255,255,255,0.08)); border:1px solid var(--accent-glow); border-radius:24px; font-size:0.95rem; font-weight:700; color:white;">Cultural Industries<span class="chinese-hover">文化產業</span></span>
+                        <span class="bilingual-text" style="padding:10px 20px; background:linear-gradient(135deg, var(--accent-dim), rgba(255,255,255,0.08)); border:1px solid var(--accent-glow); border-radius:24px; font-size:0.95rem; font-weight:700; color:white;">Platform Studies<span class="chinese-hover">平台研究</span></span>
+                    </div>
+                    <!-- Secondary: scrollable -->
+                    <div class="shelf-container" style="margin:0 -8px;">
+                        <div style="display:flex; gap:8px; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch; padding:4px 8px;">
+                            <span class="px-3 py-1.5 bg-white/5 rounded-full text-xs text-gray-400 bilingual-text" style="flex:0 0 auto; white-space:nowrap; border:1px solid rgba(255,255,255,0.08);">Platform Economics<span class="chinese-hover">平台經濟</span></span>
+                            <span class="px-3 py-1.5 bg-white/5 rounded-full text-xs text-gray-400 bilingual-text" style="flex:0 0 auto; white-space:nowrap; border:1px solid rgba(255,255,255,0.08);">Digital Transformation<span class="chinese-hover">數位轉型</span></span>
+                            <span class="px-3 py-1.5 bg-white/5 rounded-full text-xs text-gray-400 bilingual-text" style="flex:0 0 auto; white-space:nowrap; border:1px solid rgba(255,255,255,0.08);">Copyright Governance<span class="chinese-hover">版權治理</span></span>
+                            <span class="px-3 py-1.5 bg-white/5 rounded-full text-xs text-gray-400 bilingual-text" style="flex:0 0 auto; white-space:nowrap; border:1px solid rgba(255,255,255,0.08);">AI &amp; Entertainment<span class="chinese-hover">人工智慧與娛樂</span></span>
+                            <span class="px-3 py-1.5 bg-white/5 rounded-full text-xs text-gray-400 bilingual-text" style="flex:0 0 auto; white-space:nowrap; border:1px solid rgba(255,255,255,0.08);">Music Art Management<span class="chinese-hover">音樂藝術管理</span></span>
+                            <span class="px-3 py-1.5 bg-white/5 rounded-full text-xs text-gray-400 bilingual-text" style="flex:0 0 auto; white-space:nowrap; border:1px solid rgba(255,255,255,0.08);">Creative Labor<span class="chinese-hover">創意勞動</span></span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1914,8 +1962,19 @@
 
             <div class="section-block" style="overflow:visible;">
                 <h2 class="section-header">Guest Lectures</h2>
-                <p class="text-sm text-gray-400 mb-2 text-center">Invited speaker at 7 universities across Taiwan and Mainland China</p>
-                <p class="text-xs text-gray-500 mb-6 text-center">Fudan · Central Conservatory · Shanghai Conservatory · Fu Jen Catholic · China University of Technology · Shih Hsin · Fo Guang</p>
+                <p class="text-sm text-gray-400 mb-4 text-center bilingual-text" style="max-width:600px; margin-left:auto; margin-right:auto; line-height:1.7; display:block; cursor:help;">
+                    Guest speaker at universities across Mainland China and Taiwan; also served as a member of the Fudan University Lecturer Team, delivering public lectures at Shanghai community organizations.
+                    <span class="chinese-hover" style="max-width:380px;">曾於中國大陸及台灣多所大學擔任客座講師；並作為復旦大學講師團成員，受邀至上海各街道辦事處進行公開講座與教學活動。</span>
+                </p>
+                <div style="display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-bottom:24px;">
+                    <span class="bilingual-text" style="padding:6px 14px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:20px; font-size:0.8rem; color:#e0e7ff;">Fudan University<span class="chinese-hover">復旦大學</span></span>
+                    <span class="bilingual-text" style="padding:6px 14px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:20px; font-size:0.8rem; color:#e0e7ff;">Central Conservatory of Music<span class="chinese-hover">中央音樂學院</span></span>
+                    <span class="bilingual-text" style="padding:6px 14px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:20px; font-size:0.8rem; color:#e0e7ff;">Shanghai Conservatory of Music<span class="chinese-hover">上海音樂學院</span></span>
+                    <span class="bilingual-text" style="padding:6px 14px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:20px; font-size:0.8rem; color:#e0e7ff;">Fu Jen Catholic University<span class="chinese-hover">輔仁大學</span></span>
+                    <span class="bilingual-text" style="padding:6px 14px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:20px; font-size:0.8rem; color:#e0e7ff;">China University of Technology<span class="chinese-hover">中國科技大學</span></span>
+                    <span class="bilingual-text" style="padding:6px 14px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:20px; font-size:0.8rem; color:#e0e7ff;">Shih Hsin University<span class="chinese-hover">世新大學</span></span>
+                    <span class="bilingual-text" style="padding:6px 14px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:20px; font-size:0.8rem; color:#e0e7ff;">Fo Guang University<span class="chinese-hover">佛光大學</span></span>
+                </div>
                 <div class="lecture-tags" style="overflow:visible;">
                     <div class="lecture-tag bilingual-text">Construction of Popular Music Industry Value Chain<span class="chinese-hover">流行音樂的產業價值鏈建構</span></div>
                     <div class="lecture-tag bilingual-text">Film Scoring from Multiple Perspectives<span class="chinese-hover">從音樂產業的多元視角看配樂</span></div>
@@ -1931,23 +1990,23 @@
 
             <div class="section-block">
                 <h2 class="section-header">Teaching &amp; Speaking</h2>
-                <p class="text-sm text-gray-400 mb-4">Photos from classrooms and conferences · Swipe →</p>
+                <p class="text-sm text-gray-400 mb-4">Photos from classrooms and conferences · Swipe → · Click to enlarge</p>
                 <div class="shelf-container">
                     <div class="album-shelf" style="gap:16px;">
-                        <div style="flex:0 0 320px; aspect-ratio:16/9; border-radius:12px; overflow:hidden; scroll-snap-align:start;">
-                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/teaching/photo-1.jpg" alt="Teaching 1" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='linear-gradient(135deg,#581c87,#1e1b4b)'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3);font-size:0.8rem;\'>teaching-photo-1.jpg</div>';">
+                        <div onclick="openLightbox(this.querySelector('img').src)" style="flex:0 0 320px; aspect-ratio:16/9; border-radius:12px; overflow:hidden; scroll-snap-align:start; cursor:zoom-in;">
+                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/teaching/photo-1.jpg" alt="Teaching 1" style="width:100%;height:100%;object-fit:cover;transition:transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onerror="this.parentElement.style.background='linear-gradient(135deg,#581c87,#1e1b4b)';this.parentElement.style.cursor='default';this.parentElement.onclick=null;this.outerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3);font-size:0.8rem;\'>photo-1.jpg</div>';">
                         </div>
-                        <div style="flex:0 0 320px; aspect-ratio:16/9; border-radius:12px; overflow:hidden; scroll-snap-align:start;">
-                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/teaching/photo-2.jpg" alt="Teaching 2" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='linear-gradient(135deg,#4c1d95,#581c87)'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3);font-size:0.8rem;\'>teaching-photo-2.jpg</div>';">
+                        <div onclick="openLightbox(this.querySelector('img').src)" style="flex:0 0 320px; aspect-ratio:16/9; border-radius:12px; overflow:hidden; scroll-snap-align:start; cursor:zoom-in;">
+                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/teaching/photo-2.jpg" alt="Teaching 2" style="width:100%;height:100%;object-fit:cover;transition:transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onerror="this.parentElement.style.background='linear-gradient(135deg,#4c1d95,#581c87)';this.parentElement.style.cursor='default';this.parentElement.onclick=null;this.outerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3);font-size:0.8rem;\'>photo-2.jpg</div>';">
                         </div>
-                        <div style="flex:0 0 320px; aspect-ratio:16/9; border-radius:12px; overflow:hidden; scroll-snap-align:start;">
-                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/teaching/photo-3.jpg" alt="Teaching 3" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='linear-gradient(135deg,#3730a3,#4c1d95)'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3);font-size:0.8rem;\'>teaching-photo-3.jpg</div>';">
+                        <div onclick="openLightbox(this.querySelector('img').src)" style="flex:0 0 320px; aspect-ratio:16/9; border-radius:12px; overflow:hidden; scroll-snap-align:start; cursor:zoom-in;">
+                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/teaching/photo-3.jpg" alt="Teaching 3" style="width:100%;height:100%;object-fit:cover;transition:transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onerror="this.parentElement.style.background='linear-gradient(135deg,#3730a3,#4c1d95)';this.parentElement.style.cursor='default';this.parentElement.onclick=null;this.outerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3);font-size:0.8rem;\'>photo-3.jpg</div>';">
                         </div>
-                        <div style="flex:0 0 320px; aspect-ratio:16/9; border-radius:12px; overflow:hidden; scroll-snap-align:start;">
-                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/teaching/photo-4.jpg" alt="Teaching 4" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='linear-gradient(135deg,#581c87,#3730a3)'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3);font-size:0.8rem;\'>teaching-photo-4.jpg</div>';">
+                        <div onclick="openLightbox(this.querySelector('img').src)" style="flex:0 0 320px; aspect-ratio:16/9; border-radius:12px; overflow:hidden; scroll-snap-align:start; cursor:zoom-in;">
+                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/teaching/photo-4.jpg" alt="Teaching 4" style="width:100%;height:100%;object-fit:cover;transition:transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onerror="this.parentElement.style.background='linear-gradient(135deg,#581c87,#3730a3)';this.parentElement.style.cursor='default';this.parentElement.onclick=null;this.outerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3);font-size:0.8rem;\'>photo-4.jpg</div>';">
                         </div>
-                        <div style="flex:0 0 320px; aspect-ratio:16/9; border-radius:12px; overflow:hidden; scroll-snap-align:start;">
-                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/teaching/photo-5.jpg" alt="Teaching 5" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='linear-gradient(135deg,#4c1d95,#1e1b4b)'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3);font-size:0.8rem;\'>teaching-photo-5.jpg</div>';">
+                        <div onclick="openLightbox(this.querySelector('img').src)" style="flex:0 0 320px; aspect-ratio:16/9; border-radius:12px; overflow:hidden; scroll-snap-align:start; cursor:zoom-in;">
+                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/teaching/photo-5.JPG" alt="Teaching 5" style="width:100%;height:100%;object-fit:cover;transition:transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onerror="this.parentElement.style.background='linear-gradient(135deg,#4c1d95,#1e1b4b)';this.parentElement.style.cursor='default';this.parentElement.onclick=null;this.outerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3);font-size:0.8rem;\'>photo-5.jpg</div>';">
                         </div>
                     </div>
                 </div>
@@ -1955,16 +2014,22 @@
         </main>
     </div>
 
+    <!-- Photo Lightbox -->
+    <div class="lightbox" id="photo-lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close" onclick="closeLightbox()"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+        <img id="lightbox-img" src="" alt="Enlarged photo">
+    </div>
+
     <!-- Teaching Photos Modal (kept for backwards compat, but gallery is now inline scroll) -->
     <div id="modal-teaching-photos" class="modal">
         <div class="modal-content">
             <div class="modal-header"><h2 class="text-2xl font-bold text-white">Teaching & Speaking Gallery</h2><div class="close-btn" onclick="closeModal('teaching-photos')"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></div></div>
             <div class="modal-body"><div class="photo-gallery">
-                <div class="photo-gallery-item"><img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/teaching-1.jpg" alt="Teaching" onerror="this.style.display='none';"></div>
-                <div class="photo-gallery-item"><img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/teaching-2.jpg" alt="Conference" onerror="this.style.display='none';"></div>
-                <div class="photo-gallery-item"><img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/teaching-3.jpg" alt="Workshop" onerror="this.style.display='none';"></div>
-                <div class="photo-gallery-item"><img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/teaching-4.jpg" alt="Lecture" onerror="this.style.display='none';"></div>
-                <div class="photo-gallery-item"><img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/teaching-5.jpg" alt="Classroom" onerror="this.style.display='none';"></div>
+                <div class="photo-gallery-item"><img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/teaching/photo-1.jpg" alt="Teaching" onerror="this.style.display='none';"></div>
+                <div class="photo-gallery-item"><img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/teaching/photo-2.jpg" alt="Conference" onerror="this.style.display='none';"></div>
+                <div class="photo-gallery-item"><img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/teaching/photo-3.jpg" alt="Workshop" onerror="this.style.display='none';"></div>
+                <div class="photo-gallery-item"><img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/teaching/photo-4.jpg" alt="Lecture" onerror="this.style.display='none';"></div>
+                <div class="photo-gallery-item"><img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/teaching/photo-5.JPG" alt="Classroom" onerror="this.style.display='none';"></div>
             </div></div>
         </div>
     </div>
@@ -2687,6 +2752,27 @@
     window.toggleVolPopup = toggleVolPopup;
     window.handleVolSlider = handleVolSlider;
     window.loadTrack = loadTrack;
+
+    // Lightbox for teaching photos
+    function openLightbox(src) {
+        if (!src) return;
+        const lb = document.getElementById('photo-lightbox');
+        document.getElementById('lightbox-img').src = src;
+        lb.classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+        const lb = document.getElementById('photo-lightbox');
+        lb.classList.remove('show');
+        document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && document.getElementById('photo-lightbox').classList.contains('show')) {
+            closeLightbox();
+        }
+    });
+    window.openLightbox = openLightbox;
+    window.closeLightbox = closeLightbox;
     </script>
 </body>
 </html>
