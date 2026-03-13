@@ -502,12 +502,11 @@
             display: flex;
             gap: 20px;
             overflow-x: auto;
-            overflow-y: hidden;
+            overflow-y: visible;
             scroll-snap-type: x mandatory;
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
             padding: 8px 0 24px;
-            /* hide scrollbar but keep functionality */
             scrollbar-width: none;
             -ms-overflow-style: none;
         }
@@ -559,7 +558,6 @@
         .album-shelf-item:hover .shelf-overlay { opacity: 1; }
         .shelf-overlay svg {
             width: 48px; height: 48px;
-            background: var(--accent, #3b82f6);
             border-radius: 50%;
             padding: 12px;
             transform: scale(0.8);
@@ -1032,6 +1030,92 @@
             .player-mobile-progress { display: block; }
         }
 
+        /* Volume popup */
+        .vol-popup {
+            display: none;
+            position: absolute;
+            bottom: 100%;
+            right: 0;
+            margin-bottom: 8px;
+            background: #282828;
+            border-radius: 8px;
+            padding: 12px 8px;
+            box-shadow: 0 -8px 24px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            z-index: 200;
+        }
+        .vol-popup.show { display: flex; }
+        .vol-slider-track {
+            width: 6px;
+            height: 80px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 3px;
+            position: relative;
+            cursor: pointer;
+        }
+        .vol-slider-fill {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: white;
+            border-radius: 3px;
+            transition: height 0.1s;
+        }
+        .vol-slider-track:hover .vol-slider-fill { background: #3b82f6; }
+        .vol-pct {
+            font-size: 0.6rem;
+            color: #9ca3af;
+            font-variant-numeric: tabular-nums;
+        }
+        .vol-popup {
+            display: none;
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #282828;
+            border-radius: 8px;
+            padding: 12px 8px;
+            margin-bottom: 8px;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 -8px 24px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+            z-index: 200;
+        }
+        .vol-popup.show { display: flex; }
+        .vol-slider-track {
+            width: 4px; height: 80px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 2px;
+            position: relative;
+            cursor: pointer;
+        }
+        .vol-slider-fill {
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 100%;
+            background: white;
+            border-radius: 2px;
+            transition: height 0.1s;
+        }
+        .vol-slider-track:hover .vol-slider-fill { background: #3b82f6; }
+        .vol-pct {
+            font-size: 0.65rem;
+            color: #9ca3af;
+            font-variant-numeric: tabular-nums;
+        }
+        .vol-mute-btn {
+            background: none; border: none;
+            color: #9ca3af; cursor: pointer;
+            padding: 4px; transition: color 0.15s;
+        }
+        .vol-mute-btn:hover { color: white; }
+
         /* ============================================
            ICON BUTTONS
            ============================================ */
@@ -1238,7 +1322,7 @@
                     <div class="album-shelf-item" onclick="showPage('research')">
                         <div class="shelf-cover">
                             <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/card-research.jpg" alt="Research & Project" style="width:100%;height:100%;object-fit:cover;border-radius:6px;">
-                            <div class="shelf-overlay"><svg class="w-6 h-6 text-black ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                            <div class="shelf-overlay"><svg class="w-6 h-6 text-black ml-1" style="background:#6366f1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                         </div>
                         <div class="shelf-color-bar" style="background:#6366f1;"></div>
                         <h3 class="font-bold text-white text-sm mb-1">《Research & Project》</h3>
@@ -1249,7 +1333,7 @@
                     <div class="album-shelf-item" onclick="showPage('industry')">
                         <div class="shelf-cover">
                             <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/card-industry.jpg" alt="Industry Exp." style="width:100%;height:100%;object-fit:cover;border-radius:6px;">
-                            <div class="shelf-overlay"><svg class="w-6 h-6 text-black ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                            <div class="shelf-overlay"><svg class="w-6 h-6 text-black ml-1" style="background:#f59e0b" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                         </div>
                         <div class="shelf-color-bar" style="background:#f59e0b;"></div>
                         <h3 class="font-bold text-white text-sm mb-1">《Industry Exp.》</h3>
@@ -1260,7 +1344,7 @@
                     <div class="album-shelf-item" onclick="showPage('livesession')">
                         <div class="shelf-cover">
                             <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/card-livesession.jpg" alt="Live Session" style="width:100%;height:100%;object-fit:cover;border-radius:6px;">
-                            <div class="shelf-overlay"><svg class="w-6 h-6 text-black ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                            <div class="shelf-overlay"><svg class="w-6 h-6 text-black ml-1" style="background:#a855f7" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                         </div>
                         <div class="shelf-color-bar" style="background:#a855f7;"></div>
                         <h3 class="font-bold text-white text-sm mb-1">《Live Session》</h3>
@@ -1271,7 +1355,7 @@
                     <div class="album-shelf-item" onclick="showPage('reviews')">
                         <div class="shelf-cover">
                             <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/card-reviews.jpg" alt="Reviews / Articles" style="width:100%;height:100%;object-fit:cover;border-radius:6px;">
-                            <div class="shelf-overlay"><svg class="w-6 h-6 text-black ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                            <div class="shelf-overlay"><svg class="w-6 h-6 text-black ml-1" style="background:#14b8a6" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                         </div>
                         <div class="shelf-color-bar" style="background:#14b8a6;"></div>
                         <h3 class="font-bold text-white text-sm mb-1">《Reviews / Articles》</h3>
@@ -1282,7 +1366,7 @@
                     <div class="album-shelf-item" onclick="showPage('production')">
                         <div class="shelf-cover">
                             <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/card-production.jpg" alt="Life Productions" style="width:100%;height:100%;object-fit:cover;border-radius:6px;">
-                            <div class="shelf-overlay"><svg class="w-6 h-6 text-black ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                            <div class="shelf-overlay"><svg class="w-6 h-6 text-black ml-1" style="background:#f43f5e" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                         </div>
                         <div class="shelf-color-bar" style="background:#f43f5e;"></div>
                         <h3 class="font-bold text-white text-sm mb-1">《Life Productions》</h3>
@@ -1575,14 +1659,14 @@
                         <div class="research-accordion-content"><div class="research-accordion-inner space-y-3">
                             <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2025 Fudan University Graduate Autumn Social Practice</p><p class="text-xs text-gray-400 mt-1 italic">"Rebirth of Old Factories" – Digital Technology Empowering Cultural Parks</p><span class="chinese-title">2025年复旦大学研究生秋季社会实践《老厂房"新生记"——数字技术赋能文化园区更新的实践研究》</span></div>
                             <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2025 Fudan University Graduate Winter-Spring Social Practice</p><p class="text-xs text-gray-400 mt-1 italic">"Listenable, Visible, Playable" – AI Multimodal Collaborative Music Generation</p><span class="chinese-title">2025年复旦大学研究生冬春季社会实践《"可听、可视、可玩"——AI多模态协同生成音乐的实践研究》</span></div>
-                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2024 Fudan Graduate Autumn Practice – Digital City Culture Tour</p><p class="text-xs text-gray-400 mt-1 italic">"Walking into the Heart of Shanghai"</p><span class="chinese-title">「走」進「滬」的心裡——上海數字城市文化漫步之旅</span></div>
-                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2024 Fudan Graduate Autumn Practice – Cross-Strait Youth Career</p><p class="text-xs text-gray-400 mt-1 italic">Youth as a Bridge – Career Empowerment Documentary</p><span class="chinese-title">青年作為橋梁——兩岸大學生職涯賦能紀實</span></div>
-                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2024 Fudan Graduate Autumn Practice – Audio Social Media</p><p class="text-xs text-gray-400 mt-1 italic">"Joyful Listening" Life – Audio Social Media Platforms</p><span class="chinese-title">「樂聽」生活——音頻社交媒體平台的企業實踐研究</span></div>
-                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2024 Fudan Graduate Summer Practice – AIGC in Chinese Pop</p><p class="text-xs text-gray-400 mt-1 italic">AIGC in the Chinese Pop Music Industry: Past, Present and Future</p><span class="chinese-title">媒介學視域下AIGC面向華語流行音樂產業</span></div>
-                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2024 Fudan Graduate Spring Practice – Night Shanghai</p><p class="text-xs text-gray-400 mt-1 italic">Singing "Night Shanghai" – History of Chinese Pop Music</p><span class="chinese-title">唱響「夜上海」——立足上海的中國流行音樂發展史研究</span></div>
-                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2024 Fudan Graduate Spring Practice – Short Video Rural Construction</p><p class="text-xs text-gray-400 mt-1 italic">Deconstructing Visualized Social Elements Through Short Videos</p><span class="chinese-title">深入短視頻畫面解構視頻化社會元素——鄉村建設調研</span></div>
-                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2024 Fudan Graduate Winter Practice – Interdisciplinary Writing</p><p class="text-xs text-gray-400 mt-1 italic">Practical Notes on Writing Interdisciplinary Conference Papers</p><span class="chinese-title">新聞傳播學跨學科學術會議論文寫作與發表技巧實記</span></div>
-                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2024 Fudan Graduate Winter Practice – Medical Short Videos</p><p class="text-xs text-gray-400 mt-1 italic">Medical Popular Science Short Videos Under "Healthy China"</p><span class="chinese-title">「健康中國」概念下醫療科普短視頻研究</span></div>
+                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2024 Fudan Graduate Autumn Practice – Digital City Culture Tour</p><p class="text-xs text-gray-400 mt-1 italic">"Walking into the Heart of Shanghai"</p><span class="chinese-title">2024年復旦大學研究生秋季日常化社會實踐《「走」進「滬」的心裡——上海數字城市文化漫步之旅》</span></div>
+                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2024 Fudan Graduate Autumn Practice – Cross-Strait Youth Career</p><p class="text-xs text-gray-400 mt-1 italic">Youth as a Bridge – Career Empowerment Documentary</p><span class="chinese-title">2024年復旦大學研究生秋季日常化社會實踐《青年作為橋梁——兩岸大學生職涯賦能紀實》</span></div>
+                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2024 Fudan Graduate Autumn Practice – Audio Social Media</p><p class="text-xs text-gray-400 mt-1 italic">"Joyful Listening" Life – Audio Social Media Platforms</p><span class="chinese-title">2024年復旦大學研究生秋季日常化社會實踐《「樂聽」生活——音頻社交媒體平台的企業實踐研究》</span></div>
+                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2024 Fudan Graduate Summer Practice – AIGC in Chinese Pop</p><p class="text-xs text-gray-400 mt-1 italic">AIGC in the Chinese Pop Music Industry: Past, Present and Future</p><span class="chinese-title">2024年復旦大學研究生暑期社會實踐《媒介學視域下AIGC面向華語流行音樂產業的過去現在與未來》</span></div>
+                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2024 Fudan Graduate Spring Practice – Night Shanghai</p><p class="text-xs text-gray-400 mt-1 italic">Singing "Night Shanghai" – History of Chinese Pop Music</p><span class="chinese-title">2024年復旦大學研究生春季日常化社會實踐《唱響「夜上海」——立足上海的中國流行音樂發展史研究》</span></div>
+                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2024 Fudan Graduate Spring Practice – Short Video Rural Construction</p><p class="text-xs text-gray-400 mt-1 italic">Deconstructing Visualized Social Elements Through Short Videos</p><span class="chinese-title">2024年復旦大學研究生春季日常化社會實踐《深入短視頻畫面解構視頻化社會元素——基於滬閩台經驗的鄉村建設調研與實踐》</span></div>
+                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2024 Fudan Graduate Winter Practice – Interdisciplinary Writing</p><p class="text-xs text-gray-400 mt-1 italic">Practical Notes on Writing Interdisciplinary Conference Papers</p><span class="chinese-title">2024年復旦大學研究生寒假社會實踐《新聞傳播學跨學科學術會議論文寫作與發表技巧實記》</span></div>
+                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2024 Fudan Graduate Winter Practice – Medical Short Videos</p><p class="text-xs text-gray-400 mt-1 italic">Medical Popular Science Short Videos Under "Healthy China"</p><span class="chinese-title">2024年復旦大學研究生寒假社會實踐《「健康中國」概念下醫療科普短視頻在國內外新媒體平台中的內容研究》</span></div>
                         </div></div>
                     </div>
                 </div>
@@ -1604,11 +1688,11 @@
                             <svg class="research-chevron text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
                         </div>
                         <div class="research-accordion-content"><div class="research-accordion-inner space-y-3">
-                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2025 Shanghai Philosophy and Social Science Planning</p><p class="text-xs text-gray-400 mt-1 italic">Enhancing Dominant Public Opinion Through Systematic Reform of Mainstream Media</p><span class="chinese-title">主流媒體系統性變革提升輿論主導權研究</span></div>
-                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2025 Ministry of Education Humanities and Social Sciences</p><p class="text-xs text-gray-400 mt-1 italic">"Silver Generation-Youth" Collaborative Education Model in Art Museums</p><span class="chinese-title">美術館「銀髮—青年」群體協作教育模式理論建構研究</span></div>
-                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2024 National Public Culture Development Center</p><p class="text-xs text-gray-400 mt-1 italic">Rural Museums Empowering Rural Cultural Revitalization</p><span class="chinese-title">鄉村博物館賦能鄉村文化振興研究</span></div>
-                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2024–2026 Shanghai Higher Education Association</p><p class="text-xs text-gray-400 mt-1 italic">Interdisciplinary Film and Television Courses on "Hospice Care" Image Communication</p><span class="chinese-title">基於「安寧療護」影像傳播探索影視專業跨學科課程改革</span></div>
-                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2024 Shaanxi Provincial Social Sciences Youth Project</p><p class="text-xs text-gray-400 mt-1 italic">Collective Memory of Xi'an's City Image in the Digital Era</p><span class="chinese-title">數字時代下西安城市形象的集體記憶建構</span></div>
+                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2025 Shanghai Philosophy and Social Science Planning</p><p class="text-xs text-gray-400 mt-1 italic">Enhancing Dominant Public Opinion Through Systematic Reform of Mainstream Media</p><span class="chinese-title">2025年度上海市哲学社会科学规划课题一般课题《主流媒体系统性变革提升舆论主导权研究》</span></div>
+                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2025 Ministry of Education Humanities and Social Sciences</p><p class="text-xs text-gray-400 mt-1 italic">"Silver Generation-Youth" Collaborative Education Model in Art Museums</p><span class="chinese-title">2025年度教育部人文社会科学研究规划基金项目《美术馆"银发—青年"群体协作教育模式理论建构研究》</span></div>
+                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2024 National Public Culture Development Center</p><p class="text-xs text-gray-400 mt-1 italic">Rural Museums Empowering Rural Cultural Revitalization</p><span class="chinese-title">2024年度文化和旅游部全国公共文化发展中心课题《乡村博物馆赋能乡村文化振兴研究》</span></div>
+                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2024–2026 Shanghai Higher Education Association</p><p class="text-xs text-gray-400 mt-1 italic">Interdisciplinary Film and Television Courses on "Hospice Care" Image Communication</p><span class="chinese-title">上海市高等教育学会2024-2026年度规划研究课题《基于安宁疗护影像传播探索影视专业跨学科课程的改革》</span></div>
+                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2024 Shaanxi Provincial Social Sciences Youth Project</p><p class="text-xs text-gray-400 mt-1 italic">Collective Memory of Xi'an's City Image in the Digital Era</p><span class="chinese-title">2024年度陕西省哲学社会科学研究专项青年项目《数字时代下西安城市形象的集体记忆建构》</span></div>
                         </div></div>
                     </div>
                     <div class="research-accordion-item">
@@ -1617,11 +1701,11 @@
                             <svg class="research-chevron text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
                         </div>
                         <div class="research-accordion-content"><div class="research-accordion-inner space-y-3">
-                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2024 Fudan – AI in Online Communities</p><p class="text-xs text-gray-400 mt-1 italic">Public Opinion Control and Cognitive Shaping Mechanisms of AI</p><span class="chinese-title">AI在網絡社區中的輿論控制和認知塑造機制</span></div>
-                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2025 Fudan – Intelligent Communication</p><p class="text-xs text-gray-400 mt-1 italic">U.S. Strategic Communication Reshaped by Artificial Intelligence</p><span class="chinese-title">智馭傳播：人工智能重塑下的美國戰略傳播研究</span></div>
-                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2023 Central Conservatory of Music Research Funding</p><p class="text-xs text-gray-400 mt-1 italic">"Artistic Symbol Transformation" in Music Art Management Talent Cultivation</p><span class="chinese-title">「藝格符換」思維在音樂藝術管理人才培養中的運用</span></div>
-                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2024 Fudan – Museums and College History Exhibitions</p><p class="text-xs text-gray-400 mt-1 italic">Exploring New Ideas from Old Documents, Empowered by Digitalization</p><span class="chinese-title">故紙探新，數字賦能——博物館與院史展中的思政課</span></div>
-                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2024 Fudan – History of Modern Chinese Newspapers</p><p class="text-xs text-gray-400 mt-1 italic">The Evolution of China's Journalism Industry and Social Changes</p><span class="chinese-title">中國新聞業的演變與社會變遷</span></div>
+                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2024 Fudan – AI in Online Communities</p><p class="text-xs text-gray-400 mt-1 italic">Public Opinion Control and Cognitive Shaping Mechanisms of AI</p><span class="chinese-title">2024年复旦大学研究生秋季日常化社会实践《AI在网络社区中的舆论控制和认知塑造机制》</span></div>
+                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2025 Fudan – Intelligent Communication</p><p class="text-xs text-gray-400 mt-1 italic">U.S. Strategic Communication Reshaped by Artificial Intelligence</p><span class="chinese-title">2025年复旦大学研究生冬春季社会实践《智驭传播：人工智能重塑下的美国战略传播研究》</span></div>
+                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2023 Central Conservatory of Music Research Funding</p><p class="text-xs text-gray-400 mt-1 italic">"Artistic Symbol Transformation" in Music Art Management Talent Cultivation</p><span class="chinese-title">2023年中央音乐学院科研资助计划《艺格符换思维在音乐艺术管理人才培养中的运用与实践探究》</span></div>
+                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2024 Fudan – Museums and College History Exhibitions</p><p class="text-xs text-gray-400 mt-1 italic">Exploring New Ideas from Old Documents, Empowered by Digitalization</p><span class="chinese-title">2024年复旦大学研究生暑期社会实践《故纸探新，数字赋能——博物馆与院史展中的思政课》</span></div>
+                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2024 Fudan – History of Modern Chinese Newspapers</p><p class="text-xs text-gray-400 mt-1 italic">The Evolution of China's Journalism Industry and Social Changes</p><span class="chinese-title">2024年复旦大学研究生暑期社会实践《中国新闻业的演变与社会变迁——基于中国近现代报业发展史的研究》</span></div>
                         </div></div>
                     </div>
                 </div>
@@ -1736,85 +1820,15 @@
             </div>
         </section>
         <main class="px-6 md:px-8 py-8 max-w-7xl mx-auto space-y-8">
-            <div class="section-block" style="overflow:visible;">
+            <div class="section-block" style="overflow:visible; margin-top:100px; padding-top:16px; padding-bottom:16px;">
                 <h2 class="section-header">Teaching Assistant Courses</h2>
                 <p class="text-sm text-gray-400 mb-2">8 Courses · Fudan University · 2022–2026 · Swipe →</p>
-                <p class="text-xs text-gray-600 mb-6">Fall ↑ · Spring ↓</p>
+                <p class="text-xs text-gray-600 mb-4">Fall ↑ · Spring ↓ · Newest → Oldest</p>
                 <!-- TREE BRANCH TIMELINE -->
                 <div class="shelf-container" style="overflow:visible;">
                     <div class="tree-timeline">
                         <div class="tree-line"></div>
-                        <!-- 1: Fall 2022 — UP -->
-                        <div class="tree-node up bilingual-item">
-                            <div class="tree-dot"></div>
-                            <div class="tree-branch"></div>
-                            <div class="tree-card">
-                                <div class="tree-semester">Fall 2022</div>
-                                <div class="tree-course">New Media Management</div>
-                            </div>
-                            <span class="chinese-title">新媒體管理</span>
-                        </div>
-                        <!-- 2: Spring 2023 — DOWN -->
-                        <div class="tree-node down bilingual-item">
-                            <div class="tree-dot"></div>
-                            <div class="tree-branch"></div>
-                            <div class="tree-card">
-                                <div class="tree-semester">Spring 2023</div>
-                                <div class="tree-course">New Chinese Cinema <span style="font-size:0.6rem;color:var(--accent-text);">[EN]</span></div>
-                            </div>
-                            <span class="chinese-title">華語新電影（英文授課）</span>
-                        </div>
-                        <!-- 3: Spring 2023 — DOWN -->
-                        <div class="tree-node down bilingual-item">
-                            <div class="tree-dot"></div>
-                            <div class="tree-branch"></div>
-                            <div class="tree-card">
-                                <div class="tree-semester">Spring 2023</div>
-                                <div class="tree-course">Advanced Studies in New Media Social Forms</div>
-                            </div>
-                            <span class="chinese-title">新媒體社會形態前沿研究</span>
-                        </div>
-                        <!-- 4: Fall 2023 — UP -->
-                        <div class="tree-node up bilingual-item">
-                            <div class="tree-dot"></div>
-                            <div class="tree-branch"></div>
-                            <div class="tree-card">
-                                <div class="tree-semester">Fall 2023</div>
-                                <div class="tree-course">Smart Communication &amp; Human-Computer Interaction</div>
-                            </div>
-                            <span class="chinese-title">智慧傳播與人機交互智能</span>
-                        </div>
-                        <!-- 5: Spring 2024 — DOWN -->
-                        <div class="tree-node down bilingual-item">
-                            <div class="tree-dot"></div>
-                            <div class="tree-branch"></div>
-                            <div class="tree-card">
-                                <div class="tree-semester">Spring 2024</div>
-                                <div class="tree-course">Audio-Visual Program Planning</div>
-                            </div>
-                            <span class="chinese-title">視聽節目策劃</span>
-                        </div>
-                        <!-- 6: Fall 2024 — UP -->
-                        <div class="tree-node up bilingual-item">
-                            <div class="tree-dot"></div>
-                            <div class="tree-branch"></div>
-                            <div class="tree-card">
-                                <div class="tree-semester">Fall 2024</div>
-                                <div class="tree-course">Digital City Communication</div>
-                            </div>
-                            <span class="chinese-title">數字城市傳播</span>
-                        </div>
-                        <!-- 7: Fall 2025 — UP -->
-                        <div class="tree-node up bilingual-item">
-                            <div class="tree-dot"></div>
-                            <div class="tree-branch"></div>
-                            <div class="tree-card">
-                                <div class="tree-semester">Fall 2025</div>
-                                <div class="tree-course">Online Audio-Visual Culture</div>
-                            </div>
-                            <span class="chinese-title">網絡視聽文化</span>
-                        </div>
-                        <!-- 8: Spring 2026 — DOWN -->
+                        <!-- 1: Spring 2026 — DOWN (newest first) -->
                         <div class="tree-node down bilingual-item">
                             <div class="tree-dot"></div>
                             <div class="tree-branch"></div>
@@ -1824,27 +1838,94 @@
                             </div>
                             <span class="chinese-title">新媒體用戶行為分析</span>
                         </div>
+                        <!-- 2: Fall 2025 — UP -->
+                        <div class="tree-node up bilingual-item">
+                            <div class="tree-dot"></div>
+                            <div class="tree-branch"></div>
+                            <div class="tree-card">
+                                <div class="tree-semester">Fall 2025</div>
+                                <div class="tree-course">Online Audio-Visual Culture</div>
+                            </div>
+                            <span class="chinese-title">網絡視聽文化</span>
+                        </div>
+                        <!-- 3: Fall 2024 — UP -->
+                        <div class="tree-node up bilingual-item">
+                            <div class="tree-dot"></div>
+                            <div class="tree-branch"></div>
+                            <div class="tree-card">
+                                <div class="tree-semester">Fall 2024</div>
+                                <div class="tree-course">Digital City Communication</div>
+                            </div>
+                            <span class="chinese-title">數字城市傳播</span>
+                        </div>
+                        <!-- 4: Spring 2024 — DOWN -->
+                        <div class="tree-node down bilingual-item">
+                            <div class="tree-dot"></div>
+                            <div class="tree-branch"></div>
+                            <div class="tree-card">
+                                <div class="tree-semester">Spring 2024</div>
+                                <div class="tree-course">Audio-Visual Program Planning</div>
+                            </div>
+                            <span class="chinese-title">視聽節目策劃</span>
+                        </div>
+                        <!-- 5: Fall 2023 — UP -->
+                        <div class="tree-node up bilingual-item">
+                            <div class="tree-dot"></div>
+                            <div class="tree-branch"></div>
+                            <div class="tree-card">
+                                <div class="tree-semester">Fall 2023</div>
+                                <div class="tree-course">Smart Communication &amp; Human-Computer Interaction</div>
+                            </div>
+                            <span class="chinese-title">智慧傳播與人機交互智能</span>
+                        </div>
+                        <!-- 6: Spring 2023 — DOWN -->
+                        <div class="tree-node down bilingual-item">
+                            <div class="tree-dot"></div>
+                            <div class="tree-branch"></div>
+                            <div class="tree-card">
+                                <div class="tree-semester">Spring 2023</div>
+                                <div class="tree-course">New Chinese Cinema <span style="font-size:0.6rem;color:var(--accent-text);">[EN]</span></div>
+                            </div>
+                            <span class="chinese-title">華語新電影（英文授課）</span>
+                        </div>
+                        <!-- 7: Spring 2023 — DOWN -->
+                        <div class="tree-node down bilingual-item">
+                            <div class="tree-dot"></div>
+                            <div class="tree-branch"></div>
+                            <div class="tree-card">
+                                <div class="tree-semester">Spring 2023</div>
+                                <div class="tree-course">Advanced Studies in New Media Social Forms</div>
+                            </div>
+                            <span class="chinese-title">新媒體社會形態前沿研究</span>
+                        </div>
+                        <!-- 8: Fall 2022 — UP (oldest last) -->
+                        <div class="tree-node up bilingual-item">
+                            <div class="tree-dot"></div>
+                            <div class="tree-branch"></div>
+                            <div class="tree-card">
+                                <div class="tree-semester">Fall 2022</div>
+                                <div class="tree-course">New Media Management</div>
+                            </div>
+                            <span class="chinese-title">新媒體管理</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="section-block">
+            <div class="section-block" style="overflow:visible;">
                 <h2 class="section-header">Guest Lectures</h2>
                 <p class="text-sm text-gray-400 mb-2 text-center">Invited speaker at 7 universities across Taiwan and Mainland China</p>
                 <p class="text-xs text-gray-500 mb-6 text-center">Fudan · Central Conservatory · Shanghai Conservatory · Fu Jen Catholic · China University of Technology · Shih Hsin · Fo Guang</p>
-                <p class="text-xs mb-6 text-center" style="color:var(--accent-text);">Swipe to explore lecture topics →</p>
-                <div class="shelf-container">
-                    <div class="album-shelf" style="gap:12px;">
-                        <div class="lecture-tag bilingual-text" style="flex:0 0 auto; white-space:nowrap;">Construction of Popular Music Industry Value Chain<span class="chinese-hover">流行音樂的產業價值鏈建構</span></div>
-                        <div class="lecture-tag bilingual-text" style="flex:0 0 auto; white-space:nowrap;">Film Scoring from Multiple Perspectives<span class="chinese-hover">從音樂產業的多元視角看配樂</span></div>
-                        <div class="lecture-tag bilingual-text" style="flex:0 0 auto; white-space:nowrap;">AI Large Model Music Co-creation<span class="chinese-hover">AI大模型的音樂協同創作</span></div>
-                        <div class="lecture-tag bilingual-text" style="flex:0 0 auto; white-space:nowrap;">Digital Media Technology &amp; Music Creation<span class="chinese-hover">數位媒體技術演進與音樂創作</span></div>
-                        <div class="lecture-tag bilingual-text" style="flex:0 0 auto; white-space:nowrap;">The Future of Music Industry Platformization<span class="chinese-hover">音樂產業平台化的未來在哪？</span></div>
-                        <div class="lecture-tag bilingual-text" style="flex:0 0 auto; white-space:nowrap;">Forward-looking Analysis of Popular Music Industry<span class="chinese-hover">流行音樂的產業前瞻性分析</span></div>
-                        <div class="lecture-tag bilingual-text" style="flex:0 0 auto; white-space:nowrap;">Music Communication in Mainland China<span class="chinese-hover">中國大陸的音樂傳播與文化產業</span></div>
-                        <div class="lecture-tag bilingual-text" style="flex:0 0 auto; white-space:nowrap;">Chinese Popular Music Through Media<span class="chinese-hover">由媒介乘載的華語流行音樂</span></div>
-                        <div class="lecture-tag bilingual-text" style="flex:0 0 auto; white-space:nowrap;">Short Video Editing &amp; Music Scoring<span class="chinese-hover">短視頻剪輯與配樂</span></div>
-                    </div>
+                <div class="lecture-tags" style="overflow:visible;">
+                    <div class="lecture-tag bilingual-text">Construction of Popular Music Industry Value Chain<span class="chinese-hover">流行音樂的產業價值鏈建構</span></div>
+                    <div class="lecture-tag bilingual-text">Film Scoring from Multiple Perspectives<span class="chinese-hover">從音樂產業的多元視角看配樂</span></div>
+                    <div class="lecture-tag bilingual-text">AI Large Model Music Co-creation<span class="chinese-hover">AI大模型的音樂協同創作</span></div>
+                    <div class="lecture-tag bilingual-text">Digital Media Technology &amp; Music Creation<span class="chinese-hover">數位媒體技術演進與音樂創作</span></div>
+                    <div class="lecture-tag bilingual-text">The Future of Music Industry Platformization<span class="chinese-hover">音樂產業平台化的未來在哪？</span></div>
+                    <div class="lecture-tag bilingual-text">Forward-looking Analysis of Popular Music Industry<span class="chinese-hover">流行音樂的產業前瞻性分析</span></div>
+                    <div class="lecture-tag bilingual-text">Music Communication in Mainland China<span class="chinese-hover">中國大陸的音樂傳播與文化產業</span></div>
+                    <div class="lecture-tag bilingual-text">Chinese Popular Music Through Media<span class="chinese-hover">由媒介乘載的華語流行音樂</span></div>
+                    <div class="lecture-tag bilingual-text">Short Video Editing &amp; Music Scoring<span class="chinese-hover">短視頻剪輯與配樂</span></div>
                 </div>
             </div>
 
@@ -1854,19 +1935,19 @@
                 <div class="shelf-container">
                     <div class="album-shelf" style="gap:16px;">
                         <div style="flex:0 0 320px; aspect-ratio:16/9; border-radius:12px; overflow:hidden; scroll-snap-align:start;">
-                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/teaching-photo-1.jpg" alt="Teaching 1" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='linear-gradient(135deg,#581c87,#1e1b4b)'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3);font-size:0.8rem;\'>teaching-photo-1.jpg</div>';">
+                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/teaching/photo-1.jpg" alt="Teaching 1" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='linear-gradient(135deg,#581c87,#1e1b4b)'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3);font-size:0.8rem;\'>teaching-photo-1.jpg</div>';">
                         </div>
                         <div style="flex:0 0 320px; aspect-ratio:16/9; border-radius:12px; overflow:hidden; scroll-snap-align:start;">
-                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/teaching-photo-2.jpg" alt="Teaching 2" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='linear-gradient(135deg,#4c1d95,#581c87)'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3);font-size:0.8rem;\'>teaching-photo-2.jpg</div>';">
+                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/teaching/photo-2.jpg" alt="Teaching 2" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='linear-gradient(135deg,#4c1d95,#581c87)'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3);font-size:0.8rem;\'>teaching-photo-2.jpg</div>';">
                         </div>
                         <div style="flex:0 0 320px; aspect-ratio:16/9; border-radius:12px; overflow:hidden; scroll-snap-align:start;">
-                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/teaching-photo-3.jpg" alt="Teaching 3" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='linear-gradient(135deg,#3730a3,#4c1d95)'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3);font-size:0.8rem;\'>teaching-photo-3.jpg</div>';">
+                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/teaching/photo-3.jpg" alt="Teaching 3" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='linear-gradient(135deg,#3730a3,#4c1d95)'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3);font-size:0.8rem;\'>teaching-photo-3.jpg</div>';">
                         </div>
                         <div style="flex:0 0 320px; aspect-ratio:16/9; border-radius:12px; overflow:hidden; scroll-snap-align:start;">
-                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/teaching-photo-4.jpg" alt="Teaching 4" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='linear-gradient(135deg,#581c87,#3730a3)'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3);font-size:0.8rem;\'>teaching-photo-4.jpg</div>';">
+                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/teaching/photo-4.jpg" alt="Teaching 4" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='linear-gradient(135deg,#581c87,#3730a3)'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3);font-size:0.8rem;\'>teaching-photo-4.jpg</div>';">
                         </div>
                         <div style="flex:0 0 320px; aspect-ratio:16/9; border-radius:12px; overflow:hidden; scroll-snap-align:start;">
-                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/teaching-photo-5.jpg" alt="Teaching 5" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='linear-gradient(135deg,#4c1d95,#1e1b4b)'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3);font-size:0.8rem;\'>teaching-photo-5.jpg</div>';">
+                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/teaching/photo-5.jpg" alt="Teaching 5" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='linear-gradient(135deg,#4c1d95,#1e1b4b)'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3);font-size:0.8rem;\'>teaching-photo-5.jpg</div>';">
                         </div>
                     </div>
                 </div>
@@ -1984,10 +2065,38 @@
     <!-- Music Production Modal -->
     <div id="modal-music-prod" class="modal"><div class="modal-content">
         <div class="modal-header"><h2 class="text-2xl font-bold text-white">Music Production</h2><div class="close-btn" onclick="closeModal('music-prod')"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></div></div>
-        <div class="modal-body"><div class="track-list">
-            <a href="https://youtu.be/2XF637Y-e7Y" target="_blank" class="track-item flex items-center gap-4 p-4 cursor-pointer group block"><div class="w-8 text-center flex-shrink-0"><span class="track-num text-gray-500 font-bold">1</span><svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="flex-1 min-w-0"><h3 class="font-bold text-white group-hover:text-rose-400 transition truncate">Mixter 漫聲 人聲樂團 Feat. 許子威《一個人對話》</h3><p class="text-sm text-gray-400 mt-1">A Cappella Arrangement • 編曲與影片後製</p></div></a>
-            <a href="javascript:void(0)" onclick="loadTrack(1);playerToggle();" class="track-item flex items-center gap-4 p-4 cursor-pointer group block"><div class="w-8 text-center flex-shrink-0"><span class="track-num text-gray-500 font-bold">2</span><svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="flex-1 min-w-0"><h3 class="font-bold text-white group-hover:text-rose-400 transition truncate">Syntonia 人聲樂團《匆匆那年》</h3><p class="text-sm text-gray-400 mt-1">A Cappella Arrangement • 阿卡貝拉編曲 · <span style="color:var(--accent-text)">▶ Play</span></p></div></a>
-        </div></div>
+        <div class="modal-body">
+            <div class="track-list">
+                <div class="track-item flex items-center gap-4 p-4">
+                    <div class="w-8 text-center flex-shrink-0"><span class="text-gray-500 font-bold">1</span></div>
+                    <div class="flex-1 min-w-0">
+                        <h3 class="font-bold text-white truncate">Mixter 漫聲 人聲樂團 Feat. 許子威《一個人對話》</h3>
+                        <p class="text-sm text-gray-400 mt-1">A Cappella Arrangement • 編曲與影片後製</p>
+                        <div class="flex gap-3 mt-3">
+                            <a href="https://youtu.be/2XF637Y-e7Y" target="_blank" style="display:inline-flex;align-items:center;gap:4px;padding:4px 12px;background:rgba(255,255,255,0.1);border-radius:20px;font-size:0.75rem;color:#fb7185;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
+                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                YouTube
+                            </a>
+                            <button onclick="loadTrack(0);playerToggle();closeModal('music-prod');" style="display:inline-flex;align-items:center;gap:4px;padding:4px 12px;background:rgba(244,63,94,0.2);border:1px solid rgba(244,63,94,0.3);border-radius:20px;font-size:0.75rem;color:#fb7185;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.background='rgba(244,63,94,0.3)'" onmouseout="this.style.background='rgba(244,63,94,0.2)'">
+                                ▶ Play in Footer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="track-item flex items-center gap-4 p-4">
+                    <div class="w-8 text-center flex-shrink-0"><span class="text-gray-500 font-bold">2</span></div>
+                    <div class="flex-1 min-w-0">
+                        <h3 class="font-bold text-white truncate">Syntonia 人聲樂團《匆匆那年》</h3>
+                        <p class="text-sm text-gray-400 mt-1">A Cappella Arrangement • 阿卡貝拉編曲</p>
+                        <div class="flex gap-3 mt-3">
+                            <button onclick="loadTrack(1);playerToggle();closeModal('music-prod');" style="display:inline-flex;align-items:center;gap:4px;padding:4px 12px;background:rgba(244,63,94,0.2);border:1px solid rgba(244,63,94,0.3);border-radius:20px;font-size:0.75rem;color:#fb7185;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.background='rgba(244,63,94,0.3)'" onmouseout="this.style.background='rgba(244,63,94,0.2)'">
+                                ▶ Play in Footer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div></div>
 
     <!-- Video Production Modal — horizontal scroll inside -->
@@ -2152,11 +2261,22 @@
                 </div>
             </div>
 
-            <!-- Right: Volume + Contact -->
-            <div class="player-right">
-                <button class="player-btn" onclick="playerToggleMute()" id="vol-btn" title="Mute/Unmute">
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-                </button>
+            <!-- Right: Volume popup + Contact -->
+            <div class="player-right" style="position:relative;">
+                <div style="position:relative;">
+                    <button class="player-btn" onclick="toggleVolPopup()" id="vol-btn" title="Volume">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                    </button>
+                    <div class="vol-popup" id="vol-popup">
+                        <span class="vol-pct" id="vol-pct">70%</span>
+                        <div class="vol-slider-track" id="vol-slider" onclick="handleVolSlider(event)">
+                            <div class="vol-slider-fill" id="vol-slider-fill" style="height:70%"></div>
+                        </div>
+                        <button class="vol-mute-btn" onclick="playerToggleMute()" title="Mute">
+                            <svg class="w-4 h-4" id="vol-mute-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+                        </button>
+                    </div>
+                </div>
                 <button onclick="showPage('contact')" style="background:white; color:black; padding:6px 16px; border-radius:20px; font-weight:700; font-size:0.75rem; border:none; cursor:pointer; transition:all 0.15s; white-space:nowrap;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                     Contact
                 </button>
@@ -2369,7 +2489,6 @@
     const $mobileProgressFill = document.getElementById('mobile-progress-fill');
     const $currentTime = document.getElementById('player-current-time');
     const $duration = document.getElementById('player-duration');
-    const $volFill = document.getElementById('player-vol-fill');
 
     function formatTime(sec) {
         if (!sec || isNaN(sec)) return '0:00';
@@ -2479,20 +2598,58 @@
         audio.currentTime = pct * audio.duration;
     }
 
-    function playerSetVolume(e) {
-        const rect = e.currentTarget.getBoundingClientRect();
-        const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-        audio.volume = pct;
-        $volFill.style.width = (pct * 100) + '%';
-    }
-
     function playerToggleMute() {
         audio.muted = !audio.muted;
+        updateVolUI();
+    }
+
+    function toggleVolPopup() {
+        const popup = document.getElementById('vol-popup');
+        popup.classList.toggle('show');
+        // Close on outside click
+        if (popup.classList.contains('show')) {
+            setTimeout(() => {
+                document.addEventListener('click', closeVolPopupOutside);
+            }, 10);
+        }
+    }
+
+    function closeVolPopupOutside(e) {
+        const popup = document.getElementById('vol-popup');
         const btn = document.getElementById('vol-btn');
-        if (audio.muted) {
+        if (!popup.contains(e.target) && e.target !== btn && !btn.contains(e.target)) {
+            popup.classList.remove('show');
+            document.removeEventListener('click', closeVolPopupOutside);
+        }
+    }
+
+    function handleVolSlider(e) {
+        const rect = e.currentTarget.getBoundingClientRect();
+        const pct = Math.max(0, Math.min(1, 1 - (e.clientY - rect.top) / rect.height));
+        audio.volume = pct;
+        audio.muted = false;
+        updateVolUI();
+    }
+
+    function updateVolUI() {
+        const pct = audio.muted ? 0 : Math.round(audio.volume * 100);
+        document.getElementById('vol-slider-fill').style.height = (audio.muted ? 0 : audio.volume * 100) + '%';
+        document.getElementById('vol-pct').textContent = pct + '%';
+        // Update main vol button icon
+        const btn = document.getElementById('vol-btn');
+        if (audio.muted || audio.volume === 0) {
             btn.innerHTML = '<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>';
         } else {
             btn.innerHTML = '<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>';
+        }
+        // Update mute icon in popup
+        const muteIcon = document.getElementById('vol-mute-icon');
+        if (muteIcon) {
+            if (audio.muted) {
+                muteIcon.innerHTML = '<path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>';
+            } else {
+                muteIcon.innerHTML = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>';
+            }
         }
     }
 
@@ -2518,16 +2675,18 @@
         }
     });
 
-    // Init volume bar
-    $volFill.style.width = (audio.volume * 100) + '%';
+    // Init volume UI
+    updateVolUI();
 
     // Export player functions
     window.playerToggle = playerToggle;
     window.playerNext = playerNext;
     window.playerPrev = playerPrev;
     window.playerSeek = playerSeek;
-    window.playerSetVolume = playerSetVolume;
     window.playerToggleMute = playerToggleMute;
+    window.toggleVolPopup = toggleVolPopup;
+    window.handleVolSlider = handleVolSlider;
+    window.loadTrack = loadTrack;
     </script>
 </body>
 </html>
