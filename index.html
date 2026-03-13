@@ -597,6 +597,108 @@
         }
 
         /* ============================================
+           TREE BRANCH TIMELINE (horizontal, alternating up/down)
+           ============================================ */
+        .tree-timeline {
+            position: relative;
+            display: flex;
+            overflow-x: auto;
+            overflow-y: visible;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            padding: 0 20px;
+            min-height: 340px;
+            align-items: center;
+        }
+        .tree-timeline::-webkit-scrollbar { display: none; }
+        /* Center horizontal line */
+        .tree-line {
+            position: absolute;
+            left: 0; right: 0;
+            top: 50%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--accent-glow), var(--accent), var(--accent-glow), transparent);
+            z-index: 0;
+        }
+        .tree-node {
+            position: relative;
+            flex: 0 0 200px;
+            height: 340px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1;
+        }
+        /* Dot on the line */
+        .tree-dot {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px; height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 12px var(--accent-glow), 0 0 4px var(--accent);
+            z-index: 3;
+        }
+        /* Branch line connecting dot to card */
+        .tree-branch {
+            position: absolute;
+            left: 50%;
+            width: 2px;
+            background: var(--accent-glow);
+            z-index: 1;
+        }
+        .tree-node.up .tree-branch {
+            bottom: 50%;
+            top: 20px;
+        }
+        .tree-node.down .tree-branch {
+            top: 50%;
+            bottom: 20px;
+        }
+        /* Card */
+        .tree-card {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 180px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--accent-glow);
+            border-radius: 12px;
+            padding: 14px;
+            text-align: center;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+            cursor: help;
+        }
+        .tree-card:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateX(-50%) translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+        .tree-node.up .tree-card { bottom: calc(50% + 24px); }
+        .tree-node.down .tree-card { top: calc(50% + 24px); }
+        .tree-semester {
+            font-size: 0.65rem;
+            color: var(--accent-text);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+        }
+        .tree-course {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: white;
+            line-height: 1.3;
+        }
+        @media (max-width: 768px) {
+            .tree-node { flex: 0 0 170px; }
+            .tree-card { width: 155px; padding: 10px; }
+            .tree-course { font-size: 0.75rem; }
+        }
+
+        /* ============================================
            GRANT BADGES
            ============================================ */
         .grant-badge {
@@ -1452,6 +1554,8 @@
                             <svg class="research-chevron text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
                         </div>
                         <div class="research-accordion-content"><div class="research-accordion-inner space-y-3">
+                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2025 Special Project of Sichuan Key Laboratory of Music Intelligence</p><p class="text-xs text-gray-400 mt-1 italic">Research on the Copyright Mechanism of AI Music Publishing and Distribution from the Perspective of Platform Economy</p><span class="chinese-title">2025年度四川省哲学社会科学音乐数智重点实验室专项项目《平台经济视域下人工智能音乐出版发行版权机制研究》</span></div>
+                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2024 "New Business Discipline" Industry-Education Collaboration Project, Shanghai Management Science Society</p><p class="text-xs text-gray-400 mt-1 italic">Practical Research on the Discipline of Chinese Music Art Management Based on Knowledge Graph</p><span class="chinese-title">2024年度上海市管理科学学会"新商科"产教协同课题《基于知识图谱的中国音乐艺术管理学科实践研究》</span></div>
                         </div></div>
                     </div>
                     <div class="research-accordion-item">
@@ -1460,6 +1564,7 @@
                             <svg class="research-chevron text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
                         </div>
                         <div class="research-accordion-content"><div class="research-accordion-inner space-y-3">
+                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2023 Social Science Project of Yiwu City</p><p class="text-xs text-gray-400 mt-1 italic">Deconstructing the Communication Upgrade Path of Yiwu E-commerce Brands on Social Platforms from a User Perspective</p><span class="chinese-title">2023年度义乌市社科课题《基于用户视角解构义乌电商品牌社交平台传播升级路径》</span></div>
                         </div></div>
                     </div>
                     <div class="research-accordion-item">
@@ -1468,6 +1573,8 @@
                             <svg class="research-chevron text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
                         </div>
                         <div class="research-accordion-content"><div class="research-accordion-inner space-y-3">
+                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2025 Fudan University Graduate Autumn Social Practice</p><p class="text-xs text-gray-400 mt-1 italic">"Rebirth of Old Factories" – Digital Technology Empowering Cultural Parks</p><span class="chinese-title">2025年复旦大学研究生秋季社会实践《老厂房"新生记"——数字技术赋能文化园区更新的实践研究》</span></div>
+                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2025 Fudan University Graduate Winter-Spring Social Practice</p><p class="text-xs text-gray-400 mt-1 italic">"Listenable, Visible, Playable" – AI Multimodal Collaborative Music Generation</p><span class="chinese-title">2025年复旦大学研究生冬春季社会实践《"可听、可视、可玩"——AI多模态协同生成音乐的实践研究》</span></div>
                             <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2024 Fudan Graduate Autumn Practice – Digital City Culture Tour</p><p class="text-xs text-gray-400 mt-1 italic">"Walking into the Heart of Shanghai"</p><span class="chinese-title">「走」進「滬」的心裡——上海數字城市文化漫步之旅</span></div>
                             <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2024 Fudan Graduate Autumn Practice – Cross-Strait Youth Career</p><p class="text-xs text-gray-400 mt-1 italic">Youth as a Bridge – Career Empowerment Documentary</p><span class="chinese-title">青年作為橋梁——兩岸大學生職涯賦能紀實</span></div>
                             <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2024 Fudan Graduate Autumn Practice – Audio Social Media</p><p class="text-xs text-gray-400 mt-1 italic">"Joyful Listening" Life – Audio Social Media Platforms</p><span class="chinese-title">「樂聽」生活——音頻社交媒體平台的企業實踐研究</span></div>
@@ -1488,6 +1595,7 @@
                             <svg class="research-chevron text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
                         </div>
                         <div class="research-accordion-content"><div class="research-accordion-inner space-y-3">
+                            <div class="project-list-item bilingual-item"><p class="font-bold text-white text-sm">2025 Key Project of the National Social Science Fund of China</p><p class="text-xs text-gray-400 mt-1 italic">An International Comparative Study on the Impact of Digital-Intelligent Media on Political Opinion Polarization</p><span class="chinese-title">2025年度国家社会科学基金重点项目《数智媒介对政治观点极化影响的国际比较研究》</span></div>
                         </div></div>
                     </div>
                     <div class="research-accordion-item">
@@ -1599,6 +1707,9 @@
                             <svg class="industry-chevron text-gray-400 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
                         </div>
                         <div class="industry-accordion-content"><div class="industry-accordion-inner"><div class="space-y-3">
+                            <div class="bilingual-item bg-black/30 p-3 rounded-lg"><div class="flex items-center gap-2 mb-1"><span class="year-badge">2018</span><span class="text-xs text-gray-400">Closing Ceremony Coordinator</span></div><p class="text-sm text-white">Maritime Silk Road Music Festival</p><span class="chinese-title">一带一路海上丝路音乐节</span></div>
+                            <div class="bilingual-item bg-black/30 p-3 rounded-lg"><div class="flex items-center gap-2 mb-1"><span class="year-badge">2018</span><span class="text-xs text-gray-400">On-site Host</span></div><p class="text-sm text-white">Baili Azalea Music Festival</p><span class="chinese-title">百里杜鹃音乐节现场主持</span></div>
+                            <div class="bilingual-item bg-black/30 p-3 rounded-lg"><div class="flex items-center gap-2 mb-1"><span class="year-badge">2015-2019</span><span class="text-xs text-gray-400">Stage Director</span></div><p class="text-sm text-white">Cello Concert Tours</p><span class="chinese-title">大提琴巡回音乐会舞台监督</span></div>
                         </div></div></div>
                     </div>
                 </div>
@@ -1625,51 +1736,93 @@
             </div>
         </section>
         <main class="px-6 md:px-8 py-8 max-w-7xl mx-auto space-y-8">
-            <div class="section-block">
+            <div class="section-block" style="overflow:visible;">
                 <h2 class="section-header">Teaching Assistant Courses</h2>
-                <p class="text-sm text-gray-400 mb-4">8 Courses · Fudan University · 2022–2026 · Swipe →</p>
-                <!-- Horizontal scroll course cards -->
-                <div class="shelf-container">
-                    <div class="album-shelf" style="gap:16px;">
-                        <div class="bilingual-item" style="flex:0 0 260px; background:rgba(255,255,255,0.04); border-radius:12px; padding:20px; border:1px solid rgba(255,255,255,0.06); scroll-snap-align:start;">
-                            <div style="font-size:0.7rem; color:var(--accent-text); font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px;">Spring 2026</div>
-                            <div style="font-size:1rem; font-weight:700; color:white; line-height:1.4;">New Media User Behavior Analysis</div>
-                            <span class="chinese-title">新媒體用戶行為分析</span>
+                <p class="text-sm text-gray-400 mb-2">8 Courses · Fudan University · 2022–2026 · Swipe →</p>
+                <p class="text-xs text-gray-600 mb-6">Fall ↑ · Spring ↓</p>
+                <!-- TREE BRANCH TIMELINE -->
+                <div class="shelf-container" style="overflow:visible;">
+                    <div class="tree-timeline">
+                        <div class="tree-line"></div>
+                        <!-- 1: Fall 2022 — UP -->
+                        <div class="tree-node up bilingual-item">
+                            <div class="tree-dot"></div>
+                            <div class="tree-branch"></div>
+                            <div class="tree-card">
+                                <div class="tree-semester">Fall 2022</div>
+                                <div class="tree-course">New Media Management</div>
+                            </div>
+                            <span class="chinese-title">新媒體管理</span>
                         </div>
-                        <div class="bilingual-item" style="flex:0 0 260px; background:rgba(255,255,255,0.04); border-radius:12px; padding:20px; border:1px solid rgba(255,255,255,0.06); scroll-snap-align:start;">
-                            <div style="font-size:0.7rem; color:var(--accent-text); font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px;">Fall 2025</div>
-                            <div style="font-size:1rem; font-weight:700; color:white; line-height:1.4;">Online Audio-Visual Culture</div>
-                            <span class="chinese-title">網絡視聽文化</span>
-                        </div>
-                        <div class="bilingual-item" style="flex:0 0 260px; background:rgba(255,255,255,0.04); border-radius:12px; padding:20px; border:1px solid rgba(255,255,255,0.06); scroll-snap-align:start;">
-                            <div style="font-size:0.7rem; color:var(--accent-text); font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px;">Fall 2024</div>
-                            <div style="font-size:1rem; font-weight:700; color:white; line-height:1.4;">Digital City Communication</div>
-                            <span class="chinese-title">數字城市傳播</span>
-                        </div>
-                        <div class="bilingual-item" style="flex:0 0 260px; background:rgba(255,255,255,0.04); border-radius:12px; padding:20px; border:1px solid rgba(255,255,255,0.06); scroll-snap-align:start;">
-                            <div style="font-size:0.7rem; color:var(--accent-text); font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px;">Spring 2024</div>
-                            <div style="font-size:1rem; font-weight:700; color:white; line-height:1.4;">Audio-Visual Program Planning</div>
-                            <span class="chinese-title">視聽節目策劃</span>
-                        </div>
-                        <div class="bilingual-item" style="flex:0 0 260px; background:rgba(255,255,255,0.04); border-radius:12px; padding:20px; border:1px solid rgba(255,255,255,0.06); scroll-snap-align:start;">
-                            <div style="font-size:0.7rem; color:var(--accent-text); font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px;">Fall 2023</div>
-                            <div style="font-size:1rem; font-weight:700; color:white; line-height:1.4;">Smart Communication &amp; Human-Computer Interaction</div>
-                            <span class="chinese-title">智慧傳播與人機交互智能</span>
-                        </div>
-                        <div class="bilingual-item" style="flex:0 0 260px; background:rgba(255,255,255,0.04); border-radius:12px; padding:20px; border:1px solid rgba(255,255,255,0.06); scroll-snap-align:start;">
-                            <div style="font-size:0.7rem; color:var(--accent-text); font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px;">Spring 2023</div>
-                            <div style="font-size:1rem; font-weight:700; color:white; line-height:1.4;">New Chinese Cinema <span style="font-size:0.75rem; color:var(--accent-text); margin-left:4px;">[English]</span></div>
+                        <!-- 2: Spring 2023 — DOWN -->
+                        <div class="tree-node down bilingual-item">
+                            <div class="tree-dot"></div>
+                            <div class="tree-branch"></div>
+                            <div class="tree-card">
+                                <div class="tree-semester">Spring 2023</div>
+                                <div class="tree-course">New Chinese Cinema <span style="font-size:0.6rem;color:var(--accent-text);">[EN]</span></div>
+                            </div>
                             <span class="chinese-title">華語新電影（英文授課）</span>
                         </div>
-                        <div class="bilingual-item" style="flex:0 0 260px; background:rgba(255,255,255,0.04); border-radius:12px; padding:20px; border:1px solid rgba(255,255,255,0.06); scroll-snap-align:start;">
-                            <div style="font-size:0.7rem; color:var(--accent-text); font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px;">Spring 2023</div>
-                            <div style="font-size:1rem; font-weight:700; color:white; line-height:1.4;">Advanced Studies in New Media Social Forms</div>
+                        <!-- 3: Spring 2023 — DOWN -->
+                        <div class="tree-node down bilingual-item">
+                            <div class="tree-dot"></div>
+                            <div class="tree-branch"></div>
+                            <div class="tree-card">
+                                <div class="tree-semester">Spring 2023</div>
+                                <div class="tree-course">Advanced Studies in New Media Social Forms</div>
+                            </div>
                             <span class="chinese-title">新媒體社會形態前沿研究</span>
                         </div>
-                        <div class="bilingual-item" style="flex:0 0 260px; background:rgba(255,255,255,0.04); border-radius:12px; padding:20px; border:1px solid rgba(255,255,255,0.06); scroll-snap-align:start;">
-                            <div style="font-size:0.7rem; color:var(--accent-text); font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px;">Fall 2022</div>
-                            <div style="font-size:1rem; font-weight:700; color:white; line-height:1.4;">New Media Management</div>
-                            <span class="chinese-title">新媒體管理</span>
+                        <!-- 4: Fall 2023 — UP -->
+                        <div class="tree-node up bilingual-item">
+                            <div class="tree-dot"></div>
+                            <div class="tree-branch"></div>
+                            <div class="tree-card">
+                                <div class="tree-semester">Fall 2023</div>
+                                <div class="tree-course">Smart Communication &amp; Human-Computer Interaction</div>
+                            </div>
+                            <span class="chinese-title">智慧傳播與人機交互智能</span>
+                        </div>
+                        <!-- 5: Spring 2024 — DOWN -->
+                        <div class="tree-node down bilingual-item">
+                            <div class="tree-dot"></div>
+                            <div class="tree-branch"></div>
+                            <div class="tree-card">
+                                <div class="tree-semester">Spring 2024</div>
+                                <div class="tree-course">Audio-Visual Program Planning</div>
+                            </div>
+                            <span class="chinese-title">視聽節目策劃</span>
+                        </div>
+                        <!-- 6: Fall 2024 — UP -->
+                        <div class="tree-node up bilingual-item">
+                            <div class="tree-dot"></div>
+                            <div class="tree-branch"></div>
+                            <div class="tree-card">
+                                <div class="tree-semester">Fall 2024</div>
+                                <div class="tree-course">Digital City Communication</div>
+                            </div>
+                            <span class="chinese-title">數字城市傳播</span>
+                        </div>
+                        <!-- 7: Fall 2025 — UP -->
+                        <div class="tree-node up bilingual-item">
+                            <div class="tree-dot"></div>
+                            <div class="tree-branch"></div>
+                            <div class="tree-card">
+                                <div class="tree-semester">Fall 2025</div>
+                                <div class="tree-course">Online Audio-Visual Culture</div>
+                            </div>
+                            <span class="chinese-title">網絡視聽文化</span>
+                        </div>
+                        <!-- 8: Spring 2026 — DOWN -->
+                        <div class="tree-node down bilingual-item">
+                            <div class="tree-dot"></div>
+                            <div class="tree-branch"></div>
+                            <div class="tree-card">
+                                <div class="tree-semester">Spring 2026</div>
+                                <div class="tree-course">New Media User Behavior Analysis</div>
+                            </div>
+                            <span class="chinese-title">新媒體用戶行為分析</span>
                         </div>
                     </div>
                 </div>
@@ -1678,8 +1831,8 @@
             <div class="section-block">
                 <h2 class="section-header">Guest Lectures</h2>
                 <p class="text-sm text-gray-400 mb-2 text-center">Invited speaker at 7 universities across Taiwan and Mainland China</p>
-                <p class="text-xs text-gray-500 mb-6 text-center">Fudan University · Central Conservatory of Music · Shanghai Conservatory of Music · Fu Jen Catholic University · China University of Technology · Shih Hsin University · Fo Guang University</p>
-                <p class="text-xs text-gray-500 mb-6 text-center" style="color:var(--accent-text)">Swipe to explore lecture topics →</p>
+                <p class="text-xs text-gray-500 mb-6 text-center">Fudan · Central Conservatory · Shanghai Conservatory · Fu Jen Catholic · China University of Technology · Shih Hsin · Fo Guang</p>
+                <p class="text-xs mb-6 text-center" style="color:var(--accent-text);">Swipe to explore lecture topics →</p>
                 <div class="shelf-container">
                     <div class="album-shelf" style="gap:12px;">
                         <div class="lecture-tag bilingual-text" style="flex:0 0 auto; white-space:nowrap;">Construction of Popular Music Industry Value Chain<span class="chinese-hover">流行音樂的產業價值鏈建構</span></div>
@@ -1701,19 +1854,19 @@
                 <div class="shelf-container">
                     <div class="album-shelf" style="gap:16px;">
                         <div style="flex:0 0 320px; aspect-ratio:16/9; border-radius:12px; overflow:hidden; scroll-snap-align:start;">
-                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/teaching-1.jpg" alt="Teaching 1" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='linear-gradient(135deg,#581c87,#1e1b4b)'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3)\'>Photo 1</div>';">
+                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/teaching-photo-1.jpg" alt="Teaching 1" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='linear-gradient(135deg,#581c87,#1e1b4b)'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3);font-size:0.8rem;\'>teaching-photo-1.jpg</div>';">
                         </div>
                         <div style="flex:0 0 320px; aspect-ratio:16/9; border-radius:12px; overflow:hidden; scroll-snap-align:start;">
-                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/teaching-2.jpg" alt="Teaching 2" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='linear-gradient(135deg,#4c1d95,#581c87)'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3)\'>Photo 2</div>';">
+                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/teaching-photo-2.jpg" alt="Teaching 2" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='linear-gradient(135deg,#4c1d95,#581c87)'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3);font-size:0.8rem;\'>teaching-photo-2.jpg</div>';">
                         </div>
                         <div style="flex:0 0 320px; aspect-ratio:16/9; border-radius:12px; overflow:hidden; scroll-snap-align:start;">
-                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/teaching-3.jpg" alt="Teaching 3" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='linear-gradient(135deg,#3730a3,#4c1d95)'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3)\'>Photo 3</div>';">
+                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/teaching-photo-3.jpg" alt="Teaching 3" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='linear-gradient(135deg,#3730a3,#4c1d95)'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3);font-size:0.8rem;\'>teaching-photo-3.jpg</div>';">
                         </div>
                         <div style="flex:0 0 320px; aspect-ratio:16/9; border-radius:12px; overflow:hidden; scroll-snap-align:start;">
-                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/teaching-4.jpg" alt="Teaching 4" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='linear-gradient(135deg,#581c87,#3730a3)'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3)\'>Photo 4</div>';">
+                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/teaching-photo-4.jpg" alt="Teaching 4" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='linear-gradient(135deg,#581c87,#3730a3)'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3);font-size:0.8rem;\'>teaching-photo-4.jpg</div>';">
                         </div>
                         <div style="flex:0 0 320px; aspect-ratio:16/9; border-radius:12px; overflow:hidden; scroll-snap-align:start;">
-                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/teaching-5.jpg" alt="Teaching 5" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='linear-gradient(135deg,#4c1d95,#1e1b4b)'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3)\'>Photo 5</div>';">
+                            <img src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/teaching-photo-5.jpg" alt="Teaching 5" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='linear-gradient(135deg,#4c1d95,#1e1b4b)'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.3);font-size:0.8rem;\'>teaching-photo-5.jpg</div>';">
                         </div>
                     </div>
                 </div>
@@ -1833,7 +1986,7 @@
         <div class="modal-header"><h2 class="text-2xl font-bold text-white">Music Production</h2><div class="close-btn" onclick="closeModal('music-prod')"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></div></div>
         <div class="modal-body"><div class="track-list">
             <a href="https://youtu.be/2XF637Y-e7Y" target="_blank" class="track-item flex items-center gap-4 p-4 cursor-pointer group block"><div class="w-8 text-center flex-shrink-0"><span class="track-num text-gray-500 font-bold">1</span><svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="flex-1 min-w-0"><h3 class="font-bold text-white group-hover:text-rose-400 transition truncate">Mixter 漫聲 人聲樂團 Feat. 許子威《一個人對話》</h3><p class="text-sm text-gray-400 mt-1">A Cappella Arrangement • 編曲與影片後製</p></div></a>
-            <a href="https://youtu.be/2XF637Y-e7Y" target="_blank" class="track-item flex items-center gap-4 p-4 cursor-pointer group block"><div class="w-8 text-center flex-shrink-0"><span class="track-num text-gray-500 font-bold">2</span><svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="flex-1 min-w-0"><h3 class="font-bold text-white group-hover:text-rose-400 transition truncate">Syntonia 人聲樂團《匆匆那年》</h3><p class="text-sm text-gray-400 mt-1">A Cappella Arrangement • 阿卡貝拉編曲</p></div></a>
+            <a href="javascript:void(0)" onclick="loadTrack(1);playerToggle();" class="track-item flex items-center gap-4 p-4 cursor-pointer group block"><div class="w-8 text-center flex-shrink-0"><span class="track-num text-gray-500 font-bold">2</span><svg class="track-play w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="flex-1 min-w-0"><h3 class="font-bold text-white group-hover:text-rose-400 transition truncate">Syntonia 人聲樂團《匆匆那年》</h3><p class="text-sm text-gray-400 mt-1">A Cappella Arrangement • 阿卡貝拉編曲 · <span style="color:var(--accent-text)">▶ Play</span></p></div></a>
         </div></div>
     </div></div>
 
@@ -1999,14 +2152,14 @@
                 </div>
             </div>
 
-            <!-- Right: Volume (hidden on mobile) -->
+            <!-- Right: Volume + Contact -->
             <div class="player-right">
-                <button class="player-btn" onclick="playerToggleMute()" id="vol-btn">
+                <button class="player-btn" onclick="playerToggleMute()" id="vol-btn" title="Mute/Unmute">
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
                 </button>
-                <div class="player-vol-track" onclick="playerSetVolume(event)">
-                    <div class="player-vol-fill" id="player-vol-fill"></div>
-                </div>
+                <button onclick="showPage('contact')" style="background:white; color:black; padding:6px 16px; border-radius:20px; font-weight:700; font-size:0.75rem; border:none; cursor:pointer; transition:all 0.15s; white-space:nowrap;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    Contact
+                </button>
             </div>
         </div>
     </footer>
