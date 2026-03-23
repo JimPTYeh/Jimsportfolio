@@ -606,11 +606,11 @@
    <div class="hidden md:flex space-x-1 text-sm font-semibold text-gray-400">
     <button class="px-3 py-2 rounded-full transition" id="nav-about" onclick="showPage('about')">Explore Jim</button>
     <button class="px-3 py-2 rounded-full transition" id="nav-research" onclick="showPage('research')">Research &amp; Project</button>
-    <button class="px-3 py-2 rounded-full transition" id="nav-research-lab" onclick="showPage('research-lab')">Research Lab</button>
     <button class="px-3 py-2 rounded-full transition" id="nav-industry" onclick="showPage('industry')">Industry Exp.</button>
     <button class="px-3 py-2 rounded-full transition" id="nav-livesession" onclick="showPage('livesession')">Live Session</button>
     <button class="px-3 py-2 rounded-full transition" id="nav-reviews" onclick="showPage('reviews')">Reviews / Articles</button>
     <button class="px-3 py-2 rounded-full transition" id="nav-production" onclick="showPage('production')">Life Productions</button>
+    <button class="px-3 py-2 rounded-full transition" id="nav-research-lab" onclick="showPage('research-lab')">Research Lab</button>
    </div>
    <button class="md:hidden text-white" onclick="toggleMobileMenu()">
     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
@@ -627,9 +627,6 @@
    <button class="w-full text-center py-2 transition" id="mob-research" onclick="showPage('research')" style="color:#9ca3af;">
     Research &amp; Project
    </button>
-   <button class="w-full text-center py-2 transition" id="mob-research-lab" onclick="showPage('research-lab')" style="color:#9ca3af;">
-    Research Lab
-   </button>
    <button class="w-full text-center py-2 transition" id="mob-industry" onclick="showPage('industry')" style="color:#9ca3af;">
     Industry Exp.
    </button>
@@ -641,6 +638,9 @@
    </button>
    <button class="w-full text-center py-2 transition" id="mob-production" onclick="showPage('production')" style="color:#9ca3af;">
     Life Productions
+   </button>
+   <button class="w-full text-center py-2 transition" id="mob-research-lab" onclick="showPage('research-lab')" style="color:#9ca3af;">
+    Research Lab
    </button>
    <button class="absolute top-6 right-6 text-gray-400" onclick="toggleMobileMenu()">
     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewbox="0 0 24 24">
@@ -712,31 +712,6 @@
        </h3>
        <p class="text-xs text-gray-400 line-clamp-2">
         Academic Publications &amp; Research Initiatives
-       </p>
-      </div>
-      <!-- Research Lab (NEW) -->
-      <div class="album-shelf-item" onclick="showPage('research-lab')">
-       <div class="shelf-cover" style="position:relative;">
-        <div style="width:100%;height:100%;border-radius:6px;background:linear-gradient(135deg,#0e7490 0%,#0f172a 100%);display:flex;align-items:center;justify-content:center;">
-         <svg fill="none" stroke="#22d3ee" stroke-width="1.5" style="width:56px;height:56px;opacity:0.55;" viewbox="0 0 24 24">
-          <path d="M3 13h2l2-4 2 8 2-10 2 6 2-4h4" stroke-linecap="round" stroke-linejoin="round">
-          </path>
-         </svg>
-        </div>
-        <div class="shelf-overlay">
-         <svg class="w-6 h-6 text-black ml-1" fill="currentColor" style="background:#06b6d4" viewbox="0 0 24 24">
-          <path d="M8 5v14l11-7z">
-          </path>
-         </svg>
-        </div>
-       </div>
-       <div class="shelf-color-bar" style="background:#06b6d4;">
-       </div>
-       <h3 class="font-bold text-white text-sm mb-1">
-        《Research Lab》
-       </h3>
-       <p class="text-xs text-gray-400 line-clamp-2">
-        Data Visualization &amp; Analysis
        </p>
       </div>
       <!-- Industry -->
@@ -817,6 +792,31 @@
        </h3>
        <p class="text-xs text-gray-400 line-clamp-2">
         Music &amp; Video Production Portfolio
+       </p>
+      </div>
+      <!-- Research Lab -->
+      <div class="album-shelf-item" onclick="showPage('research-lab')">
+       <div class="shelf-cover" style="position:relative;">
+        <div style="width:100%;height:100%;border-radius:6px;background:linear-gradient(135deg,#0e7490 0%,#0f172a 100%);display:flex;align-items:center;justify-content:center;">
+         <svg fill="none" stroke="#22d3ee" stroke-width="1.5" style="width:56px;height:56px;opacity:0.55;" viewbox="0 0 24 24">
+          <path d="M3 13h2l2-4 2 8 2-10 2 6 2-4h4" stroke-linecap="round" stroke-linejoin="round">
+          </path>
+         </svg>
+        </div>
+        <div class="shelf-overlay">
+         <svg class="w-6 h-6 text-black ml-1" fill="currentColor" style="background:#06b6d4" viewbox="0 0 24 24">
+          <path d="M8 5v14l11-7z">
+          </path>
+         </svg>
+        </div>
+       </div>
+       <div class="shelf-color-bar" style="background:#06b6d4;">
+       </div>
+       <h3 class="font-bold text-white text-sm mb-1">
+        《Research Lab》
+       </h3>
+       <p class="text-xs text-gray-400 line-clamp-2">
+        Data Visualization &amp; Analysis
        </p>
       </div>
      </div>
@@ -3197,10 +3197,10 @@
      <img alt="Now Playing" class="player-cover" id="player-cover" src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/footer-logo.jpg"/>
      <div class="player-track-info">
       <div class="player-track-name" id="player-track-name">
-       Jim PoTseng Yeh
+       <span class="tag-tooltip-trigger" data-tip="葉柏增" style="cursor:help;">Jim PoTseng Yeh</span>
       </div>
       <div class="player-track-artist" id="player-track-artist">
-       葉柏增 • Portfolio 2026
+       • Portfolio 2026 •
       </div>
      </div>
      <div class="player-mobile-controls">
