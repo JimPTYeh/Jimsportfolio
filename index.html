@@ -909,15 +909,13 @@
         </span>
        </span>
       </div>
-      <div style="position:relative; padding-bottom:80px; margin-bottom:-80px;">
-       <div style="display:flex; gap:8px; overflow-x:auto; overflow-y:visible; scrollbar-width:none; -webkit-overflow-scrolling:touch; padding:4px 0 80px; margin-bottom:-80px;">
-        <span class="px-3 py-1.5 bg-white/5 rounded-full text-xs text-gray-400 bilingual-text" style="flex:0 0 auto; white-space:nowrap; border:1px solid rgba(255,255,255,0.08);">Platform Economics<span class="chinese-hover">平台經濟</span></span>
-        <span class="px-3 py-1.5 bg-white/5 rounded-full text-xs text-gray-400 bilingual-text" style="flex:0 0 auto; white-space:nowrap; border:1px solid rgba(255,255,255,0.08);">Digital Transformation<span class="chinese-hover">數位轉型</span></span>
-        <span class="px-3 py-1.5 bg-white/5 rounded-full text-xs text-gray-400 bilingual-text" style="flex:0 0 auto; white-space:nowrap; border:1px solid rgba(255,255,255,0.08);">Copyright Governance<span class="chinese-hover">版權治理</span></span>
-        <span class="px-3 py-1.5 bg-white/5 rounded-full text-xs text-gray-400 bilingual-text" style="flex:0 0 auto; white-space:nowrap; border:1px solid rgba(255,255,255,0.08);">AI &amp; Entertainment<span class="chinese-hover">人工智慧與娛樂</span></span>
-        <span class="px-3 py-1.5 bg-white/5 rounded-full text-xs text-gray-400 bilingual-text" style="flex:0 0 auto; white-space:nowrap; border:1px solid rgba(255,255,255,0.08);">Music Art Management<span class="chinese-hover">音樂藝術管理</span></span>
-        <span class="px-3 py-1.5 bg-white/5 rounded-full text-xs text-gray-400 bilingual-text" style="flex:0 0 auto; white-space:nowrap; border:1px solid rgba(255,255,255,0.08);">Creative Labor<span class="chinese-hover">創意勞動</span></span>
-       </div>
+      <div style="display:flex; gap:8px; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch; padding:4px 0 8px;">
+        <span class="px-3 py-1.5 bg-white/5 rounded-full text-xs text-gray-400 tag-tooltip-trigger" style="flex:0 0 auto; white-space:nowrap; border:1px solid rgba(255,255,255,0.08); cursor:help;" data-tip="平台經濟">Platform Economics</span>
+        <span class="px-3 py-1.5 bg-white/5 rounded-full text-xs text-gray-400 tag-tooltip-trigger" style="flex:0 0 auto; white-space:nowrap; border:1px solid rgba(255,255,255,0.08); cursor:help;" data-tip="數位轉型">Digital Transformation</span>
+        <span class="px-3 py-1.5 bg-white/5 rounded-full text-xs text-gray-400 tag-tooltip-trigger" style="flex:0 0 auto; white-space:nowrap; border:1px solid rgba(255,255,255,0.08); cursor:help;" data-tip="版權治理">Copyright Governance</span>
+        <span class="px-3 py-1.5 bg-white/5 rounded-full text-xs text-gray-400 tag-tooltip-trigger" style="flex:0 0 auto; white-space:nowrap; border:1px solid rgba(255,255,255,0.08); cursor:help;" data-tip="人工智慧與娛樂">AI &amp; Entertainment</span>
+        <span class="px-3 py-1.5 bg-white/5 rounded-full text-xs text-gray-400 tag-tooltip-trigger" style="flex:0 0 auto; white-space:nowrap; border:1px solid rgba(255,255,255,0.08); cursor:help;" data-tip="音樂藝術管理">Music Art Management</span>
+        <span class="px-3 py-1.5 bg-white/5 rounded-full text-xs text-gray-400 tag-tooltip-trigger" style="flex:0 0 auto; white-space:nowrap; border:1px solid rgba(255,255,255,0.08); cursor:help;" data-tip="創意勞動">Creative Labor</span>
       </div>
      </div>
     </div>
@@ -3506,6 +3504,29 @@
         document.body.style.opacity='0';
         requestAnimationFrame(() => { document.body.style.transition='opacity 0.5s ease'; document.body.style.opacity='1'; });
 
+        // Tag tooltip (fixed position — works through overflow:hidden parent)
+        const tagTip = document.getElementById('tag-tooltip');
+        document.querySelectorAll('.tag-tooltip-trigger').forEach(el => {
+            el.addEventListener('mouseenter', e => {
+                tagTip.textContent = el.dataset.tip;
+                tagTip.style.display = 'block';
+                tagTip.style.opacity = '1';
+            });
+            el.addEventListener('mousemove', e => {
+                const x = e.clientX, y = e.clientY;
+                const tw = tagTip.offsetWidth, vw = window.innerWidth;
+                let left = x - tw / 2;
+                if (left < 8) left = 8;
+                if (left + tw > vw - 8) left = vw - tw - 8;
+                tagTip.style.left = left + 'px';
+                tagTip.style.top = (y - tagTip.offsetHeight - 10) + 'px';
+            });
+            el.addEventListener('mouseleave', () => {
+                tagTip.style.opacity = '0';
+                setTimeout(() => { tagTip.style.display = 'none'; }, 150);
+            });
+        });
+
         // Nav hover — works in all environments including sandboxed iframes
         Object.entries(navColors).forEach(([id, color]) => {
             const btn = document.getElementById(id);
@@ -3689,5 +3710,7 @@
     });
     window.openLightbox=openLightbox; window.closeLightbox=closeLightbox;
   </script>
- </body>
+ 
+  <div id="tag-tooltip" style="display:none;position:fixed;background:rgba(0,0,0,0.95);color:var(--accent-text, #60a5fa);padding:8px 12px;border-radius:8px;font-size:0.85rem;border:1px solid rgba(255,255,255,0.15);box-shadow:0 8px 24px rgba(0,0,0,0.5);pointer-events:none;z-index:99999;transition:opacity 0.15s;white-space:nowrap;"></div>
+</body>
 </html>
