@@ -580,47 +580,13 @@
     </span>
    </div>
    <div class="hidden md:flex space-x-1 text-sm font-semibold text-gray-400">
-    <button class="px-3 py-2 rounded-full hover:text-white transition" id="nav-about" onclick="showPage('about')">
-     Explore Jim
-    </button>
-    <!-- Research dropdown -->
-    <div id="nav-research-wrap" style="position:relative;">
-     <button class="px-3 py-2 rounded-full hover:text-white transition flex items-center gap-1" id="nav-research-group" onclick="toggleNavDropdown()">
-      Research
-      <svg fill="currentColor" id="nav-dd-chevron" style="width:12px;height:12px;transition:transform 0.2s;" viewbox="0 0 24 24">
-       <path d="M7 10l5 5 5-5z">
-       </path>
-      </svg>
-     </button>
-     <div id="nav-dropdown" style="display:none;position:absolute;top:calc(100% + 6px);left:50%;transform:translateX(-50%);background:rgba(18,18,18,0.98);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:6px;min-width:200px;box-shadow:0 16px 32px rgba(0,0,0,0.5);backdrop-filter:blur(20px);z-index:9999;">
-      <button id="nav-research" onclick="showPage('research'); closeNavDropdown()" onmouseout="this.style.background='';this.style.color='';" onmouseover="this.style.background='rgba(99,102,241,0.08)';this.style.color='#6366f1';" style="display:flex;align-items:center;gap:10px;width:100%;padding:10px 12px;border-radius:8px;background:none;border:none;color:#9ca3af;cursor:pointer;font-size:0.85rem;font-weight:600;text-align:left;transition:all 0.15s;">
-       <svg fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px;flex-shrink:0;" viewbox="0 0 24 24">
-        <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round">
-        </path>
-       </svg>
-       Research &amp; Project
-      </button>
-      <button id="nav-research-lab" onclick="showPage('research-lab'); closeNavDropdown()" onmouseout="this.style.background='';this.style.color='';" onmouseover="this.style.background='rgba(6,182,212,0.08)';this.style.color='#06b6d4';" style="display:flex;align-items:center;gap:10px;width:100%;padding:10px 12px;border-radius:8px;background:none;border:none;color:#9ca3af;cursor:pointer;font-size:0.85rem;font-weight:600;text-align:left;transition:all 0.15s;">
-       <svg fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px;flex-shrink:0;" viewbox="0 0 24 24">
-        <path d="M3 13h2l2-4 2 8 2-10 2 6 2-4h4" stroke-linecap="round" stroke-linejoin="round">
-        </path>
-       </svg>
-       Research Lab
-      </button>
-     </div>
-    </div>
-    <button class="px-3 py-2 rounded-full hover:text-white transition" id="nav-industry" onclick="showPage('industry')">
-     Industry Exp.
-    </button>
-    <button class="px-3 py-2 rounded-full hover:text-white transition" id="nav-livesession" onclick="showPage('livesession')">
-     Live Session
-    </button>
-    <button class="px-3 py-2 rounded-full hover:text-white transition" id="nav-reviews" onclick="showPage('reviews')">
-     Reviews / Articles
-    </button>
-    <button class="px-3 py-2 rounded-full hover:text-white transition" id="nav-production" onclick="showPage('production')">
-     Life Productions
-    </button>
+    <button class="px-3 py-2 rounded-full hover:text-white transition" id="nav-about" onclick="showPage('about')">Explore Jim</button>
+    <button class="px-3 py-2 rounded-full hover:text-white transition" id="nav-research" onclick="showPage('research')">Research &amp; Project</button>
+    <button class="px-3 py-2 rounded-full hover:text-white transition" id="nav-research-lab" onclick="showPage('research-lab')">Research Lab</button>
+    <button class="px-3 py-2 rounded-full hover:text-white transition" id="nav-industry" onclick="showPage('industry')">Industry Exp.</button>
+    <button class="px-3 py-2 rounded-full hover:text-white transition" id="nav-livesession" onclick="showPage('livesession')">Live Session</button>
+    <button class="px-3 py-2 rounded-full hover:text-white transition" id="nav-reviews" onclick="showPage('reviews')">Reviews / Articles</button>
+    <button class="px-3 py-2 rounded-full hover:text-white transition" id="nav-production" onclick="showPage('production')">Life Productions</button>
    </div>
    <button class="md:hidden text-white" onclick="toggleMobileMenu()">
     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
@@ -919,45 +885,13 @@
         </span>
        </span>
       </div>
-      <div class="shelf-container" style="margin:0 -8px;">
-       <div style="display:flex; gap:8px; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch; padding:4px 8px;">
-        <span class="px-3 py-1.5 bg-white/5 rounded-full text-xs text-gray-400 bilingual-text" style="flex:0 0 auto; white-space:nowrap; border:1px solid rgba(255,255,255,0.08);">
-         Platform Economics
-         <span class="chinese-hover">
-          平台經濟
-         </span>
-        </span>
-        <span class="px-3 py-1.5 bg-white/5 rounded-full text-xs text-gray-400 bilingual-text" style="flex:0 0 auto; white-space:nowrap; border:1px solid rgba(255,255,255,0.08);">
-         Digital Transformation
-         <span class="chinese-hover">
-          數位轉型
-         </span>
-        </span>
-        <span class="px-3 py-1.5 bg-white/5 rounded-full text-xs text-gray-400 bilingual-text" style="flex:0 0 auto; white-space:nowrap; border:1px solid rgba(255,255,255,0.08);">
-         Copyright Governance
-         <span class="chinese-hover">
-          版權治理
-         </span>
-        </span>
-        <span class="px-3 py-1.5 bg-white/5 rounded-full text-xs text-gray-400 bilingual-text" style="flex:0 0 auto; white-space:nowrap; border:1px solid rgba(255,255,255,0.08);">
-         AI &amp; Entertainment
-         <span class="chinese-hover">
-          人工智慧與娛樂
-         </span>
-        </span>
-        <span class="px-3 py-1.5 bg-white/5 rounded-full text-xs text-gray-400 bilingual-text" style="flex:0 0 auto; white-space:nowrap; border:1px solid rgba(255,255,255,0.08);">
-         Music Art Management
-         <span class="chinese-hover">
-          音樂藝術管理
-         </span>
-        </span>
-        <span class="px-3 py-1.5 bg-white/5 rounded-full text-xs text-gray-400 bilingual-text" style="flex:0 0 auto; white-space:nowrap; border:1px solid rgba(255,255,255,0.08);">
-         Creative Labor
-         <span class="chinese-hover">
-          創意勞動
-         </span>
-        </span>
-       </div>
+      <div style="display:flex; flex-wrap:wrap; gap:8px; padding:4px 0; margin-top:4px;">
+        <span class="px-3 py-1.5 bg-white/5 rounded-full text-xs text-gray-400 bilingual-text" style="white-space:nowrap; border:1px solid rgba(255,255,255,0.08);">Platform Economics<span class="chinese-hover">平台經濟</span></span>
+        <span class="px-3 py-1.5 bg-white/5 rounded-full text-xs text-gray-400 bilingual-text" style="white-space:nowrap; border:1px solid rgba(255,255,255,0.08);">Digital Transformation<span class="chinese-hover">數位轉型</span></span>
+        <span class="px-3 py-1.5 bg-white/5 rounded-full text-xs text-gray-400 bilingual-text" style="white-space:nowrap; border:1px solid rgba(255,255,255,0.08);">Copyright Governance<span class="chinese-hover">版權治理</span></span>
+        <span class="px-3 py-1.5 bg-white/5 rounded-full text-xs text-gray-400 bilingual-text" style="white-space:nowrap; border:1px solid rgba(255,255,255,0.08);">AI &amp; Entertainment<span class="chinese-hover">人工智慧與娛樂</span></span>
+        <span class="px-3 py-1.5 bg-white/5 rounded-full text-xs text-gray-400 bilingual-text" style="white-space:nowrap; border:1px solid rgba(255,255,255,0.08);">Music Art Management<span class="chinese-hover">音樂藝術管理</span></span>
+        <span class="px-3 py-1.5 bg-white/5 rounded-full text-xs text-gray-400 bilingual-text" style="white-space:nowrap; border:1px solid rgba(255,255,255,0.08);">Creative Labor<span class="chinese-hover">創意勞動</span></span>
       </div>
      </div>
     </div>
@@ -3389,7 +3323,7 @@
         updatePageTitle(pageName);
     }
 
-    const mobileAccentColors = {
+    const pageAccentColors = {
         about: '#60a5fa',
         research: '#a5b4fc',
         'research-lab': '#22d3ee',
@@ -3400,59 +3334,31 @@
         contact: '#38bdf8'
     };
 
-    function refreshMobileMenuColors() {
-        const current = AppState.currentPage;
-        Object.keys(mobileAccentColors).forEach(page => {
-            const btn = document.getElementById('mob-'+page);
-            if (btn) btn.style.color = (page === current) ? mobileAccentColors[page] : '#9ca3af';
+    function updateNavState(pageName) {
+        // Desktop nav — reset all, highlight active with page accent color
+        const navIds = ['about','research','research-lab','industry','livesession','reviews','production'];
+        navIds.forEach(page => {
+            const btn = document.getElementById('nav-'+page);
+            if (!btn) return;
+            btn.classList.remove('nav-active');
+            btn.style.color = '';
+            if (page === pageName) {
+                btn.classList.add('nav-active');
+                btn.style.color = pageAccentColors[page] || 'white';
+            }
         });
+        // Mobile menu — reset all to gray, highlight active with page accent color
+        navIds.forEach(page => {
+            const btn = document.getElementById('mob-'+page);
+            if (!btn) return;
+            btn.style.color = (page === pageName) ? (pageAccentColors[page] || 'white') : '#9ca3af';
+        });
+    }
+
+    function refreshMobileMenuColors() {
+        updateNavState(AppState.currentPage || 'home');
     }
     window.refreshMobileMenuColors = refreshMobileMenuColors;
-
-    function updateNavState(pageName) {
-        // Desktop nav
-        document.querySelectorAll('nav button').forEach(btn => {
-            btn.classList.remove('nav-active');
-            if (btn.id === 'nav-'+pageName) btn.classList.add('nav-active');
-        });
-        const grp = document.getElementById('nav-research-group');
-        if (grp) {
-            if (pageName === 'research' || pageName === 'research-lab') {
-                grp.classList.add('nav-active');
-            } else {
-                grp.classList.remove('nav-active');
-            }
-        }
-        // Mobile menu — reset all to gray, highlight active
-        Object.keys(mobileAccentColors).forEach(page => {
-            const btn = document.getElementById('mob-'+page);
-            if (btn) btn.style.color = (page === pageName) ? mobileAccentColors[page] : '#9ca3af';
-        });
-    }
-
-    function toggleNavDropdown() {
-        const dd = document.getElementById('nav-dropdown');
-        const chevron = document.getElementById('nav-dd-chevron');
-        const isOpen = dd.style.display === 'block';
-        dd.style.display = isOpen ? 'none' : 'block';
-        if (chevron) chevron.style.transform = isOpen ? '' : 'rotate(180deg)';
-        if (!isOpen) {
-            setTimeout(() => document.addEventListener('click', closeNavDropdownOutside), 10);
-        }
-    }
-    function closeNavDropdown() {
-        const dd = document.getElementById('nav-dropdown');
-        const chevron = document.getElementById('nav-dd-chevron');
-        if (dd) dd.style.display = 'none';
-        if (chevron) chevron.style.transform = '';
-        document.removeEventListener('click', closeNavDropdownOutside);
-    }
-    function closeNavDropdownOutside(e) {
-        const wrap = document.getElementById('nav-research-wrap');
-        if (wrap && !wrap.contains(e.target)) closeNavDropdown();
-    }
-    window.toggleNavDropdown = toggleNavDropdown;
-    window.closeNavDropdown = closeNavDropdown;
     function updatePageTitle(pageName) {
         const t = {
             home:'Jim PoTseng Yeh - Portfolio', about:'Explore Jim', research:'Research & Project',
