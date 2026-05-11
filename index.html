@@ -963,6 +963,57 @@
             white-space: nowrap;
         }
 
+        /* QR lightbox — click QR to enlarge */
+        #qr-lightbox {
+            position: fixed; inset: 0;
+            z-index: 9200;
+            background: rgba(0,0,0,0.92);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            display: flex; align-items: center; justify-content: center;
+            padding: 20px;
+            opacity: 0; pointer-events: none;
+            transition: opacity .25s ease;
+            cursor: zoom-out;
+        }
+        #qr-lightbox.show { opacity: 1; pointer-events: auto; }
+        #qr-lightbox-inner {
+            background: #fff;
+            padding: 16px;
+            border-radius: 8px;
+            box-shadow: 0 0 48px rgba(217,70,239,0.4), 8px 8px 0 0 rgba(168,85,247,0.3);
+            max-width: 400px;
+            width: 100%;
+            transform: scale(0.85);
+            transition: transform .3s cubic-bezier(.2,.8,.3,1);
+            position: relative;
+        }
+        #qr-lightbox.show #qr-lightbox-inner { transform: scale(1); }
+        #qr-lightbox-inner img {
+            width: 100%; height: auto; display: block;
+            image-rendering: pixelated;
+        }
+        #qr-lightbox-inner .qr-caption {
+            font-family: var(--f-pixel);
+            font-size: 9px;
+            color: #000;
+            text-align: center;
+            margin-top: 12px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        #qr-lightbox-inner .qr-caption b { color: #a855f7; font-weight: normal; }
+        #qr-lightbox-close {
+            position: absolute; top: -16px; right: -16px;
+            width: 36px; height: 36px;
+            background: #000; color: #e879f9;
+            border: 2px solid #e879f9;
+            font-family: var(--f-pixel); font-size: 11px;
+            cursor: pointer; line-height: 1;
+            box-shadow: 3px 3px 0 0 rgba(168,85,247,0.5);
+        }
+        .album-card.featured-bot .qr-slot { cursor: zoom-in; }
+
         @media (max-width: 768px) {
             .section-block { padding: 20px; margin-bottom: 20px; }
             .photo-gallery { grid-template-columns: 1fr; }
@@ -4256,7 +4307,7 @@
     <div class="lab-grid">
 
       <!-- ★ Featured: 無趣男子吉姆君 · A Mysterious Man -->
-      <a class="album-card featured-bot lab-featured" href="https://mp.weixin.qq.com" target="_blank" style="text-decoration:none;color:inherit;position:relative;">
+      <div class="album-card featured-bot lab-featured" style="color:inherit;position:relative;">
        <!-- Hover tooltip (Chinese description) -->
        <div class="mc-tooltip">
         <p class="mc-tooltip-en">
@@ -4266,9 +4317,9 @@
          一位棲身於微信公眾號的神秘男子。掃描左側二維碼關注後，便能與他展開一場對話——關於任何事，或什麼都不為。
         </p>
        </div>
-       <!-- QR slot -->
-       <div class="qr-slot">
-        <img alt="WeChat QR" src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/qr-wechat-bot.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"/>
+       <!-- QR slot (click to enlarge) -->
+       <div class="qr-slot" onclick="openQrLightbox(event)" title="Click to enlarge / 點擊放大">
+        <img alt="WeChat QR" src="http://mmbiz.qpic.cn/mmbiz_jpg/KnicfEhFMlia6LLMMU31gURAnuNJqS8QiaQ4w6jBjVZlmIZ2W7zKqkZss9YiaWY1ibTNVBhHH4g0GP4YkwcnibgHWzvQ/0" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"/>
         <div class="qr-placeholder" style="display:none;">
          <span>SCAN ME<br/>放二維碼<br/>於此</span>
         </div>
@@ -4284,7 +4335,7 @@
          <span>WeChat MP</span>
         </div>
        </div>
-      </a>
+      </div>
 
       <!-- MandoChord -->
       <a class="album-card p-4 group" href="https://mandochord.vercel.app/" style="text-decoration:none;color:inherit;display:block;position:relative;" target="_blank">
@@ -5827,5 +5878,37 @@
       </svg>
     </div>
   </div>
+
+  <!-- ================================================
+       ★ QR Lightbox — 點 QR 放大顯示
+       ================================================ -->
+  <div id="qr-lightbox" onclick="closeQrLightbox(event)">
+    <div id="qr-lightbox-inner" onclick="event.stopPropagation()">
+      <button id="qr-lightbox-close" onclick="closeQrLightbox(event)" aria-label="Close">✕</button>
+      <img src="http://mmbiz.qpic.cn/mmbiz_jpg/KnicfEhFMlia6LLMMU31gURAnuNJqS8QiaQ4w6jBjVZlmIZ2W7zKqkZss9YiaWY1ibTNVBhHH4g0GP4YkwcnibgHWzvQ/0" alt="WeChat QR 無趣男子吉姆君"/>
+      <div class="qr-caption">▸ Scan with <b>WeChat</b> · 微信掃碼關注 ◂</div>
+    </div>
+  </div>
+
+  <script>
+    function openQrLightbox(e) {
+        if (e) e.stopPropagation();
+        const lb = document.getElementById('qr-lightbox');
+        if (lb) lb.classList.add('show');
+    }
+    function closeQrLightbox(e) {
+        if (e) e.stopPropagation();
+        const lb = document.getElementById('qr-lightbox');
+        if (lb) lb.classList.remove('show');
+    }
+    // ESC 關閉
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const lb = document.getElementById('qr-lightbox');
+            if (lb && lb.classList.contains('show')) closeQrLightbox();
+        }
+    });
+  </script>
+
 </body>
 </html>
