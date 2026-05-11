@@ -870,6 +870,97 @@
         .centered-grid-2-inner { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; max-width: 600px; width: 100%; }
         .color-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; }
 
+        /* ── Research Lab grid (3-column, featured bot spans full width) ── */
+        .lab-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.5rem;
+            width: 100%;
+        }
+        .lab-grid .lab-featured {
+            grid-column: 1 / -1;     /* 占滿整列 */
+        }
+
+        /* Featured 公眾號智能體 card */
+        .album-card.featured-bot {
+            background: linear-gradient(135deg, rgba(34,211,238,0.05) 0%, rgba(99,102,241,0.05) 100%);
+            border: 1px solid rgba(34,211,238,0.2);
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 24px;
+            align-items: center;
+            padding: 20px 24px;
+        }
+        .album-card.featured-bot:hover {
+            background: linear-gradient(135deg, rgba(34,211,238,0.08) 0%, rgba(99,102,241,0.08) 100%);
+            border-color: rgba(34,211,238,0.4);
+            box-shadow: 0 16px 32px rgba(34,211,238,0.1);
+        }
+        .album-card.featured-bot .qr-slot {
+            aspect-ratio: 1 / 1;
+            background: #fff;
+            border-radius: 8px;
+            border: 2px solid rgba(34,211,238,0.3);
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .album-card.featured-bot .qr-slot img {
+            width: 100%; height: 100%; object-fit: contain;
+            image-rendering: pixelated;
+        }
+        .album-card.featured-bot .qr-placeholder {
+            width: 100%; height: 100%;
+            display: flex; align-items: center; justify-content: center;
+            background: repeating-conic-gradient(#000 0deg 90deg, #fff 90deg 180deg) 0 0 / 12px 12px;
+            color: #000;
+            font-family: var(--f-pixel);
+            font-size: 9px;
+            text-align: center;
+            letter-spacing: 0.05em;
+            line-height: 1.6;
+        }
+        .album-card.featured-bot .qr-placeholder span {
+            background: #fff; padding: 6px 10px; border: 2px solid #000;
+        }
+        .album-card.featured-bot .bot-info { min-width: 0; }
+        .album-card.featured-bot .bot-tag {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-family: var(--f-pixel); font-size: 8px;
+            color: #22d3ee; background: rgba(34,211,238,0.1);
+            padding: 4px 10px; border: 1px solid rgba(34,211,238,0.3);
+            border-radius: 12px; margin-bottom: 10px;
+            letter-spacing: 0.08em; text-transform: uppercase;
+        }
+        .album-card.featured-bot .bot-tag::before { content: "▰ "; color: #22d3ee; }
+        .album-card.featured-bot h3 {
+            font-family: var(--f-serif); font-weight: 600;
+            font-size: 1.4rem; color: #fff; margin: 0 0 6px;
+            letter-spacing: -0.01em;
+        }
+        .album-card.featured-bot .bot-zh {
+            font-family: var(--f-han); color: #a5f3fc;
+            font-size: 0.9rem; margin: 0 0 12px;
+        }
+        .album-card.featured-bot p.desc {
+            font-size: 0.85rem; color: #cbd5e1; line-height: 1.55;
+            margin: 0 0 12px;
+        }
+        .album-card.featured-bot .bot-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+        .album-card.featured-bot .bot-tags span {
+            padding: 3px 8px;
+            background: rgba(34,211,238,0.08);
+            border: 1px solid rgba(34,211,238,0.25);
+            border-radius: 20px;
+            font-size: 0.62rem;
+            color: #22d3ee;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
         @media (max-width: 768px) {
             .section-block { padding: 20px; margin-bottom: 20px; }
             .photo-gallery { grid-template-columns: 1fr; }
@@ -877,6 +968,9 @@
             .awards-horizontal { flex-direction: column; align-items: stretch; }
             .award-item { max-width: none; }
             .centered-grid-2-inner { grid-template-columns: 1fr; }
+            .lab-grid { grid-template-columns: 1fr; }
+            .album-card.featured-bot { grid-template-columns: 1fr; padding: 16px; }
+            .album-card.featured-bot .qr-slot { max-width: 220px; margin: 0 auto; }
             .citation-tooltip { max-width: 280px; min-width: 200px; font-size: 0.8rem; }
             @media (max-width: 640px) { .centered-grid-2-inner { max-width: 100%; } }
         }
@@ -2275,7 +2369,7 @@
         , 1-15.
        </span>
       </div>
-      <div class="track-item flex items-center gap-4 p-4 has-citation">
+      <a class="track-item flex items-center gap-4 p-4 cursor-pointer group block has-citation" href="https://kns.cnki.net/kcms2/article/abstract?v=8kKd7LBMH3y0H6r79ghqSOKyU9HL3Tj084yluPZf2gzWF5j_ddyvq7qOGmN93kWKAiYR-n-MO7OwAeju7KKMH30zZLfjkW6bR2w53oze6OiqRFrBK9X-jCKcJhV6zJR07QwNxgYJWmwXGowhuiHgKrg9mCEHv8OC&amp;uniplatform=NZKPT" target="_blank">
        <div class="w-8 text-center">
         <span class="text-gray-500 font-bold">
          4
@@ -2296,7 +2390,7 @@
         <br/>
         谢亦晴, 叶柏增. 神话的银幕重生：当代中国动画电影叙事转译机制[J]. 电影文学, 2026, (08): 16-22.
        </span>
-      </div>
+      </a>
      </div>
      <h3 class="subsection-header">
       Book Chapters
@@ -4147,21 +4241,44 @@
         Research Lab
        </h1>
        <p class="text-gray-300 mb-2">
-        Data Visualization &amp; Analytical Tools
+        Data Visualization · Music Education · AI Agents
        </p>
        <p class="text-sm text-gray-400">
-        Chord Progressions · Voice Leading · Music Education Tools
+        Chord · Voice Leading · Form · Notation · Conversation
        </p>
       </div>
      </div>
     </div>
    </section>
    <main class="px-6 md:px-8 py-8 max-w-7xl mx-auto">
-    <div class="centered-grid-2">
-     <div class="centered-grid-2-inner">
-      <!-- MandoChord — direct link, hover tooltip -->
+    <div class="lab-grid">
+
+      <!-- ★ Featured: WeChat 公眾號智能體 (spans full width, first) -->
+      <a class="album-card featured-bot lab-featured" href="https://mp.weixin.qq.com" target="_blank" style="text-decoration:none;color:inherit;position:relative;">
+       <!-- QR slot — replace src with your real QR image when ready -->
+       <div class="qr-slot">
+        <!-- 把下面這行的 src 改成你的二維碼圖片網址，就會顯示真正的 QR -->
+        <img alt="WeChat QR" src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/qr-wechat-bot.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"/>
+        <div class="qr-placeholder" style="display:none;">
+         <span>SCAN ME<br/>放二維碼<br/>於此</span>
+        </div>
+       </div>
+       <div class="bot-info">
+        <span class="bot-tag">Featured · AI Agent</span>
+        <h3>無趣男子吉姆君 · WeChat Agent</h3>
+        <p class="bot-zh">公眾號 + 互動智能體</p>
+        <p class="desc">微信公眾號文章 + 內建智能體，可直接對話討論音樂傳播、和聲學、流行音樂研究等議題。<br/>掃描左側二維碼，加入後在公眾號內喚起智能體即可開始對話。</p>
+        <div class="bot-tags">
+         <span>WeChat MP</span>
+         <span>AI Agent</span>
+         <span>Chat</span>
+         <span>Music Talk</span>
+        </div>
+       </div>
+      </a>
+
+      <!-- MandoChord -->
       <a class="album-card p-4 group" href="https://mandochord.vercel.app/" style="text-decoration:none;color:inherit;display:block;position:relative;" target="_blank">
-       <!-- Hover tooltip (floating) -->
        <div class="mc-tooltip">
         <p class="mc-tooltip-en">
          An interactive visualization of chord progression patterns across 20 years of KKBOX Mandarin pop charts — mapping the dominance of 4536 and other harmonic structures from 2005 to 2025.
@@ -4170,48 +4287,30 @@
          以 KKBOX 二十年榜單數據為基礎，互動式呈現華語流行音樂和弦進行的規律，重點分析 4536 等和弦結構於 2005–2025 年間的主導地位。
         </p>
        </div>
-       <!-- Cover -->
        <div class="relative mb-4">
         <div class="aspect-square rounded-md flex items-center justify-center overflow-hidden" style="background:linear-gradient(135deg,#0c4a6e 0%,#0e7490 50%,#0f172a 100%);">
          <svg fill="none" stroke="#22d3ee" stroke-width="1.5" style="width:80px;height:80px;opacity:0.6;" viewbox="0 0 24 24">
-          <path d="M3 13h2l2-4 2 8 2-10 2 6 2-4h4" stroke-linecap="round" stroke-linejoin="round">
-          </path>
+          <path d="M3 13h2l2-4 2 8 2-10 2 6 2-4h4" stroke-linecap="round" stroke-linejoin="round"></path>
          </svg>
         </div>
-        <!-- External link icon on hover -->
         <div class="play-overlay" style="border-radius:6px;">
          <svg fill="none" stroke="white" stroke-width="2.5" style="width:48px;height:48px;background:#06b6d4;border-radius:50%;padding:12px;" viewbox="0 0 24 24">
-          <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-linecap="round" stroke-linejoin="round">
-          </path>
+          <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-linecap="round" stroke-linejoin="round"></path>
          </svg>
         </div>
        </div>
-       <!-- Title + subtitle -->
-       <h3 class="font-bold text-white mb-2 text-center">
-        《MandoChord》
-       </h3>
-       <!-- Tags -->
+       <h3 class="font-bold text-white mb-2 text-center">《MandoChord》</h3>
        <div style="display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-bottom:6px;">
-        <span style="padding:3px 8px;background:rgba(6,182,212,0.12);border:1px solid rgba(6,182,212,0.3);border-radius:20px;font-size:0.62rem;color:#22d3ee;font-weight:600;white-space:nowrap;">
-         KKBOX
-        </span>
-        <span style="padding:3px 8px;background:rgba(6,182,212,0.12);border:1px solid rgba(6,182,212,0.3);border-radius:20px;font-size:0.62rem;color:#22d3ee;font-weight:600;white-space:nowrap;">
-         Chord Analysis
-        </span>
-        <span style="padding:3px 8px;background:rgba(6,182,212,0.12);border:1px solid rgba(6,182,212,0.3);border-radius:20px;font-size:0.62rem;color:#22d3ee;font-weight:600;white-space:nowrap;">
-         2005–2025
-        </span>
-        <span style="padding:3px 8px;background:rgba(6,182,212,0.12);border:1px solid rgba(6,182,212,0.3);border-radius:20px;font-size:0.62rem;color:#22d3ee;font-weight:600;white-space:nowrap;">
-         Data Viz
-        </span>
+        <span style="padding:3px 8px;background:rgba(6,182,212,0.12);border:1px solid rgba(6,182,212,0.3);border-radius:20px;font-size:0.62rem;color:#22d3ee;font-weight:600;white-space:nowrap;">KKBOX</span>
+        <span style="padding:3px 8px;background:rgba(6,182,212,0.12);border:1px solid rgba(6,182,212,0.3);border-radius:20px;font-size:0.62rem;color:#22d3ee;font-weight:600;white-space:nowrap;">Chord Analysis</span>
+        <span style="padding:3px 8px;background:rgba(6,182,212,0.12);border:1px solid rgba(6,182,212,0.3);border-radius:20px;font-size:0.62rem;color:#22d3ee;font-weight:600;white-space:nowrap;">2005–2025</span>
+        <span style="padding:3px 8px;background:rgba(6,182,212,0.12);border:1px solid rgba(6,182,212,0.3);border-radius:20px;font-size:0.62rem;color:#22d3ee;font-weight:600;white-space:nowrap;">Data Viz</span>
        </div>
-       <p class="text-xs text-gray-500 text-center">
-        mandochord.vercel.app ↗
-       </p>
+       <p class="text-xs text-gray-500 text-center">mandochord.vercel.app ↗</p>
       </a>
-      <!-- Choriad — three voices one chord, harmony learning tool -->
+
+      <!-- Choriad -->
       <a class="album-card p-4 group" href="https://choriadlab.vercel.app/" style="text-decoration:none;color:inherit;display:block;position:relative;" target="_blank">
-       <!-- Hover tooltip (floating) -->
        <div class="mc-tooltip">
         <p class="mc-tooltip-en">
          An interactive harmony learning tool — visualize and hear how three independent voices combine into a single chord, exploring voice-leading and harmonic progressions through real-time playback.
@@ -4220,57 +4319,115 @@
          互動式和聲學習工具，視覺化與聲音同步呈現三個獨立聲部如何組成和弦，透過即時播放探索聲部進行與和聲規律。
         </p>
        </div>
-       <!-- Cover: 三聲部色塊 (SATB 配色) -->
        <div class="relative mb-4">
         <div class="aspect-square rounded-md flex items-center justify-center overflow-hidden" style="background:linear-gradient(135deg,#1e1b4b 0%,#312e81 50%,#0f172a 100%);position:relative;">
-         <!-- Three voice lines stacked -->
          <svg fill="none" stroke-width="1.6" style="width:80%;height:60%;opacity:0.85;" viewBox="0 0 100 60" preserveAspectRatio="none">
-          <!-- Soprano -->
           <path d="M2 10 Q 25 4, 50 12 T 98 8" stroke="#a5b4fc" stroke-linecap="round"/>
-          <!-- Alto -->
           <path d="M2 28 Q 25 22, 50 30 T 98 26" stroke="#c084fc" stroke-linecap="round"/>
-          <!-- Bass -->
           <path d="M2 50 Q 25 46, 50 52 T 98 48" stroke="#22d3ee" stroke-linecap="round"/>
-          <!-- Voice dots -->
           <circle cx="50" cy="12" r="2.5" fill="#a5b4fc"/>
           <circle cx="50" cy="30" r="2.5" fill="#c084fc"/>
           <circle cx="50" cy="52" r="2.5" fill="#22d3ee"/>
          </svg>
         </div>
-        <!-- External link icon on hover -->
         <div class="play-overlay" style="border-radius:6px;">
          <svg fill="none" stroke="white" stroke-width="2.5" style="width:48px;height:48px;background:#6366f1;border-radius:50%;padding:12px;" viewbox="0 0 24 24">
           <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-linecap="round" stroke-linejoin="round"></path>
          </svg>
         </div>
        </div>
-       <!-- Title + subtitle -->
-       <h3 class="font-bold text-white mb-1 text-center">
-        《Choriad》
-       </h3>
-       <p class="text-xs italic text-center mb-2" style="color:#a5b4fc;font-family:var(--f-serif);">
-        Three voices, one chord.
-       </p>
-       <!-- Tags -->
+       <h3 class="font-bold text-white mb-1 text-center">《Choriad》</h3>
+       <p class="text-xs italic text-center mb-2" style="color:#a5b4fc;font-family:var(--f-serif);">Three voices, one chord.</p>
        <div style="display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-bottom:6px;">
-        <span style="padding:3px 8px;background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.3);border-radius:20px;font-size:0.62rem;color:#a5b4fc;font-weight:600;white-space:nowrap;">
-         Harmony
-        </span>
-        <span style="padding:3px 8px;background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.3);border-radius:20px;font-size:0.62rem;color:#a5b4fc;font-weight:600;white-space:nowrap;">
-         Voice Leading
-        </span>
-        <span style="padding:3px 8px;background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.3);border-radius:20px;font-size:0.62rem;color:#a5b4fc;font-weight:600;white-space:nowrap;">
-         Interactive
-        </span>
-        <span style="padding:3px 8px;background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.3);border-radius:20px;font-size:0.62rem;color:#a5b4fc;font-weight:600;white-space:nowrap;">
-         Music Edu
-        </span>
+        <span style="padding:3px 8px;background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.3);border-radius:20px;font-size:0.62rem;color:#a5b4fc;font-weight:600;white-space:nowrap;">Harmony</span>
+        <span style="padding:3px 8px;background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.3);border-radius:20px;font-size:0.62rem;color:#a5b4fc;font-weight:600;white-space:nowrap;">Voice Leading</span>
+        <span style="padding:3px 8px;background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.3);border-radius:20px;font-size:0.62rem;color:#a5b4fc;font-weight:600;white-space:nowrap;">Interactive</span>
+        <span style="padding:3px 8px;background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.3);border-radius:20px;font-size:0.62rem;color:#a5b4fc;font-weight:600;white-space:nowrap;">Music Edu</span>
        </div>
-       <p class="text-xs text-gray-500 text-center">
-        choriadlab.vercel.app ↗
-       </p>
+       <p class="text-xs text-gray-500 text-center">choriadlab.vercel.app ↗</p>
       </a>
-     </div>
+
+      <!-- FugueLens — 曲式研究 -->
+      <a class="album-card p-4 group" href="https://fuguelens.vercel.app/" style="text-decoration:none;color:inherit;display:block;position:relative;" target="_blank">
+       <div class="mc-tooltip">
+        <p class="mc-tooltip-en">
+         A musical form analysis tool — visualize fugue, sonata, and other classical structures section by section, mapping themes, expositions, and developments across time.
+        </p>
+        <p class="mc-tooltip-zh">
+         曲式分析工具，將賦格、奏鳴曲式等古典結構逐段視覺化，標示主題呈示、發展與再現的時間軸，協助理解曲式邏輯。
+        </p>
+       </div>
+       <div class="relative mb-4">
+        <div class="aspect-square rounded-md flex items-center justify-center overflow-hidden" style="background:linear-gradient(135deg,#3b0764 0%,#581c87 50%,#0f172a 100%);position:relative;">
+         <!-- Fugue-style overlapping themes -->
+         <svg fill="none" stroke-width="1.8" style="width:80%;height:65%;opacity:0.9;" viewBox="0 0 100 65" preserveAspectRatio="none">
+          <!-- Subject (top) -->
+          <path d="M2 12 L 12 12 L 12 6 L 22 6 L 22 14 L 32 14 L 32 8 L 42 8" stroke="#fb7185" stroke-linecap="square"/>
+          <!-- Answer (middle, offset) -->
+          <path d="M22 28 L 32 28 L 32 22 L 42 22 L 42 30 L 52 30 L 52 24 L 62 24" stroke="#fbbf24" stroke-linecap="square"/>
+          <!-- Counter (bottom, offset) -->
+          <path d="M42 48 L 52 48 L 52 42 L 62 42 L 62 50 L 72 50 L 72 44 L 82 44" stroke="#a5b4fc" stroke-linecap="square"/>
+          <!-- Bar lines -->
+          <line x1="22" y1="2" x2="22" y2="63" stroke="#ffffff" stroke-width="0.4" opacity="0.3"/>
+          <line x1="42" y1="2" x2="42" y2="63" stroke="#ffffff" stroke-width="0.4" opacity="0.3"/>
+          <line x1="62" y1="2" x2="62" y2="63" stroke="#ffffff" stroke-width="0.4" opacity="0.3"/>
+         </svg>
+        </div>
+        <div class="play-overlay" style="border-radius:6px;">
+         <svg fill="none" stroke="white" stroke-width="2.5" style="width:48px;height:48px;background:#a855f7;border-radius:50%;padding:12px;" viewbox="0 0 24 24">
+          <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-linecap="round" stroke-linejoin="round"></path>
+         </svg>
+        </div>
+       </div>
+       <h3 class="font-bold text-white mb-1 text-center">《FugueLens》</h3>
+       <p class="text-xs italic text-center mb-2" style="color:#c084fc;font-family:var(--f-serif);">Form, framed.</p>
+       <div style="display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-bottom:6px;">
+        <span style="padding:3px 8px;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.3);border-radius:20px;font-size:0.62rem;color:#c084fc;font-weight:600;white-space:nowrap;">Musical Form</span>
+        <span style="padding:3px 8px;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.3);border-radius:20px;font-size:0.62rem;color:#c084fc;font-weight:600;white-space:nowrap;">Fugue</span>
+        <span style="padding:3px 8px;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.3);border-radius:20px;font-size:0.62rem;color:#c084fc;font-weight:600;white-space:nowrap;">Analysis</span>
+        <span style="padding:3px 8px;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.3);border-radius:20px;font-size:0.62rem;color:#c084fc;font-weight:600;white-space:nowrap;">Classical</span>
+       </div>
+       <p class="text-xs text-gray-500 text-center">fuguelens.vercel.app ↗</p>
+      </a>
+
+      <!-- MandoScore — 語音轉簡譜 -->
+      <a class="album-card p-4 group" href="https://mandoscore.vercel.app/" style="text-decoration:none;color:inherit;display:block;position:relative;" target="_blank">
+       <div class="mc-tooltip">
+        <p class="mc-tooltip-en">
+         A voice-to-notation tool — sing or hum into your microphone and watch your melody transcribed into Chinese numbered notation (簡譜) in real time, ideal for songwriters and music educators.
+        </p>
+        <p class="mc-tooltip-zh">
+         語音轉譜工具，對著麥克風哼唱或演唱旋律，即時轉換成簡譜，方便作曲、編曲與音樂教學現場使用。
+        </p>
+       </div>
+       <div class="relative mb-4">
+        <div class="aspect-square rounded-md flex items-center justify-center overflow-hidden" style="background:linear-gradient(135deg,#064e3b 0%,#065f46 50%,#0f172a 100%);position:relative;">
+         <!-- Numbered notation 5 6 1 2 3 — pixel style -->
+         <div style="font-family:var(--f-pixel);font-size:32px;color:#34d399;letter-spacing:0.18em;text-shadow:2px 2px 0 #000;display:flex;gap:10px;">
+          <span style="opacity:0.5;">5</span>
+          <span>6</span>
+          <span style="opacity:0.85;">1</span>
+          <span>2</span>
+          <span style="opacity:0.6;">3</span>
+         </div>
+        </div>
+        <div class="play-overlay" style="border-radius:6px;">
+         <svg fill="none" stroke="white" stroke-width="2.5" style="width:48px;height:48px;background:#10b981;border-radius:50%;padding:12px;" viewbox="0 0 24 24">
+          <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-linecap="round" stroke-linejoin="round"></path>
+         </svg>
+        </div>
+       </div>
+       <h3 class="font-bold text-white mb-1 text-center">《MandoScore》</h3>
+       <p class="text-xs italic text-center mb-2" style="color:#34d399;font-family:var(--f-serif);">Sing it. See it.</p>
+       <div style="display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-bottom:6px;">
+        <span style="padding:3px 8px;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.3);border-radius:20px;font-size:0.62rem;color:#34d399;font-weight:600;white-space:nowrap;">Voice → 簡譜</span>
+        <span style="padding:3px 8px;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.3);border-radius:20px;font-size:0.62rem;color:#34d399;font-weight:600;white-space:nowrap;">Realtime</span>
+        <span style="padding:3px 8px;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.3);border-radius:20px;font-size:0.62rem;color:#34d399;font-weight:600;white-space:nowrap;">Transcription</span>
+        <span style="padding:3px 8px;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.3);border-radius:20px;font-size:0.62rem;color:#34d399;font-weight:600;white-space:nowrap;">Songwriting</span>
+       </div>
+       <p class="text-xs text-gray-500 text-center">mandoscore.vercel.app ↗</p>
+      </a>
+
     </div>
    </main>
   </div>
