@@ -873,7 +873,7 @@
         /* ── Research Lab grid (3-column, featured bot spans full width) ── */
         .lab-grid {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 1.5rem;
             width: 100%;
         }
@@ -881,10 +881,10 @@
             grid-column: 1 / -1;     /* 占滿整列 */
         }
 
-        /* Featured 公眾號智能體 card */
+        /* Featured · 無趣男子吉姆君 — purple theme card */
         .album-card.featured-bot {
-            background: linear-gradient(135deg, rgba(34,211,238,0.05) 0%, rgba(99,102,241,0.05) 100%);
-            border: 1px solid rgba(34,211,238,0.2);
+            background: linear-gradient(135deg, rgba(168,85,247,0.06) 0%, rgba(217,70,239,0.05) 50%, rgba(15,23,42,0.4) 100%);
+            border: 1px solid rgba(217,70,239,0.25);
             display: grid;
             grid-template-columns: 200px 1fr;
             gap: 24px;
@@ -892,21 +892,22 @@
             padding: 20px 24px;
         }
         .album-card.featured-bot:hover {
-            background: linear-gradient(135deg, rgba(34,211,238,0.08) 0%, rgba(99,102,241,0.08) 100%);
-            border-color: rgba(34,211,238,0.4);
-            box-shadow: 0 16px 32px rgba(34,211,238,0.1);
+            background: linear-gradient(135deg, rgba(168,85,247,0.1) 0%, rgba(217,70,239,0.08) 50%, rgba(15,23,42,0.4) 100%);
+            border-color: rgba(217,70,239,0.5);
+            box-shadow: 0 16px 32px rgba(168,85,247,0.12);
         }
         .album-card.featured-bot .qr-slot {
             aspect-ratio: 1 / 1;
             background: #fff;
             border-radius: 8px;
-            border: 2px solid rgba(34,211,238,0.3);
+            border: 2px solid rgba(217,70,239,0.4);
             padding: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 0 24px rgba(168,85,247,0.2);
         }
         .album-card.featured-bot .qr-slot img {
             width: 100%; height: 100%; object-fit: contain;
@@ -930,20 +931,21 @@
         .album-card.featured-bot .bot-tag {
             display: inline-flex; align-items: center; gap: 6px;
             font-family: var(--f-pixel); font-size: 8px;
-            color: #22d3ee; background: rgba(34,211,238,0.1);
-            padding: 4px 10px; border: 1px solid rgba(34,211,238,0.3);
+            color: #e879f9; background: rgba(217,70,239,0.1);
+            padding: 4px 10px; border: 1px solid rgba(217,70,239,0.35);
             border-radius: 12px; margin-bottom: 10px;
             letter-spacing: 0.08em; text-transform: uppercase;
         }
-        .album-card.featured-bot .bot-tag::before { content: "▰ "; color: #22d3ee; }
+        .album-card.featured-bot .bot-tag::before { content: "✦ "; color: #e879f9; }
         .album-card.featured-bot h3 {
             font-family: var(--f-serif); font-weight: 600;
             font-size: 1.4rem; color: #fff; margin: 0 0 6px;
             letter-spacing: -0.01em;
         }
         .album-card.featured-bot .bot-zh {
-            font-family: var(--f-han); color: #a5f3fc;
-            font-size: 0.9rem; margin: 0 0 12px;
+            font-family: var(--f-serif); font-style: italic;
+            color: #e879f9; font-size: 0.95rem;
+            margin: 0 0 12px; letter-spacing: 0.01em;
         }
         .album-card.featured-bot p.desc {
             font-size: 0.85rem; color: #cbd5e1; line-height: 1.55;
@@ -952,11 +954,11 @@
         .album-card.featured-bot .bot-tags { display: flex; flex-wrap: wrap; gap: 5px; }
         .album-card.featured-bot .bot-tags span {
             padding: 3px 8px;
-            background: rgba(34,211,238,0.08);
-            border: 1px solid rgba(34,211,238,0.25);
+            background: rgba(217,70,239,0.08);
+            border: 1px solid rgba(217,70,239,0.3);
             border-radius: 20px;
             font-size: 0.62rem;
-            color: #22d3ee;
+            color: #e879f9;
             font-weight: 600;
             white-space: nowrap;
         }
@@ -4241,7 +4243,7 @@
         Research Lab
        </h1>
        <p class="text-gray-300 mb-2">
-        Data Visualization · Music Education · AI Agents
+        Music Tools · Data Visualization · Mysterious Conversation
        </p>
        <p class="text-sm text-gray-400">
         Chord · Voice Leading · Form · Notation · Conversation
@@ -4253,26 +4255,33 @@
    <main class="px-6 md:px-8 py-8 max-w-7xl mx-auto">
     <div class="lab-grid">
 
-      <!-- ★ Featured: WeChat 公眾號智能體 (spans full width, first) -->
+      <!-- ★ Featured: 無趣男子吉姆君 · A Mysterious Man -->
       <a class="album-card featured-bot lab-featured" href="https://mp.weixin.qq.com" target="_blank" style="text-decoration:none;color:inherit;position:relative;">
-       <!-- QR slot — replace src with your real QR image when ready -->
+       <!-- Hover tooltip (Chinese description) -->
+       <div class="mc-tooltip">
+        <p class="mc-tooltip-en">
+         A mysterious man living inside a WeChat channel. Scan the QR code, follow him, and you may strike up a conversation — about anything, or nothing at all.
+        </p>
+        <p class="mc-tooltip-zh">
+         一位棲身於微信公眾號的神秘男子。掃描左側二維碼關注後，便能與他展開一場對話——關於任何事，或什麼都不為。
+        </p>
+       </div>
+       <!-- QR slot -->
        <div class="qr-slot">
-        <!-- 把下面這行的 src 改成你的二維碼圖片網址，就會顯示真正的 QR -->
         <img alt="WeChat QR" src="https://raw.githubusercontent.com/JimPTYeh/Jimsportfolio/main/images/qr-wechat-bot.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"/>
         <div class="qr-placeholder" style="display:none;">
          <span>SCAN ME<br/>放二維碼<br/>於此</span>
         </div>
        </div>
        <div class="bot-info">
-        <span class="bot-tag">Featured · AI Agent</span>
-        <h3>無趣男子吉姆君 · WeChat Agent</h3>
-        <p class="bot-zh">公眾號 + 互動智能體</p>
-        <p class="desc">微信公眾號文章 + 內建智能體，可直接對話討論音樂傳播、和聲學、流行音樂研究等議題。<br/>掃描左側二維碼，加入後在公眾號內喚起智能體即可開始對話。</p>
+        <span class="bot-tag">Featured · A Mysterious Man</span>
+        <h3>無趣男子吉姆君</h3>
+        <p class="bot-zh">A mysterious man, waiting to talk.</p>
+        <p class="desc">A quiet figure who lives inside a WeChat channel. Scan the QR code, follow him, and start a conversation whenever you wish. He is always there, waiting in the dark.</p>
         <div class="bot-tags">
+         <span>Mysterious</span>
+         <span>Conversation</span>
          <span>WeChat MP</span>
-         <span>AI Agent</span>
-         <span>Chat</span>
-         <span>Music Talk</span>
         </div>
        </div>
       </a>
